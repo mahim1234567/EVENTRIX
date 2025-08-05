@@ -1,0 +1,6 @@
+1. Event must be booked at least 7 days before.
+2. 50% payment must be given in advance.
+3. 20% charge if canceled within 3 days.
+4. Customer will pay for any damage.
+5. Extra time will cost extra money.
+
