@@ -7,9 +7,9 @@ drawLine(int len)
 int main()
 {
     int cho,cho2,cho3;
-    drawLine(50);
-    printf("\t<<<<<-----WELCOME EVENTRIX----->>>>>\n");
-    drawLine(50);
+    drawLine(120);
+    printf("\t\t\t\t\t<<<<<-----WELCOME EVENTRIX----->>>>>\n");
+    drawLine(120);
     printf("\n\n");
     printf("[1].User/Coustomer.\n");
     printf("[2].Admin/Manager.\n");
@@ -19,9 +19,9 @@ int main()
     if (cho == 1)
     {
         system("CLS");
-        drawLine(50);
-        printf("<<<<<-----User Registration/Login Page----->>>>>\n");
-        drawLine(50);
+        drawLine(120);
+        printf("\t\t\t\t\t<<<<<-----User Registration/Login Page----->>>>>\n");
+        drawLine(120);
         printf("\n\n");
         printf("1.Registration.\n");
         printf("2.Login.\n");
@@ -32,18 +32,18 @@ int main()
         if(cho2==1)
         {
             system("CLS");
-            drawLine(37);
-            printf("<<<<<-----User Registration----->>>>>\n");
-            drawLine(37);
+            drawLine(120);
+            printf("\t\t\t\t\t<<<<<-----User Registration----->>>>>\n");
+            drawLine(120);
             printf("\n\n");
             registe();
         }
         else if(cho2==2)
         {
             system("CLS");
-            drawLine(32);
-            printf("<<<<<-----User Login----->>>>>\n");
-            drawLine(32);
+            drawLine(120);
+            printf("\t\t\t\t\t<<<<<-----User Login----->>>>>\n");
+            drawLine(120);
             printf("\n\n");
             login();
         }
@@ -56,9 +56,9 @@ int main()
     else if (cho == 2)
     {
         system("CLS");
-        drawLine(50);
-        printf("<<<<<-----Admin Registration/Login Page----->>>>>\n");
-        drawLine(50);
+        drawLine(120);
+        printf("\t\t\t\t\t<<<<<-----Admin Registration/Login Page----->>>>>\n");
+        drawLine(120);
         printf("\n\n");
         printf("1.Registration.\n");
         printf("2.Login.\n");
@@ -69,18 +69,18 @@ int main()
         if(cho3==1)
         {
             system("CLS");
-            drawLine(37);
-            printf("<<<<<-----Admin Registration----->>>>>\n");
-            drawLine(37);
+            drawLine(120);
+            printf("\t\t\t\t\t<<<<<-----Admin Registration----->>>>>\n");
+            drawLine(120);
             printf("\n\n");
             registeA();
         }
         else if(cho3==2)
         {
             system("CLS");
-            drawLine(32);
-            printf("<<<<<-----Admin Login----->>>>>\n");
-            drawLine(32);
+            drawLine(120);
+            printf("\t\t\t\t\t<<<<<-----Admin Login----->>>>>\n");
+            drawLine(120);
             printf("\n\n");
             loginA();
         }
@@ -308,9 +308,9 @@ int Delete_Event()
 
 int coustomer_dashboard()
 {
-    drawLine(50);
-    printf("\t<<<<<-----Customer Dashboard----->>>>>\n");
-    drawLine(50);
+    drawLine(120);
+    printf("\t\t\t\t\t<<<<<-----Customer Dashboard----->>>>>\n");
+    drawLine(120);
     printf("\n\n");
     printf("[1].Event Selection\n");
     printf("[2].View Booking Event Information.\n");
@@ -386,9 +386,9 @@ int coustomer_dashboard()
 
 int admin_dashboard()
 {
-    drawLine(50);
-    printf("\t<<<<<-----Admin Dashboard----->>>>>\n");
-    drawLine(50);
+    drawLine(120);
+    printf("\t\t\t\t\t<<<<<-----Admin Dashboard----->>>>>\n");
+    drawLine(120);
     printf("\n1.View All Event\n");
     printf("2.Find Event.\n");
     printf("3.Event Approval\n");
@@ -480,9 +480,9 @@ int admin_dashboard()
 }
 Event_Selection()
 {
-    drawLine(50);
-    printf("\t<<<<<-----Event Selection----->>>>>\n");
-    drawLine(50);
+    drawLine(120);
+    printf("\t\t\t\t\t<<<<<-----Event Selection----->>>>>\n");
+    drawLine(120);
     printf("\n\n");
     printf("1.Marriage Event Booking.\n\n");
     printf("2.Birthday Event Booking.\n\n");
@@ -510,9 +510,9 @@ Booking()
 {
     char pname[100],dname[100],uname[100],vname[100],ename[100];
     int g,b;
-    drawLine(50);
-    printf("\t<<<<<-----Event Booking----->>>>>\n");
-    drawLine(50);
+    drawLine(120);
+    printf("\t\t\t\t\t<<<<<-----Event Booking----->>>>>\n");
+    drawLine(120);
     printf("\n\n");
     getchar();
 
@@ -538,26 +538,31 @@ Booking()
     scanf("%d",&g);
     getchar();
     printf("\n***Budget Type***\n");
-    if(0<g || g<21 )
+    if (g > 0 && g <= 20)
     {
         printf("\n\t[1].Common Type[15000 TK]\n\t[2].Premium Type[20000 TK]");
     }
-    else if(20<g || g>41)
+    else if (g > 20 && g <= 40)
     {
         printf("\n\t[1].Common Type[30000 TK]\n\t[2].Premium Type[40000 TK]");
     }
-    else if(40<g || g<61 )
+    else if (g > 40 && g <= 60)
     {
         printf("\n\t[1].Common Type[45000 TK]\n\t[2].Premium Type[60000 TK]");
     }
-    else if(60<g || g>81)
+    else if (g > 60 && g <= 80)
     {
         printf("\n\t[1].Common Type[60000 TK]\n\t[2].Premium Type[800000 TK]");
     }
-    else if(80<g || g>101)
+    else if (g > 80 && g <= 100)
     {
         printf("\n\t[1].Common Type[75000 TK]\n\t[2].Premium Type[900000 TK]");
     }
+    else
+    {
+        printf("\nInvalid guest number.\n");
+    }
+
 
     printf("\n\nEnter Budget: ");
     scanf("%d",&b);
@@ -1274,8 +1279,6 @@ viewr()
     system("CLS");
     coustomer_dashboard();
 }
-
-
 
 
 
