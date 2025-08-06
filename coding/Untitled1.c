@@ -176,41 +176,52 @@ int loginA()
 }
 
 
-/*int delet()
+int Delete_Event()
 {
     char searchName[100];
     getchar();
-    printf("Enter event name to delete: ");
+    printf("Enter user name to delete: ");
     gets(searchName);
 
-    FILE *file = fopen("created.txt", "r");
+    FILE *M = fopen("booking.txt", "r");
     FILE *temp = fopen("temp.txt", "w");
 
-    struct c l;
-    int found = 0;
+    if (M == NULL || temp == NULL) {
+        printf("Error opening files.\n");
+        return 1;
+    }
 
-    while (fscanf(file, "%s %s %d %d %d", l.name, l.vname, &l.guest, &l.budget, &l.day) != EOF) {
-        if (strcmp(l.name, searchName) == 0) {
+    int found = 0;
+    char uname[100], pname[100], dname[100];
+    int g, b;
+
+    while (fscanf(M, "%s %s %d %s %d", uname, pname, &g, dname, &b) != EOF)
+    {
+        if (strcmp(uname, searchName) == 0)
+        {
             found = 1;
             continue;
         }
-        fprintf(temp, "%s %s %d %d %d\n", l.name, l.vname, l.guest, l.budget, l.day);
+
+        fprintf(temp, "%s %s %d %s %d\n", uname, pname, g, dname, b);
     }
 
-    fclose(file);
+    fclose(M);
     fclose(temp);
 
-    remove("created.txt");
-    rename("temp.txt", "created.txt");
+    remove("booking.txt");
+    rename("temp.txt", "booking.txt");
 
-    if (found) {
-        printf("\nEvent '%s' deleted successfully!\n", searchName);
-    } else {
-        printf("\nEvent '%s' not found!\n", searchName);
+    if (found)
+    {
+        printf("\nEvent of '%s' deleted successfully!\n", searchName);
+    }
+    else
+    {
+        printf("\nEvent of '%s' not found!\n", searchName);
     }
 
-    return 0;
-}*/
+}
 
 int coustomer_dashboard()
 {
@@ -314,7 +325,7 @@ int admin_dashboard()
     }
     else if(ch==6)
     {
-        printf("Comming soon......");
+        Delete_Event();
     }
     else if(ch==7)
     {
@@ -706,6 +717,7 @@ viewr()
     }
     fclose(file);
 }
+
 
 
 
