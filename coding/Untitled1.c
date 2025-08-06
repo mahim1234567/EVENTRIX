@@ -175,7 +175,6 @@ int loginA()
     fclose(log1);
 }
 
-
 int Delete_Event()
 {
     char searchName[100];
@@ -222,6 +221,7 @@ int Delete_Event()
     }
 
 }
+
 
 int coustomer_dashboard()
 {
@@ -365,9 +365,12 @@ Event_Selection()
 }
 Booking()
 {
-    char pname[100],dname[100];
+    char pname[100],dname[100],uname[100];
     int g,b;
     getchar();
+
+    printf("Enter User Name: ");
+    gets(uname);
     printf("Enter Place Name: ");
     gets(pname);
     printf("Enter Number of Guest: ");
@@ -383,7 +386,7 @@ Booking()
 
     M = fopen("booking.txt", "a");
 
-    fprintf(M, "%s %d %s %d\n", pname, g, dname, b);
+    fprintf(M, "%s %s %d %s %d\n",uname, pname, g, dname, b);
 
     fclose(M);
 
@@ -392,7 +395,7 @@ Booking()
 }
 void View_Event_Information()
 {
-    char pname[100], dname[100];
+    char pname[100], dname[100],uname[100];
     int g, b;
 
     FILE *M = fopen("booking.txt", "r");
@@ -404,9 +407,9 @@ void View_Event_Information()
 
     printf("\n------ Event Booking List ------\n");
 
-    while (fscanf(M, " %s %d %s %d", pname, &g, dname, &b) != EOF)
+    while (fscanf(M, " %s %s %d %s %d",uname, pname, &g, dname, &b) != EOF)
     {
-        printf("Place: %s | Guest: %d | Date: %s | Budget: %d\n", pname, g, dname, b);
+        printf("Name:%s Place: %s | Guest: %d | Date: %s | Budget: %d\n",uname, pname, g, dname, b);
     }
 
     fclose(M);
@@ -717,7 +720,6 @@ viewr()
     }
     fclose(file);
 }
-
 
 
 
