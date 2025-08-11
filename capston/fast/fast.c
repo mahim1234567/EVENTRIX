@@ -408,7 +408,7 @@ int coustomer_dashboard()
     }
     else if(c==2)
     {
-        View_Event_Information();
+        userview();
     }
     else if(c==3)
     {
@@ -480,7 +480,7 @@ int admin_dashboard()
 
     if(ch==1)
     {
-        View_Event_Information_AD();
+        adminview();
     }
     else if(ch==2)
     {
@@ -878,52 +878,111 @@ Booking()
         fclose(log1);
     }
 
-
-
-
-
     system("CLS");
-    
-    
-    
-    printf("\n\nEnter Number of Guest[MAX-100]: ");
-    scanf("%d",&g);
-    getchar();
-    printf("\n***Budget Type***\n");
-    if (g > 0 && g <= 20)
+
+
+
+    printf("\nBooking successfully\n\n");
+    printf("Complete Your Payment\n\n");
+    printf("Any key to continue..........");
+    getch();
+    system("CLS");
+
+
+    FILE *M;
+
+    M = fopen("booking.txt", "a");
+    if (M == NULL)
     {
-        printf("\n\t[1].Common Type[15000 TK]\n\t[2].Premium Type[20000 TK]");
+        printf("File not found!\n");
+        return;
     }
-    else if (g > 20 && g <= 40)
+
+    fprintf(M,"|%s\t|%s\t|%s\t|%s\t|%s\n", ename, uname, number, vname, pname);
+
+    fclose(M);
+
+
+    paymentp();
+
+}
+
+
+
+paymentp()
+{
+    long int g,b;
+    char dname[100];
+    int found=0;
+
+    while(1)
     {
-        printf("\n\t[1].Common Type[30000 TK]\n\t[2].Premium Type[40000 TK]");
+        printf("\n\nEnter Number of Guest[MAX-100]: ");
+    scanf("%ld",&g);
+    getchar();
+    if (g > 0 && g <= 40)
+    {
+        printf("\n***Budget Type***\n");
+        drawLine(20);
+        printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",g*500,g*750);
+        printf("\n\nEnter Your Choice: ");
+        scanf("%d",&b);
+        getchar();
+        break;
     }
     else if (g > 40 && g <= 60)
     {
-        printf("\n\t[1].Common Type[45000 TK]\n\t[2].Premium Type[60000 TK]");
+        printf("\n***Budget Type***\n");
+        drawLine(20);
+        printf("You've got [10 Percent] discount on the original Budget price\n\n");
+        printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",g*450,g*675);
+        printf("\n\nEnter Your Choice: ");
+        scanf("%d",&b);
+        getchar();
+        found=1;
+        break;
     }
     else if (g > 60 && g <= 80)
     {
-        printf("\n\t[1].Common Type[60000 TK]\n\t[2].Premium Type[800000 TK]");
+        printf("You've got [20 Percent] discount on the original Budget price\n\n");
+        printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",400*g,g*600);
+        printf("\n\nEnter Your Choice: ");
+        scanf("%d",&b);
+        getchar();
+        found=1;
+        break;
     }
     else if (g > 80 && g <= 100)
     {
-        printf("\n\t[1].Common Type[75000 TK]\n\t[2].Premium Type[900000 TK]");
+        printf("\n***Budget Type***\n");
+        drawLine(20);
+        printf("You've got [30 Percent] discount on the original Budget price\n\n");
+        printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",350*g,525*g);
+        printf("\n\nEnter Your Choice: ");
+        scanf("%d",&b);
+        getchar();
+        found=1;
+        break;
     }
     else
     {
         printf("\nInvalid guest number.\n");
     }
 
+    if(found==1)
+        break;
 
-    printf("\n\nEnter Budget: ");
-    scanf("%d",&b);
-    getchar();
+    }
+
+
+
+
+
+
+
     printf("Enter Date[Like 3-May]: ");
     gets(dname);
 
-    printf("\nBooking successfully\n\n");
-    printf("Complete Your Payment\n");
     printf("\nSelect Payment Method\n1.Bkash\n2.Nagad\n3.Bank\n");
 
     int c;
@@ -963,27 +1022,21 @@ Booking()
     {
         printf("\nPayment Not successfully.Due %d Tk.\n",b-a);
     }
-    FILE *M;
 
-    M = fopen("booking.txt", "a");
-    if (M == NULL)
-    {
-        printf("File not found!\n");
-        return;
-    }
-
-    fprintf(M,"%s %s %s %s %d %d %s %ld\n", ename, uname, pname, vname, g, b, dname, a);
-
-    fclose(M);
     printf("Any key to continue..........");
     getch();
     system("CLS");
     coustomer_dashboard();
 
 }
+
+
+
+
+
 View_Event_Information()
 {
-    char pname[100], dname[100],uname[100],vname[100],ename[100];
+ char pname[100], number[100],uname[100],vname[100],ename[100];
     int g, b;
     long int a;
     FILE *M = fopen("booking.txt", "r");
@@ -997,17 +1050,34 @@ View_Event_Information()
     drawLine(120);
     printf("\t\t\t\t\t<<<<<-----Event Booking List----->>>>>\n");
     drawLine(120);
-    printf("\n");
-    while (fscanf(M, "%s %s %s %s %d %d %s %ld",ename, uname, pname, vname, &g, &b, dname, &a) != EOF)
+    printf("\n\n");
+
+    printf("Event Type\tName\tNumber\t\tVenue\tPlace\n");
+    drawLine(70);
+    while (fscanf(M,"%s\t%s\t%s\t%s\t%s\n", ename, uname, number, vname, pname) != EOF)
     {
-        printf("Type:%s | Name:%s | Place: %s | Venue: %s | Guest: %d | Budget: %d | Date: %s | Pay Amount: %ld\n", ename, uname, pname, vname, g, b, dname, a);
+        printf("%s\t%s\t%s\t%s\t%s\n", ename, uname, number, vname, pname);
     }
 
     fclose(M);
+
+
     printf("\n\nAny key to continue..........");
     getch();
     system("CLS");
+
+}
+
+userview()
+{
+    View_Event_Information();
     coustomer_dashboard();
+
+}
+adminview()
+{
+   View_Event_Information();
+   admin_dashboard();
 }
 
 /* Payment_Process()
@@ -1058,34 +1128,7 @@ View_Event_Information()
     }
 
 }*/
-View_Event_Information_AD()
-{
-    char pname[100], dname[100],uname[100],vname[100],ename[100];
-    int g, b;
-    long int a;
-    FILE *M = fopen("booking.txt", "r");
 
-    if (M == NULL)
-    {
-        printf("File not found!\n");
-        return;
-    }
-    system("CLS");
-    drawLine(120);
-    printf("\t\t\t\t\t<<<<<-----Event Booking List----->>>>>\n");
-    drawLine(120);
-    printf("\n");
-    while (fscanf(M, "%s %s %s %s %d %d %s %ld",ename, uname, pname, vname, &g, &b, dname, &a) != EOF)
-    {
-        printf("Type:%s | Name:%s | Place: %s | Venue: %s | Guest: %d | Budget: %d | Date: %s | Pay Amount: %ld\n", ename, uname, pname, vname, g, b, dname, a);
-    }
-
-    fclose(M);
-    printf("\n\nAny key to continue..........");
-    getch();
-    system("CLS");
-    admin_dashboard();
-}
 Service_Request()
 {
     system("CLS");
