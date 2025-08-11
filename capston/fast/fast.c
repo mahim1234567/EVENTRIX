@@ -435,7 +435,7 @@ int coustomer_dashboard()
         printf("\t\t\t\t<<<<<-----Password Change----->>>>>\n");
         drawLine(120);
         printf("\n");
-        printf("\nComming Soon.....");
+        change_password();
         printf("\n\nAny key to continue..........");
         getch();
         system("CLS");
@@ -1194,54 +1194,6 @@ adminview()
    admin_dashboard();
 }
 
-/* Payment_Process()
-{
-    printf("Select Payment Method\n1.Bkash\n2.Nagad\n3.Bank\n");
-
-    int c;
-    printf("Enter your Choice: ");
-    scanf("%d",&c);
-
-    if(c==1)
-    {
-        long int n,a;
-        printf("Enter Number:");
-        scanf("%ld",&n);
-        printf("Enter Amount:");
-        scanf("%ld",&a);
-
-        FILE *M;
-        M = fopen("booking.txt", "r");
-
-        int found = 0;
-        char pname[100], dname[100];
-        int g, b;
-
-        while (fscanf(M, " %s %d %s %d", pname, &g, dname, &b) != EOF)
-        {
-            if (a==b)
-            {
-                printf("\nSuccessfully Payment\n");
-                found = 1;
-                break;
-            }
-            else if(a>b)
-            {
-                printf("\nSuccessfully Payment\n");
-                printf("Return %d TK",a-b);
-                found = 1;
-                break;
-            }
-        }
-
-        if (!found)
-        {
-            printf("\nNot Successfully Payment\n");
-        }
-        fclose(M);
-    }
-
-}*/
 
 Service_Request()
 {
@@ -1483,7 +1435,7 @@ Submit_Feedback()
     printf("Enter your name: ");
     gets(name);
 
-    printf("Write your feedback:\n");
+    printf("\nWrite your feedback:\n");
     gets(feedback);
 
     file = fopen("feedback.txt", "a");
@@ -1507,14 +1459,14 @@ Contact_Us()
 {
     system("CLS");
     drawLine(120);
-    printf("\t\t\t\t<<<<<-----Contact Us---->>>>>\n");
+    printf("\t\t\t\t\t<<<<<-----Contact Us---->>>>>\n");
     drawLine(120);
     printf("\n");
-    printf("\n------ Contact Us ------\n");
-    printf("Phone\n\t1.01960603846\n\t2.0183947489\n\t3.0168383888\n");
-    printf("Email\n\t1.mahim242-35-705@diu.edu.bd\n\t2.tamim242-35-858@diu.edu.bd\n\t3.shahed242-35-590@diu.edu.bd");
 
-    printf("\n\nAny key to continue..........");
+    printf("--------\nPhone\n--------\n\t[1].01960603846\n\t[2].0183947489\n\t[3].0168383888\n\n");
+    printf("--------\nEmail\n--------\n\t[1].mahim242-35-705@diu.edu.bd\n\t[2].tamim242-35-858@diu.edu.bd\n\t[3].shahed242-35-590@diu.edu.bd");
+
+    printf("\n\n\nAny key to continue..........");
     getch();
     system("CLS");
     coustomer_dashboard();
@@ -1817,8 +1769,45 @@ add_item()
     admin_dashboard();
 
 }
+change_password() {
+    struct login l;
+    char uname[50], old_pass[50], new_pass[50];
+    int found = 0;
 
+    FILE *fp = fopen("login.txt", "r");
+    FILE *temp = fopen("temp.txt", "w");
 
+    if (fp == NULL) {
+        printf("User file not found!\n");
+        return;
+    }
+
+    printf("Enter Username: ");
+    scanf("%s", uname);
+    printf("Enter Current Password: ");
+    scanf("%s", old_pass);
+
+    while (fscanf(fp, "%s\t%s\t%s\t%s\t%s", l.fname, l.lname, l.username, l.pass, l.num) != EOF) {
+        if (strcmp(l.username, uname) == 0 && strcmp(l.pass, old_pass) == 0) {
+            found = 1;
+            printf("Enter New Password: ");
+            scanf("%s", new_pass);
+            strcpy(l.pass, new_pass); 
+        }
+        fprintf(temp, "%s\t\t%s\t\t%s\t\t%s\t\t%s\n", l.fname, l.lname, l.username, l.pass, l.num);
+    }
+
+    fclose(fp);
+    fclose(temp);
+
+    remove("login.txt");
+    rename("temp.txt", "login.txt");
+
+    if (found)
+        printf("\nPassword changed successfully!\n");
+    else
+        printf("\nInvalid username or password!\n");
+}
 
 
 
