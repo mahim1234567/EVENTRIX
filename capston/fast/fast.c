@@ -1124,11 +1124,17 @@ view_payment()
     drawLine(120);
     printf("\n\n");
 
-    printf("Name\tGuest\tPayment\tDue\tData\tNumber\n");
-    drawLine(70);
+
+
     while (fscanf(p,"%s\t%ld\t%ld\t%ld\t%s\t%ld\n", name, &g, &amount, &due, dname, &n) != EOF)
     {
-        printf("%s\t%ld\t%ld\t%ld\t%s\t%ld\n", name, g, amount, due, dname, n);
+        printf("\t\t\t\t\t");
+        drawLine(30);
+        printf("\t\t\t\t\tPayment Details\n\n");
+        printf("\t\t\t\t\tName\t:%s\n\t\t\t\t\tGuest\t:%ld\n\t\t\t\t\tPayment :%ld\n\t\t\t\t\tDue\t:%ld\n\t\t\t\t\tDate\t:%s\n\t\t\t\t\tNumber\t:%ld\n", name, g, amount, due, dname, n);
+        printf("\t\t\t\t\t");
+        drawLine(30);
+        printf("\n\n");
     }
 
     fclose(p);
