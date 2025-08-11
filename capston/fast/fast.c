@@ -592,6 +592,7 @@ Booking()
 {
     char pname[100],dname[100],uname[100],vname[100],ename[100],number[100],email[100];
     int g,b,cho;
+
     drawLine(120);
     printf("\t\t\t\t\t<<<<<-----Event Booking----->>>>>\n");
     drawLine(120);
@@ -911,7 +912,7 @@ Booking()
 
 paymentp()
 {
-    long int g,b;
+    long int g,b,a,c,d,e,f,i,h,amount,cho,return_tk,due;
     char dname[100];
     int found=0;
 
@@ -924,9 +925,19 @@ paymentp()
     {
         printf("\n***Budget Type***\n");
         drawLine(20);
-        printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",g*500,g*750);
+        a=g*500;
+        b=g*750;
+        printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",a,b);
         printf("\n\nEnter Your Choice: ");
-        scanf("%d",&b);
+        scanf("%d",&cho);
+        if(cho==1)
+        {
+            amount=a;
+        }
+        else
+        {
+            amount=b;
+        }
         getchar();
         break;
     }
@@ -934,20 +945,42 @@ paymentp()
     {
         printf("\n***Budget Type***\n");
         drawLine(20);
+        c=g*450;
+        d=g*675;
         printf("You've got [10 Percent] discount on the original Budget price\n\n");
-        printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",g*450,g*675);
+        printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",c,d);
         printf("\n\nEnter Your Choice: ");
-        scanf("%d",&b);
+        scanf("%d",&cho);
+        if(cho==1)
+        {
+            amount=c;
+        }
+        else
+        {
+            amount=d;
+        }
         getchar();
         found=1;
         break;
     }
     else if (g > 60 && g <= 80)
     {
+        printf("\n***Budget Type***\n");
+        drawLine(20);
+        e=g*400;
+        f=g*600;
         printf("You've got [20 Percent] discount on the original Budget price\n\n");
-        printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",400*g,g*600);
+        printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",e,f);
         printf("\n\nEnter Your Choice: ");
-        scanf("%d",&b);
+        scanf("%d",&cho);
+        if(cho==1)
+        {
+            amount=e;
+        }
+        else
+        {
+            amount=f;
+        }
         getchar();
         found=1;
         break;
@@ -956,10 +989,20 @@ paymentp()
     {
         printf("\n***Budget Type***\n");
         drawLine(20);
+        i=350*g;
+        h=525*g;
         printf("You've got [30 Percent] discount on the original Budget price\n\n");
-        printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",350*g,525*g);
+        printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",i,h);
         printf("\n\nEnter Your Choice: ");
-        scanf("%d",&b);
+        scanf("%d",&cho);
+        if(cho==1)
+        {
+            amount=i;
+        }
+        else
+        {
+            amount=h;
+        }
         getchar();
         found=1;
         break;
@@ -975,55 +1018,81 @@ paymentp()
     }
 
 
-
-
-
-
-
     printf("Enter Date[Like 3-May]: ");
     gets(dname);
 
+
+
+
+
+
     printf("\nSelect Payment Method\n1.Bkash\n2.Nagad\n3.Bank\n");
 
-    int c;
+    int ch;
     printf("Enter your Choice: ");
-    scanf("%d",&c);
-    long int a;
-    if(c==1 || c==2)
+    scanf("%d",&ch);
+    long int amu,n;
+    char name[100];
+    getchar();
+    if(ch==1 || ch==2)
     {
-        long int n;
+        long int p;
+        printf("Enter User Name: ");
+        gets(name);
         printf("Enter Number:");
         scanf("%ld",&n);
         printf("Enter Amount:");
-        scanf("%ld",&a);
+        scanf("%ld",&amu);
+        printf("Enter PIN:");
+        scanf("%ld",&p);
     }
-    else if(c==3)
+    else if(ch==3)
     {
-        long int k,p;
+        long int n,p;
+        printf("Enter User Name: ");
+        gets(name);
         printf("Enter Account Number:");
-        scanf("%ld",&k);
+        scanf("%ld",&n);
         printf("Enter Amount:");
-        scanf("%ld",&a);
+        scanf("%ld",&amu);
         printf("Enter PIN:");
         scanf("%ld",&p);
     }
 
     printf("\n");
 
-    if(a==b)
+    if(amu==amount)
     {
         printf("\nPayment successfully\n");
     }
-    else if(a>b)
+    else if(amu>amount)
     {
-        printf("\nPayment successfully.Return %d Tk.\n",a-b);
+        return_tk=amu-amount;
+        printf("\nPayment successfully.Return %d Tk.\n",return_tk);
     }
-    else if(a<b)
+    else if(amu<amount)
     {
-        printf("\nPayment Not successfully.Due %d Tk.\n",b-a);
+        due=amount-amu;
+        printf("\nPayment Not successfully.Due %d Tk.\n",due);
     }
 
-    printf("Any key to continue..........");
+
+    FILE *p;
+
+    p = fopen("paybooking.txt", "a");
+    if (p == NULL)
+    {
+        printf("File not found!\n");
+        return;
+    }
+
+    fprintf(p,"|%s\t|%ld\t|%ld\t|%ld\t|%s\t|%ld\n", name, g, amu, due, dname, n);
+
+    fclose(p);
+
+
+
+    printf("\nAny key to continue..........");
     getch();
     system("CLS");
     coustomer_dashboard();
