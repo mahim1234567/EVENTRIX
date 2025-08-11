@@ -468,11 +468,12 @@ int admin_dashboard()
     printf("3.Event Approval\n");
     printf("4.View Service Request\n");
     printf("5.View Equipment Rental Request\n");
-    printf("6.Delete Event\n");
+    printf("6.view payment\n");
     printf("7.Update Event Items\n");
     printf("8.Manage Discount and Offer\n");
     printf("9.Set Rules and Condition\n");
     printf("10.View Feedback History\n");
+    printf("11.Update Event Items\n");
     printf("[0].Home Page\n");
     int ch;
     printf("Enter your Choice: ");
@@ -518,12 +519,12 @@ int admin_dashboard()
     }
     else if(ch==6)
     {
-        Delete_Event();
+        view_payment();
     }
     else if(ch==7)
     {
 
-        add_item();
+        Delete_Event();
 
     }
     else if(ch==8)
@@ -537,6 +538,10 @@ int admin_dashboard()
     else if(ch==10)
     {
         View_Feedback_History();
+    }
+    else if(ch==11)
+    {
+        add_item();
     }
     else
     {
@@ -1086,7 +1091,7 @@ paymentp()
         return;
     }
 
-    fprintf(p,"|%s\t|%ld\t|%ld\t|%ld\t|%s\t|%ld\n", name, g, amu, due, dname, n);
+    fprintf(p,"%s\t%ld\t%ld\t%ld\t%s\t%ld\n", name, g, amu, due, dname, n);
 
     fclose(p);
 
@@ -1099,7 +1104,41 @@ paymentp()
 
 }
 
+view_payment()
+{
 
+    char name[100],dname[100];
+
+    long int g,n,due,amount;
+
+    FILE *p = fopen("paybooking.txt", "r");
+
+    if (p == NULL)
+    {
+        printf("File not found!\n");
+        return;
+    }
+    system("CLS");
+    drawLine(120);
+    printf("\t\t\t\t\t<<<<<-----Payment List----->>>>>\n");
+    drawLine(120);
+    printf("\n\n");
+
+    printf("Name\tGuest\tPayment\tDue\tData\tNumber\n");
+    drawLine(70);
+    while (fscanf(p,"%s\t%ld\t%ld\t%ld\t%s\t%ld\n", name, &g, &amount, &due, dname, &n) != EOF)
+    {
+        printf("%s\t%ld\t%ld\t%ld\t%s\t%ld\n", name, g, amount, due, dname, n);
+    }
+
+    fclose(p);
+
+
+    printf("\n\nAny key to continue..........");
+    getch();
+    system("CLS");
+    admin_dashboard();
+}
 
 
 
@@ -1772,6 +1811,7 @@ add_item()
     admin_dashboard();
 
 }
+
 
 
 
