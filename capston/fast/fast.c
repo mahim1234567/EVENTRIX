@@ -392,9 +392,10 @@ int coustomer_dashboard()
     printf("[4].Equipment Rental\n");
     printf("[5].View Offer for Discount\n");
     printf("[6].View Rules and Condition\n");
-    printf("[7].Password Change\n");
+    printf("[7].Event Approval Message\n");
     printf("[8].Submit Feedback\n");
     printf("[9].Contact Us\n");
+    printf("[9].Password Change\n");
     printf("[0].Home Page\n");
     printf("\n");
     int c;
@@ -432,10 +433,10 @@ int coustomer_dashboard()
     {
         system("CLS");
         drawLine(120);
-        printf("\t\t\t\t<<<<<-----Password Change----->>>>>\n");
+        printf("\t\t\t\t<<<<<-----Event Approval Message----->>>>>\n");
         drawLine(120);
-        printf("\n");
-        change_password();
+        printf("\n\n\n");
+        View_Event_Approval();
         printf("\n\nAny key to continue..........");
         getch();
         system("CLS");
@@ -449,6 +450,19 @@ int coustomer_dashboard()
     else if(c==9)
     {
         Contact_Us();
+    }
+    else if(c==10)
+    {
+        system("CLS");
+        drawLine(120);
+        printf("\t\t\t\t<<<<<-----Event Approval Message----->>>>>\n");
+        drawLine(120);
+        printf("\n\n\n");
+        change_password();
+        printf("\n\nAny key to continue..........");
+        getch();
+        system("CLS");
+        coustomer_dashboard();
     }
     else
     {
@@ -498,12 +512,8 @@ int admin_dashboard()
     }
     else if(ch==3)
     {
-        system("CLS");
-        drawLine(120);
-        printf("\t\t\t\t<<<<<-----Event Approval----->>>>>\n");
-        drawLine(120);
-        printf("\n");
-        printf("\nComming soon......");
+
+        Event_Approval();
         printf("\n\nAny key to continue..........");
         getch();
         system("CLS");
@@ -550,6 +560,123 @@ int admin_dashboard()
     }
 
 }
+
+Event_Approval()
+{
+    char pname[100],dname[100],uname[100],vname[100],ename[100],number[100],approve[100];
+
+
+    char paname[100], ynumber[100],xname[100],pvname[100],zname[100];
+
+    system("CLS");
+    drawLine(120);
+    printf("\t\t\t\t\t<<<<<-----Event Booking List----->>>>>\n");
+    drawLine(120);
+    printf("\n\n");
+    FILE *M = fopen("booking.txt", "r");
+
+    if (M == NULL)
+    {
+        printf("File not found!\n");
+        return;
+    }
+
+    printf("Event Type\tName\tNumber\t\tVenue\tPlace\n");
+    drawLine(70);
+    while (fscanf(M,"%s\t%s\t%s\t%s\t%s\n", zname, xname, ynumber, pvname, paname) != EOF)
+    {
+        printf("%s\t%s\t%s\t%s\t%s\n", zname, xname, ynumber, pvname, paname);
+    }
+
+    fclose(M);
+
+    printf("\n\n\n");
+
+
+    drawLine(120);
+    printf("\t\t\t\t\t<<<<<-----Event Approval----->>>>>\n");
+    drawLine(120);
+    printf("\n\n");
+    getchar();
+    printf("Enter Event Type: ");
+    gets(ename);
+    printf("Enter User Name: ");
+    gets(uname);
+    printf("Enter User Number: ");
+    gets(number);
+    printf("Enter Place Name: ");
+    gets(pname);
+    printf("Enter Venue Name: ");
+    gets(vname);
+    printf("Enter Event Date: ");
+    gets(dname);
+    printf("Enter Event Status: ");
+    gets(approve);
+
+    printf("\n\n");
+
+    FILE *p;
+
+    p = fopen("approveEventbooking.txt", "a");
+    if (p == NULL)
+    {
+        printf("File not found!\n");
+        return;
+    }
+
+    fprintf(p,"%s\t%s\t%s\t%s\t%s\t%s\t%s\n", ename, uname, number, vname, dname, approve, pname);
+
+    fclose(p);
+
+
+
+}
+
+
+View_Event_Approval()
+{
+
+        char pname[100],dname[100],uname[100],vname[100],ename[100],number[100],approve[100];
+
+        system("CLS");
+    drawLine(120);
+    printf("\t\t\t\t\t<<<<<-----Payment List----->>>>>\n");
+    drawLine(120);
+    printf("\n\n");
+
+    FILE *p = fopen("approveEventbooking.txt", "r");
+
+    if (p == NULL)
+    {
+        printf("File not found!\n");
+        return;
+    }
+
+
+
+
+    while (fscanf(p,"%s\t%s\t%s\t%s\t%s\t%s\t%s\n", ename, uname, number, vname, dname, approve, pname) != EOF)
+    {
+        printf("\t\t\t\t\t");
+        drawLine(30);
+        printf("\t\t\t\t\t\tEvent Message\n");
+        printf("\t\t\t\t\t\t-------------\n\n");
+        printf("\t\t\t\t\tEvent\t:%s\n\t\t\t\t\tName\t:%s\n\t\t\t\t\tNumber  :%s\n\t\t\t\t\tVenue\t:%s\n\t\t\t\t\tDate\t:%s\n\t\t\t\t\tStatus\t:%s\n\t\t\t\t\tPlace\t:%s\n", ename, uname, number, vname, dname, approve, pname);
+        printf("\t\t\t\t\t");
+        drawLine(30);
+        printf("\n\n");
+    }
+
+    fclose(p);
+
+
+    printf("\n\nAny key to continue..........");
+    getch();
+    system("CLS");
+    coustomer_dashboard();
+
+}
+
 Event_Selection()
 {
     drawLine(120);
@@ -1150,9 +1277,13 @@ view_payment()
 
 View_Event_Information()
 {
- char pname[100], number[100],uname[100],vname[100],ename[100];
-    int g, b;
-    long int a;
+    char pname[100], number[100],uname[100],vname[100],ename[100];
+
+    system("CLS");
+    drawLine(120);
+    printf("\t\t\t\t\t<<<<<-----Event Booking List----->>>>>\n");
+    drawLine(120);
+    printf("\n\n");
     FILE *M = fopen("booking.txt", "r");
 
     if (M == NULL)
@@ -1160,11 +1291,6 @@ View_Event_Information()
         printf("File not found!\n");
         return;
     }
-    system("CLS");
-    drawLine(120);
-    printf("\t\t\t\t\t<<<<<-----Event Booking List----->>>>>\n");
-    drawLine(120);
-    printf("\n\n");
 
     printf("Event Type\tName\tNumber\t\tVenue\tPlace\n");
     drawLine(70);
@@ -1792,7 +1918,7 @@ change_password() {
             found = 1;
             printf("Enter New Password: ");
             scanf("%s", new_pass);
-            strcpy(l.pass, new_pass); 
+            strcpy(l.pass, new_pass);
         }
         fprintf(temp, "%s\t\t%s\t\t%s\t\t%s\t\t%s\n", l.fname, l.lname, l.username, l.pass, l.num);
     }
@@ -1808,6 +1934,5 @@ change_password() {
     else
         printf("\nInvalid username or password!\n");
 }
-
 
 
