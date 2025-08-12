@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include <conio.h>
 #include <string.h>
-#include <stdio.h>
 
 drawLine(int len)
 {
@@ -11,13 +10,13 @@ drawLine(int len)
 
 int main()
 {
-    printf("\t\t\t   ============================================================\n");
-    printf("\t\t\t   =   EEEEE  V     V  EEEEE  N   N  TTTTT  RRRR   III  X   X =\n");
-    printf("\t\t\t   =   E      V     V  E      NN  N    T    R   R   I    X X  =\n");
-    printf("\t\t\t   =   EEEE   V     V  EEEE   N N N    T    RRRR    I     X   =\n");
-    printf("\t\t\t   =   E       V   V   E      N  NN    T    R  R    I    X X  =\n");
-    printf("\t\t\t   =   EEEEE    VVV    EEEEE  N   N    T    R   R  III  X   X =\n");
-    printf("\t\t\t   ============================================================\n");
+    printf("\t\t\t   ===============================================================\n");
+    printf("\t\t\t   =   EEEEE  V     V  EEEEE  N   N  TTTTT  RRRR   III  X   X    =\n");
+    printf("\t\t\t   =   E      V     V  E      NN  N    T    R   R   I    X X     =\n");
+    printf("\t\t\t   =   EEEE   V     V  EEEE   N N N    T    RRRR    I     X      =\n");
+    printf("\t\t\t   =   E       V   V   E      N  NN    T    R  R    I    X X     =\n");
+    printf("\t\t\t   =   EEEEE    VVV    EEEEE  N   N    T    R   R  III  X   X    =\n");
+    printf("\t\t\t   ===============================================================\n");
 
     printf("\n\t\t\t\t\tSimplifying Event With Smart Tricks\n");
     printf("\n\nAny key to continue............");
