@@ -523,7 +523,7 @@ int admin_dashboard()
         printf("\t\t\t\t<<<<<-----Find Event----->>>>>\n");
         drawLine(120);
         printf("\n");
-        printf("\nComming soon......");
+        Find_Event();
         printf("\n\nAny key to continue..........");
         getch();
         system("CLS");
@@ -579,6 +579,59 @@ int admin_dashboard()
     }
 
 }
+
+Find_Event()
+
+{
+
+    char searchName[100],number[100];
+    getchar();
+    printf("Enter user name to Find Event: ");
+    gets(searchName);
+    printf("Enter user Number to Find Event: ");
+    gets(number);
+
+    FILE *M = fopen("booking.txt", "r");
+
+    if (M == NULL)
+    {
+        printf("Error opening files.\n");
+        return 1;
+    }
+
+    int found = 0;
+
+    char paname[100], ynumber[100],xname[100],pvname[100],zname[100];
+    printf("\n\n");
+    printf("Event Type\tName\tNumber\t\tVenue\tPlace\n");
+    drawLine(70);
+
+    while (fscanf(M,"%s\t%s\t%s\t%s\t%s\n", zname, xname, ynumber, pvname, paname) != EOF)
+    {
+        if (strcmp(searchName, xname) == 0 &&  strcmp(number, ynumber) == 0)
+        {
+           printf("%s\t%s\t%s\t%s\t%s\n", zname, xname, ynumber, pvname, paname);
+           found=1;
+        }
+    }
+
+    fclose(M);
+
+    if(found==0)
+    {
+        printf("\n\nSearch Event Not Found.");
+    }
+
+    printf("\n\nAny key to continue..........");
+    getch();
+    system("CLS");
+    admin_dashboard();
+
+    return 0;
+
+}
+
+
 
 Event_Approval()
 {
