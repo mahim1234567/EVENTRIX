@@ -414,7 +414,7 @@ int coustomer_dashboard()
     printf("[7].Event Approval Message\n");
     printf("[8].Submit Feedback\n");
     printf("[9].Contact Us\n");
-    printf("[9].Password Change\n");
+    printf("[10].Password Change\n");
     printf("[0].Home Page\n");
     printf("\n");
     int c;
@@ -452,7 +452,7 @@ int coustomer_dashboard()
     {
         system("CLS");
         drawLine(120);
-        printf("\t\t\t\t<<<<<-----Event Approval Message----->>>>>\n");
+        printf("\t\t\t\t<<<<<-----Password Change----->>>>>\n");
         drawLine(120);
         printf("\n\n\n");
         View_Event_Approval();
@@ -1406,7 +1406,7 @@ Service_Request()
     gets(n);
     char a[100];
 
-    printf("\nDecoration Services\n\t1.Stage.\n\t2.Floral.\n\t3.Balloon.\n");
+    printf("\nDecoration Services\n\t[1].Stage.\n\t[2].Floral.\n\t[3].Balloon.\n");
     printf("Write Here: ");
     gets(a);
 
@@ -1477,7 +1477,6 @@ View_Service_Request()
 Equipment_Rental()
 {
     char equipment[100];
-    char name[100];
     int quantity,m,a;
     FILE *file;
 
@@ -1493,9 +1492,6 @@ Equipment_Rental()
     printf("3. Chairs(50TK)\n");
     printf("4. Tables(100TK)\n");
     printf("5. Lights(20TK)\n");
-
-    printf("\nEnter Your Name: ");
-    gets(name);
 
     printf("\nEnter your Choice: ");
     scanf("%d",&m);
@@ -1530,45 +1526,63 @@ Equipment_Rental()
         Equipment_Rental();
     }
 
+    system("CLS");
     printf("Complete Your Payment %d Tk\n",a);
     printf("\nSelect Payment Method\n1.Bkash\n2.Nagad\n3.Bank\n");
 
     int c;
     printf("Enter your Choice: ");
     scanf("%d",&c);
-    long int b;
+
+
+
+
+
+    long int amu,n,due;
+    char name[100];
+    getchar();
     if(c==1 || c==2)
     {
-        long int n;
+        long int p;
+        printf("Enter User Name: ");
+        gets(name);
         printf("Enter Number:");
         scanf("%ld",&n);
         printf("Enter Amount:");
-        scanf("%ld",&b);
+        scanf("%ld",&amu);
+        printf("Enter PIN:");
+        scanf("%ld",&p);
     }
     else if(c==3)
     {
-        long int k,p;
+        long int n,p;
+        printf("Enter User Name: ");
+        gets(name);
         printf("Enter Account Number:");
-        scanf("%ld",&k);
+        scanf("%ld",&n);
         printf("Enter Amount:");
-        scanf("%ld",&b);
+        scanf("%ld",&amu);
         printf("Enter PIN:");
         scanf("%ld",&p);
     }
 
+
     printf("\n");
 
-    if(b==a)
+    if(a==amu)
     {
+        due=0;
         printf("\nPayment successfully\n");
     }
-    else if(b>a)
+    else if(amu>a)
     {
-        printf("\nPayment successfully.Return %d Tk.\n",b-a);
+        due=0;
+        printf("\nPayment successfully.Return %ld Tk.\n",amu-a);
     }
-    else if(b<a)
+    else if(amu<a)
     {
-        printf("\nPayment Not successfully.Due %d Tk.\n",a-b);
+        due=a-amu;
+        printf("\nPayment Not successfully.Due %ld Tk.\n",due);
     }
 
 
@@ -1580,7 +1594,7 @@ Equipment_Rental()
         return;
     }
 
-    fprintf(file, "Name:%s | Equipment: %s | Quantity: %d | Pay Amount: %d\n", name, equipment, quantity,a);
+    fprintf(file, "%s %s %d %ld %ld %ld\n", name, equipment, quantity, amu, due, n);
     fclose(file);
 
     printf("\nYour equipment rental request has been recorded.\n");
@@ -1605,13 +1619,22 @@ View_Equipment_Rental_Request()
         printf("Error opening file!\n");
         return;
     }
-    char ch;
 
-    while(!feof(file))
+
+    printf("Name\t\tEquipment\t\tCount\tPay Amount\tDue\t\tNumber\n");
+    drawLine(120);
+    printf("\n");
+
+
+    char name[100],equipment[100];
+    int quantity;
+    long int  amu, due, n;
+
+    while (fscanf(file,"%s\t\t%s\t\t%d\t%ld\t%ld\t\t%ld\n", name, equipment, &quantity, &amu, &due, &n) != EOF)
     {
-        ch=fgetc(file);
-        printf("%c",ch);
+        printf("%s\t\t%s\t\t%d\t%ld\t\t%ld\t\t%ld\n", name, equipment, quantity, amu, due, n);
     }
+
     fclose(file);
 
     printf("\n\nPress any key to continue...");
@@ -1967,9 +1990,9 @@ add_item()
     admin_dashboard();
 
 }
-change_password() {
+void change_password() {
     struct login l;
-    char uname[50], old_pass[50], new_pass[50];
+    char uname[100], old_pass[100], new_pass[100];
     int found = 0;
 
     FILE *fp = fopen("login.txt", "r");
@@ -1983,16 +2006,18 @@ change_password() {
     printf("Enter Username: ");
     scanf("%s", uname);
     printf("Enter Current Password: ");
-    scanf("%s", old_pass);
+    getPassword(old_pass);
 
-    while (fscanf(fp, "%s\t%s\t%s\t%s\t%s", l.fname, l.lname, l.username, l.pass, l.num) != EOF) {
+    while (fscanf(fp, "%s %s %s %s %s",
+                  l.fname, l.lname, l.username, l.pass, l.num) != EOF) {
         if (strcmp(l.username, uname) == 0 && strcmp(l.pass, old_pass) == 0) {
             found = 1;
             printf("Enter New Password: ");
-            scanf("%s", new_pass);
+            getPassword(new_pass);
             strcpy(l.pass, new_pass);
         }
-        fprintf(temp, "%s\t\t%s\t\t%s\t\t%s\t\t%s\n", l.fname, l.lname, l.username, l.pass, l.num);
+        fprintf(temp, "%s\t\t%s\t\t%s\t\t%s\t\t%s\n",
+                l.fname, l.lname, l.username, l.pass, l.num);
     }
 
     fclose(fp);
