@@ -1,33 +1,6 @@
 #include<stdio.h>
 #include <conio.h>
 #include <string.h>
-getPassword(char *pass)
-{
-    int i = 0;
-    char ch;
-    while (1)
-    {
-        ch = getch();
-        if (ch == 13)
-        {
-            pass[i] = '\0';
-            break;
-        }
-        else if (ch == 8)
-        {
-            if (i > 0)
-            {
-                i--;
-                printf("\b \b");
-            }
-        }
-        else
-        {
-            pass[i++] = ch;
-            printf("#");
-        }
-    }
-}
 
 drawLine(int len)
 {
@@ -654,6 +627,126 @@ Find_Event()
     {
         printf("\n\nSearch Event Not Found.");
     }
+
+
+    printf("\n\n\n");
+    int found1 = 0;
+    FILE *sr = fopen("service_request.txt", "r");
+    if (sr == NULL)
+    {
+        printf("File not found!\n");
+        return;
+    }
+
+    char n[100], a[100], b[100], c[100], d[100],p[100];
+    long int amu,due;
+
+    printf("Name\tDecoration\tLighting\tSound\tPhoto/Video\tPayment\tDue\tNumber\n");
+    drawLine(120);
+
+    while (fscanf(sr, "%s\t%s\t%s\t%s\t%s\t%ld\t%ld\t%s\n", n, a, b, c, d, &amu, &due, p) != EOF)
+    {
+        if (strcmp(searchName, n) == 0 &&  strcmp(number, p) == 0)
+
+        {
+           printf("%s\t%s\t\t%s\t\t%s\t%s\t\t%ld\t%ld\t%s\n", n, a, b, c, d, amu, due, p);
+           found1=1;
+        }
+
+    }
+
+    fclose(sr);
+
+    if(found1==0)
+    {
+        printf("\n\nSearch Event Not Found.");
+    }
+
+
+ printf("\n\n\n");
+
+    int found2 = 0;
+
+    FILE *file;
+    file = fopen("equipment_rental.txt", "r");
+
+    if (file == NULL)
+    {
+        printf("Error opening file!\n");
+        return;
+    }
+
+
+    printf("Name\t\tEquipment\t\tCount\tPay Amount\tDue\t\tNumber\n");
+    drawLine(120);
+    printf("\n");
+
+
+    char name[100],equipment[100],na[100];
+    int quantity;
+    long int  amu1, due1;
+
+    while (fscanf(file,"%s\t\t%s\t\t%d\t%ld\t%ld\t\t%s\n", name, equipment, &quantity, &amu1, &due1, na) != EOF)
+    {
+        if (strcmp(searchName, name) == 0 &&  strcmp(number, na) == 0)
+        {
+           printf("%s\t\t%s\t\t%d\t%ld\t\t%ld\t\t%s\n", name, equipment, quantity, amu1, due1, na);
+           found2=1;
+        }
+
+    }
+
+    fclose(file);
+
+
+    if(found2==0)
+    {
+        printf("\n\nSearch Event Not Found.");
+    }
+
+
+ printf("\n\n\n");
+
+    int found3 = 0;
+    char name1[100],dname[100],n2[100];
+
+    long int g,due2,amount;
+
+    FILE *p2 = fopen("paybooking.txt", "r");
+
+    if (p2 == NULL)
+    {
+        printf("File not found!\n");
+        return;
+    }
+
+    while (fscanf(p2,"%s\t%ld\t%ld\t%ld\t%s\t%s\n", name1, &g, &amount, &due2, dname, n2) != EOF)
+    {
+        if (strcmp(searchName, name1) == 0 &&  strcmp(number, n2) == 0)
+
+        {
+        printf("\n");
+        printf("\t\t\t\t\t");
+        drawLine(30);
+        printf("\t\t\t\t\tPayment Details\n\n");
+        printf("\t\t\t\t\tName\t:%s\n\t\t\t\t\tGuest\t:%ld\n\t\t\t\t\tPayment :%ld\n\t\t\t\t\tDue\t:%ld\n\t\t\t\t\tDate\t:%s\n\t\t\t\t\tNumber\t:%s\n", name1, g, amount, due, dname, n2);
+        printf("\t\t\t\t\t");
+        drawLine(30);
+        printf("\n\n");
+        found3=1;
+        }
+
+    }
+
+    fclose(p2);
+
+
+
+    if(found3==0)
+    {
+        printf("\n\nSearch Event Not Found.");
+    }
+
 
     printf("\n\nAny key to continue..........");
     getch();
@@ -1398,7 +1491,7 @@ View_Event_Information()
     }
 
     printf("Event Type\tName\tNumber\t\tVenue\tPlace\n");
-    drawLine(70);
+    drawLine(120);
     while (fscanf(M,"%s\t%s\t%s\t%s\t%s\n", ename, uname, number, vname, pname) != EOF)
     {
         printf("%s\t%s\t%s\t%s\t%s\n", ename, uname, number, vname, pname);
@@ -2187,13 +2280,42 @@ add_item()
     admin_dashboard();
 
 }
-void change_password() {
+getPassword(char *pass)
+{
+    int i = 0;
+    char ch;
+    while (1)
+    {
+        ch = getch();
+        if (ch == 13)
+        {
+            pass[i] = '\0';
+            break;
+        }
+        else if (ch == 8)
+        {
+            if (i > 0)
+            {
+                i--;
+                printf("\b \b");
+            }
+        }
+        else
+        {
+            pass[i++] = ch;
+            printf("#");
+        }
+    }
+}
+
+
+change_password() {
     struct login l;
     char uname[100], old_pass[100], new_pass[100];
     int found = 0;
 
     FILE *fp = fopen("login.txt", "r");
-    FILE *temp = fopen("temp.txt", "w");
+    FILE *temp1 = fopen("temp1.txt", "w");
 
     if (fp == NULL) {
         printf("User file not found!\n");
@@ -2213,15 +2335,14 @@ void change_password() {
             getPassword(new_pass);
             strcpy(l.pass, new_pass);
         }
-        fprintf(temp, "%s\t\t%s\t\t%s\t\t%s\t\t%s\n",
-                l.fname, l.lname, l.username, l.pass, l.num);
+        fprintf(temp1, "%s\t\t%s\t\t%s\t\t%s\t\t%s\n", l.fname, l.lname, l.username, l.pass, l.num);
     }
 
     fclose(fp);
-    fclose(temp);
+    fclose(temp1);
 
     remove("login.txt");
-    rename("temp.txt", "login.txt");
+    rename("temp1.txt", "login.txt");
 
     if (found)
         printf("\nPassword changed successfully!\n");
