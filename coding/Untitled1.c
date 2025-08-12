@@ -1,33 +1,7 @@
 #include<stdio.h>
 #include <conio.h>
 #include <string.h>
-getPassword(char *pass)
-{
-    int i = 0;
-    char ch;
-    while (1)
-    {
-        ch = getch();
-        if (ch == 13)
-        {
-            pass[i] = '\0';
-            break;
-        }
-        else if (ch == 8)
-        {
-            if (i > 0)
-            {
-                i--;
-                printf("\b \b");
-            }
-        }
-        else
-        {
-            pass[i++] = ch;
-            printf("#");
-        }
-    }
-}
+#include <stdio.h>
 
 drawLine(int len)
 {
@@ -37,6 +11,19 @@ drawLine(int len)
 
 int main()
 {
+    printf("\t\t\t   ============================================================\n");
+    printf("\t\t\t   =   EEEEE  V     V  EEEEE  N   N  TTTTT  RRRR   III  X   X =\n");
+    printf("\t\t\t   =   E      V     V  E      NN  N    T    R   R   I    X X  =\n");
+    printf("\t\t\t   =   EEEE   V     V  EEEE   N N N    T    RRRR    I     X   =\n");
+    printf("\t\t\t   =   E       V   V   E      N  NN    T    R  R    I    X X  =\n");
+    printf("\t\t\t   =   EEEEE    VVV    EEEEE  N   N    T    R   R  III  X   X =\n");
+    printf("\t\t\t   ============================================================\n");
+
+    printf("\n\t\t\t\t\tSimplifying Event With Smart Tricks\n");
+    printf("\n\nAny key to continue............");
+    getch();
+    system("CLS");
+
     int cho,cho2,cho3;
     drawLine(118);
     printf("======\t\t\t\t\t <<<<<-----WELCOME EVENTRIX----->>>>>  \t\t\t\t\t======\n");
@@ -103,9 +90,9 @@ int main()
             printf("\t\t\t\t\t<<<<<-----Admin Registration/Login Page----->>>>>\n");
             drawLine(120);
             printf("\n\n");
-            printf("1.Registration.\n");
-            printf("2.Login.\n");
-            printf("0.Back.\n\n");
+            printf("[1].Registration.\n");
+            printf("[2].Login.\n");
+            printf("[0].Back.\n\n");
             printf("Enter your Choice: ");
             scanf("%d",&cho3);
             printf("\n\n");
@@ -226,6 +213,13 @@ int registeA()
     scanf("%s", l.num);
     printf("Enter password: ");
     getPassword(l.pass);
+    if (log1 == NULL)
+    {
+        printf("File not found!\n");
+        return;
+    }
+
+
     fprintf(log1, "%s\t\t%s\t\t%s\t\t%s\t\t%s\n", l.fname, l.lname, l.username, l.pass,l.num);
 
     fclose(log1);
@@ -252,6 +246,11 @@ int login()
     getPassword(pass);
 
     int found = 0;
+    if (log == NULL)
+    {
+        printf("File not found!\n");
+        return;
+    }
 
     while (fscanf(log,"%s\t\t%s\t\t%s\t\t%s\t\t%s", l.fname, l.lname, l.username, l.pass, l.num) != EOF)
     {
@@ -291,6 +290,12 @@ int loginA()
 
     int found = 0;
 
+    if (log1 == NULL)
+    {
+        printf("File not found!\n");
+        return;
+    }
+
     while (fscanf(log1,"%s\t\t%s\t\t%s\t\t%s\t\t%s", l.fname, l.lname, l.username, l.pass, l.num) != EOF)
     {
         if (strcmp(usernameA, l.username) == 0 && strcmp(passA, l.pass) == 0)
@@ -320,14 +325,16 @@ int Delete_Event()
 {
     system("CLS");
     drawLine(120);
-    printf("\t\t\t\t<<<<<-----Delete Event----->>>>>\n");
+    printf("\t\t\t\t\t<<<<<-----Delete Event----->>>>>\n");
     drawLine(120);
     printf("\n");
 
-    char searchName[100];
+    char searchName[100],number[100];
     getchar();
-    printf("Enter user name to delete: ");
+    printf("Enter user name to Delete Event: ");
     gets(searchName);
+    printf("Enter user Number to Delete Event: ");
+    gets(number);
 
     FILE *M = fopen("booking.txt", "r");
     FILE *temp = fopen("temp.txt", "w");
@@ -340,19 +347,18 @@ int Delete_Event()
 
     int found = 0;
 
-    char ename[100], uname[100], pname[100], vname[100], dname[100];
-    int g, b;
-    long int a;
+    char paname[100], ynumber[100],xname[100],pvname[100],zname[100];
 
-    while (fscanf(M, "%s %s %s %s %d %d %s %ld", ename, uname, pname, vname, &g, &b, dname, &a) != EOF)
+
+    while (fscanf(M,"%s\t%s\t%s\t%s\t%s\n", zname, xname, ynumber, pvname, paname) != EOF)
     {
-        if (strcmp(uname, searchName) == 0)
+        if (strcmp(searchName, xname) == 0 &&  strcmp(number, ynumber) == 0)
         {
             found = 1;
             continue;
         }
 
-        fprintf(temp, "%s %s %s %s %d %d %s %ld\n", ename, uname, pname, vname, g, b, dname, a);
+        fprintf(temp,"%s\t%s\t%s\t%s\t%s\n", zname, xname, ynumber, pvname, paname);
     }
 
     fclose(M);
@@ -392,9 +398,10 @@ int coustomer_dashboard()
     printf("[4].Equipment Rental\n");
     printf("[5].View Offer for Discount\n");
     printf("[6].View Rules and Condition\n");
-    printf("[7].Password Change\n");
+    printf("[7].Event Approval Message\n");
     printf("[8].Submit Feedback\n");
     printf("[9].Contact Us\n");
+    printf("[10].Password Change\n");
     printf("[0].Home Page\n");
     printf("\n");
     int c;
@@ -434,8 +441,8 @@ int coustomer_dashboard()
         drawLine(120);
         printf("\t\t\t\t<<<<<-----Password Change----->>>>>\n");
         drawLine(120);
-        printf("\n");
-        change_password();
+        printf("\n\n\n");
+        View_Event_Approval();
         printf("\n\nAny key to continue..........");
         getch();
         system("CLS");
@@ -450,6 +457,19 @@ int coustomer_dashboard()
     {
         Contact_Us();
     }
+    else if(c==10)
+    {
+        system("CLS");
+        drawLine(120);
+        printf("\t\t\t\t<<<<<-----Event Approval Message----->>>>>\n");
+        drawLine(120);
+        printf("\n\n\n");
+        change_password();
+        printf("\n\nAny key to continue..........");
+        getch();
+        system("CLS");
+        coustomer_dashboard();
+    }
     else
     {
         system("CLS");
@@ -463,17 +483,17 @@ int admin_dashboard()
     drawLine(120);
     printf("\t\t\t\t\t<<<<<-----Admin Dashboard----->>>>>\n");
     drawLine(120);
-    printf("\n1.View All Event\n");
-    printf("2.Find Event.\n");
-    printf("3.Event Approval\n");
-    printf("4.View Service Request\n");
-    printf("5.View Equipment Rental Request\n");
-    printf("6.view payment\n");
-    printf("7.Update Event Items\n");
-    printf("8.Manage Discount and Offer\n");
-    printf("9.Set Rules and Condition\n");
-    printf("10.View Feedback History\n");
-    printf("11.Update Event Items\n");
+    printf("\n[1].View All Event\n");
+    printf("[2].Find Event.\n");
+    printf("[3].Event Approval\n");
+    printf("[4].View Service Request\n");
+    printf("[5].View Equipment Rental Request\n");
+    printf("[6].View payment\n");
+    printf("[7].Delete Event\n");
+    printf("[8].Manage Discount and Offer\n");
+    printf("[9].Set Rules and Condition\n");
+    printf("[10].View Feedback History\n");
+    printf("[11].Update Event Items\n");
     printf("[0].Home Page\n");
     int ch;
     printf("Enter your Choice: ");
@@ -490,7 +510,7 @@ int admin_dashboard()
         printf("\t\t\t\t<<<<<-----Find Event----->>>>>\n");
         drawLine(120);
         printf("\n");
-        printf("\nComming soon......");
+        Find_Event();
         printf("\n\nAny key to continue..........");
         getch();
         system("CLS");
@@ -537,8 +557,41 @@ int admin_dashboard()
     }
     else if(ch==11)
     {
-        add_item();
+    system("CLS");
+    drawLine(120);
+    printf("\t\t\t\t<<<<<-----Update Event Items----->>>>>\n");
+    drawLine(120);
+    printf("\n");
+
+    printf("\n[1].Update Venue.\n\n[0].Exit.\n\n");
+
+
+
+    while(1)
+    {
+        int cho;
+        printf("Enter Your Choice: ");
+        scanf("%d",&cho);
+        if(cho==1)
+        {
+            add_item();
+            break;
+        }
+        else if(cho==0)
+        {
+            system("CLS");
+            admin_dashboard();
+            break;
+        }
+        else
+        {
+            printf("\nWrong choice\n");
+        }
+        break;
     }
+
+    }
+
     else
     {
         system("CLS");
@@ -546,6 +599,179 @@ int admin_dashboard()
     }
 
 }
+
+Find_Event()
+
+{
+
+    char searchName[100],number[100];
+    getchar();
+    printf("Enter user name to Find Event: ");
+    gets(searchName);
+    printf("Enter user Number to Find Event: ");
+    gets(number);
+
+    FILE *M = fopen("booking.txt", "r");
+
+    if (M == NULL)
+    {
+        printf("Error opening files.\n");
+        return 1;
+    }
+
+    int found = 0;
+
+    char paname[100], ynumber[100],xname[100],pvname[100],zname[100];
+    printf("\n\n");
+    printf("Event Type\tName\tNumber\t\tVenue\tPlace\n");
+    drawLine(70);
+
+    while (fscanf(M,"%s\t%s\t%s\t%s\t%s\n", zname, xname, ynumber, pvname, paname) != EOF)
+    {
+        if (strcmp(searchName, xname) == 0 &&  strcmp(number, ynumber) == 0)
+        {
+           printf("%s\t%s\t%s\t%s\t%s\n", zname, xname, ynumber, pvname, paname);
+           found=1;
+        }
+    }
+
+    fclose(M);
+
+    if(found==0)
+    {
+        printf("\n\nSearch Event Not Found.");
+    }
+
+
+    printf("\n\n\n");
+    int found1 = 0;
+    FILE *sr = fopen("service_request.txt", "r");
+    if (sr == NULL)
+    {
+        printf("File not found!\n");
+        return;
+    }
+
+    char n[100], a[100], b[100], c[100], d[100],p[100];
+    long int amu,due;
+
+    printf("Name\tDecoration\tLighting\tSound\tPhoto/Video\tPayment\tDue\tNumber\n");
+    drawLine(120);
+
+    while (fscanf(sr, "%s\t%s\t%s\t%s\t%s\t%ld\t%ld\t%s\n", n, a, b, c, d, &amu, &due, p) != EOF)
+    {
+        if (strcmp(searchName, n) == 0 &&  strcmp(number, p) == 0)
+
+        {
+           printf("%s\t%s\t\t%s\t\t%s\t%s\t\t%ld\t%ld\t%s\n", n, a, b, c, d, amu, due, p);
+           found1=1;
+        }
+
+    }
+
+    fclose(sr);
+
+    if(found1==0)
+    {
+        printf("\n\nSearch Event Not Found.");
+    }
+
+
+ printf("\n\n\n");
+
+    int found2 = 0;
+
+    FILE *file;
+    file = fopen("equipment_rental.txt", "r");
+
+    if (file == NULL)
+    {
+        printf("Error opening file!\n");
+        return;
+    }
+
+
+    printf("Name\t\tEquipment\t\tCount\tPay Amount\tDue\t\tNumber\n");
+    drawLine(120);
+    printf("\n");
+
+
+    char name[100],equipment[100],na[100];
+    int quantity;
+    long int  amu1, due1;
+
+    while (fscanf(file,"%s\t\t%s\t\t%d\t%ld\t%ld\t\t%s\n", name, equipment, &quantity, &amu1, &due1, na) != EOF)
+    {
+        if (strcmp(searchName, name) == 0 &&  strcmp(number, na) == 0)
+        {
+           printf("%s\t\t%s\t\t%d\t%ld\t\t%ld\t\t%s\n", name, equipment, quantity, amu1, due1, na);
+           found2=1;
+        }
+
+    }
+
+    fclose(file);
+
+
+    if(found2==0)
+    {
+        printf("\n\nSearch Event Not Found.");
+    }
+
+
+ printf("\n\n\n");
+
+    int found3 = 0;
+    char name1[100],dname[100],n2[100];
+
+    long int g,due2,amount;
+
+    FILE *p2 = fopen("paybooking.txt", "r");
+
+    if (p2 == NULL)
+    {
+        printf("File not found!\n");
+        return;
+    }
+
+    while (fscanf(p2,"%s\t%ld\t%ld\t%ld\t%s\t%s\n", name1, &g, &amount, &due2, dname, n2) != EOF)
+    {
+        if (strcmp(searchName, name1) == 0 &&  strcmp(number, n2) == 0)
+
+        {
+        printf("\n");
+        printf("\t\t\t\t\t");
+        drawLine(30);
+        printf("\t\t\t\t\tPayment Details\n\n");
+        printf("\t\t\t\t\tName\t:%s\n\t\t\t\t\tGuest\t:%ld\n\t\t\t\t\tPayment :%ld\n\t\t\t\t\tDue\t:%ld\n\t\t\t\t\tDate\t:%s\n\t\t\t\t\tNumber\t:%s\n", name1, g, amount, due, dname, n2);
+        printf("\t\t\t\t\t");
+        drawLine(30);
+        printf("\n\n");
+        found3=1;
+        }
+
+    }
+
+    fclose(p2);
+
+
+
+    if(found3==0)
+    {
+        printf("\n\nSearch Event Not Found.");
+    }
+
+
+    printf("\n\nAny key to continue..........");
+    getch();
+    system("CLS");
+    admin_dashboard();
+
+    return 0;
+
+}
+
+
 
 Event_Approval()
 {
@@ -621,8 +847,45 @@ Event_Approval()
 
 View_Event_Approval()
 {
-    
-    
+
+        char pname[100],dname[100],uname[100],vname[100],ename[100],number[100],approve[100];
+
+        system("CLS");
+    drawLine(120);
+    printf("\t\t\t\t\t<<<<<-----Payment List----->>>>>\n");
+    drawLine(120);
+    printf("\n\n");
+
+    FILE *p = fopen("approveEventbooking.txt", "r");
+
+    if (p == NULL)
+    {
+        printf("File not found!\n");
+        return;
+    }
+
+
+
+
+    while (fscanf(p,"%s\t%s\t%s\t%s\t%s\t%s\t%s\n", ename, uname, number, vname, dname, approve, pname) != EOF)
+    {
+        printf("\t\t\t\t\t");
+        drawLine(30);
+        printf("\t\t\t\t\t\tEvent Message\n");
+        printf("\t\t\t\t\t\t-------------\n\n");
+        printf("\t\t\t\t\tEvent\t:%s\n\t\t\t\t\tName\t:%s\n\t\t\t\t\tNumber  :%s\n\t\t\t\t\tVenue\t:%s\n\t\t\t\t\tDate\t:%s\n\t\t\t\t\tStatus\t:%s\n\t\t\t\t\tPlace\t:%s\n", ename, uname, number, vname, dname, approve, pname);
+        printf("\t\t\t\t\t");
+        drawLine(30);
+        printf("\n\n");
+    }
+
+    fclose(p);
+
+
+    printf("\n\nAny key to continue..........");
+    getch();
+    system("CLS");
+    coustomer_dashboard();
 
 }
 
@@ -980,7 +1243,7 @@ Booking()
         return;
     }
 
-    fprintf(M,"|%s\t|%s\t|%s\t|%s\t|%s\n", ename, uname, number, vname, pname);
+    fprintf(M,"%s\t%s\t%s\t%s\t%s\n", ename, uname, number, vname, pname);
 
     fclose(M);
 
@@ -1242,7 +1505,7 @@ View_Event_Information()
     }
 
     printf("Event Type\tName\tNumber\t\tVenue\tPlace\n");
-    drawLine(70);
+    drawLine(120);
     while (fscanf(M,"%s\t%s\t%s\t%s\t%s\n", ename, uname, number, vname, pname) != EOF)
     {
         printf("%s\t%s\t%s\t%s\t%s\n", ename, uname, number, vname, pname);
@@ -1277,30 +1540,196 @@ Service_Request()
     printf("\t\t\t\t\t<<<<<-----Service Request----->>>>>\n");
     drawLine(120);
     printf("\n");
-    char n[100];
-    getchar();
-    printf("Enter Your Name: ");
-    gets(n);
-    char a[100];
 
-    printf("\nDecoration Services\n\t1.Stage.\n\t2.Floral.\n\t3.Balloon.\n");
-    printf("Write Here: ");
+    char a[100];
+    int c1,c2,c3,c4,s1,s2,s3,s4;
+    printf("\nDecoration Services\n\t[1].Stage.(10000TK)\n\t[2].Floral.(12000TK)\n\t[3].Balloon.(5000TK)\n");
+    printf("\nEnter Your Choice: ");
+    scanf("%d",&c1);
+
+
+    while(1)
+    {
+      if(c1==1)
+    {
+        s1=10000;
+        break;
+    }
+    else if(c1==2)
+    {
+        s1=12000;
+        break;
+    }
+    else if(c1==3)
+    {
+        s1=5000;
+        break;
+    }
+    else
+    {
+        printf("\nWrong choice...\n\n");
+    }
+
+    break;
+    }
+    getchar();
+    printf("\nWrite Here: ");
     gets(a);
 
     char b[100];
+    printf("\nLighting Services\n\t1.Yes(4000TK)\n\t2.No\n");
+    printf("\nEnter Your Choice: ");
+    scanf("%d",&c2);
 
-    printf("Lighting Services\n\t1.Yes\n\t2.No\n");
-    printf("Write Here: ");
+
+    while(1)
+    {
+      if(c2==1)
+    {
+        s2=4000;
+        break;
+    }
+    else if(c2==2)
+    {
+        s2=0;
+        break;
+    }
+    else
+    {
+        printf("\nWrong choice...\n\n");
+    }
+
+    break;
+    }
+    getchar();
+    printf("\nWrite Here: ");
     gets(b);
-    char c[100];
 
-    printf("Sound System Setup Services\n\t1.Yes\n\t2.No\n");
-    printf("Write Here: ");
+    char c[100];
+    printf("\nSound System Setup Services\n\t1.Yes(3000TK)\n\t2.No\n");
+    printf("\nEnter Your Choice: ");
+    scanf("%d",&c3);
+
+
+    while(1)
+    {
+      if(c3==1)
+    {
+        s3=3000;
+        break;
+    }
+    else if(c3==2)
+    {
+        s3=0;
+        break;
+    }
+    else
+    {
+        printf("\nWrong choice...\n\n");
+    }
+
+    break;
+    }
+    getchar();
+    printf("\nWrite Here: ");
     gets(c);
+
     char d[100];
-    printf("Photography & Videography Services\n\t1.Yes\n\t2.No\n");
-    printf("Write Here: ");
+    printf("\nPhotography & Videography Services\n\t1.Yes(2000TK)\n\t2.No\n");
+    printf("\nEnter Your Choice: ");
+    scanf("%d",&c4);
+
+    while(1)
+    {
+      if(c4==1)
+    {
+        s4=2000;
+        break;
+    }
+    else if(c1==2)
+    {
+        s4=0;
+        break;
+    }
+    else
+    {
+        printf("\nWrong choice...\n\n");
+    }
+
+    break;
+    }
+    getchar();
+    printf("\nWrite Here: ");
     gets(d);
+
+
+    int sum;
+
+    sum=s1+s2+s3+s4;
+
+
+
+
+    system("CLS");
+    printf("Complete Your Payment %d Tk\n",sum);
+    printf("\nSelect Payment Method\n1.Bkash\n2.Nagad\n3.Bank\n");
+
+    int che;
+    printf("Enter your Choice: ");
+    scanf("%d",&che);
+
+
+
+
+
+    long int amu,n,due;
+    char name[100];
+    getchar();
+    if(che==1 || che==2)
+    {
+        long int p;
+        printf("Enter User Name: ");
+        gets(name);
+        printf("Enter Number:");
+        scanf("%ld",&n);
+        printf("Enter Amount:");
+        scanf("%ld",&amu);
+        printf("Enter PIN:");
+        scanf("%ld",&p);
+    }
+    else if(che==3)
+    {
+        long int n,p;
+        printf("Enter User Name: ");
+        gets(name);
+        printf("Enter Account Number:");
+        scanf("%ld",&n);
+        printf("Enter Amount:");
+        scanf("%ld",&amu);
+        printf("Enter PIN:");
+        scanf("%ld",&p);
+    }
+
+
+    printf("\n");
+
+    if(sum==amu)
+    {
+        due=0;
+        printf("\nPayment successfully\n");
+    }
+    else if(amu>sum)
+    {
+        due=0;
+        printf("\nPayment successfully.Return %ld Tk.\n",amu-sum);
+    }
+    else if(amu<sum)
+    {
+        due=sum-amu;
+        printf("\nPayment Not successfully.Due %ld Tk.\n",due);
+    }
+
+
 
     FILE *sr;
     sr = fopen("service_request.txt", "a");
@@ -1309,7 +1738,7 @@ Service_Request()
         printf("File not found!\n");
         return;
     }
-    fprintf(sr,"%s %s %s %s %s", n, a, b, c, d);
+    fprintf(sr,"%s %s %s %s %s %ld %ld %ld\n", name, a, b, c, d, amu, due, n);
 
 
     fclose(sr);
@@ -1336,12 +1765,14 @@ View_Service_Request()
     }
 
     char n[100], a[100], b[100], c[100], d[100];
-    printf("Name\tDecoration\tLighting\tSound\tPhoto/Video\n");
-    drawLine(60);
+    long int amu,p,due;
 
-    while (fscanf(sr, "%s\t%s\t%s\t%s\t%s\n", n, a, b, c, d) != EOF)
+    printf("Name\tDecoration\tLighting\tSound\tPhoto/Video\tPayment\tDue\tNumber\n");
+    drawLine(120);
+
+    while (fscanf(sr, "%s\t%s\t%s\t%s\t%s\t%ld\t%ld\t%ld\n", n, a, b, c, d, &amu, &due, &p) != EOF)
     {
-        printf("%s\t%s\t\t%s\t\t%s\t%s\n", n, a, b, c, d);
+        printf("%s\t%s\t\t%s\t\t%s\t%s\t\t%ld\t%ld\t%ld\n", n, a, b, c, d, amu, due, p);
     }
 
     fclose(sr);
@@ -1354,7 +1785,6 @@ View_Service_Request()
 Equipment_Rental()
 {
     char equipment[100];
-    char name[100];
     int quantity,m,a;
     FILE *file;
 
@@ -1370,9 +1800,6 @@ Equipment_Rental()
     printf("3. Chairs(50TK)\n");
     printf("4. Tables(100TK)\n");
     printf("5. Lights(20TK)\n");
-
-    printf("\nEnter Your Name: ");
-    gets(name);
 
     printf("\nEnter your Choice: ");
     scanf("%d",&m);
@@ -1407,45 +1834,63 @@ Equipment_Rental()
         Equipment_Rental();
     }
 
+    system("CLS");
     printf("Complete Your Payment %d Tk\n",a);
     printf("\nSelect Payment Method\n1.Bkash\n2.Nagad\n3.Bank\n");
 
     int c;
     printf("Enter your Choice: ");
     scanf("%d",&c);
-    long int b;
+
+
+
+
+
+    long int amu,n,due;
+    char name[100];
+    getchar();
     if(c==1 || c==2)
     {
-        long int n;
+        long int p;
+        printf("Enter User Name: ");
+        gets(name);
         printf("Enter Number:");
         scanf("%ld",&n);
         printf("Enter Amount:");
-        scanf("%ld",&b);
+        scanf("%ld",&amu);
+        printf("Enter PIN:");
+        scanf("%ld",&p);
     }
     else if(c==3)
     {
-        long int k,p;
+        long int n,p;
+        printf("Enter User Name: ");
+        gets(name);
         printf("Enter Account Number:");
-        scanf("%ld",&k);
+        scanf("%ld",&n);
         printf("Enter Amount:");
-        scanf("%ld",&b);
+        scanf("%ld",&amu);
         printf("Enter PIN:");
         scanf("%ld",&p);
     }
 
+
     printf("\n");
 
-    if(b==a)
+    if(a==amu)
     {
+        due=0;
         printf("\nPayment successfully\n");
     }
-    else if(b>a)
+    else if(amu>a)
     {
-        printf("\nPayment successfully.Return %d Tk.\n",b-a);
+        due=0;
+        printf("\nPayment successfully.Return %ld Tk.\n",amu-a);
     }
-    else if(b<a)
+    else if(amu<a)
     {
-        printf("\nPayment Not successfully.Due %d Tk.\n",a-b);
+        due=a-amu;
+        printf("\nPayment Not successfully.Due %ld Tk.\n",due);
     }
 
 
@@ -1457,7 +1902,7 @@ Equipment_Rental()
         return;
     }
 
-    fprintf(file, "Name:%s | Equipment: %s | Quantity: %d | Pay Amount: %d\n", name, equipment, quantity,a);
+    fprintf(file, "%s %s %d %ld %ld %ld\n", name, equipment, quantity, amu, due, n);
     fclose(file);
 
     printf("\nYour equipment rental request has been recorded.\n");
@@ -1482,13 +1927,22 @@ View_Equipment_Rental_Request()
         printf("Error opening file!\n");
         return;
     }
-    char ch;
 
-    while(!feof(file))
+
+    printf("Name\t\tEquipment\t\tCount\tPay Amount\tDue\t\tNumber\n");
+    drawLine(120);
+    printf("\n");
+
+
+    char name[100],equipment[100];
+    int quantity;
+    long int  amu, due, n;
+
+    while (fscanf(file,"%s\t\t%s\t\t%d\t%ld\t%ld\t\t%ld\n", name, equipment, &quantity, &amu, &due, &n) != EOF)
     {
-        ch=fgetc(file);
-        printf("%c",ch);
+        printf("%s\t\t%s\t\t%d\t%ld\t\t%ld\t\t%ld\n", name, equipment, quantity, amu, due, n);
     }
+
     fclose(file);
 
     printf("\n\nPress any key to continue...");
@@ -1520,7 +1974,7 @@ Submit_Feedback()
         return;
     }
 
-    fprintf(file, "Name: %s\nFeedback: %s\n", name, feedback);
+    fprintf(file, "Name: %s\n\n=>Feedback: %s\n\n\n", name, feedback);
     fclose(file);
 
     printf("\nThank you! Your feedback has been recorded.\n");
@@ -1580,12 +2034,12 @@ Manage_Discount_and_Offer()
 {
     system("CLS");
     drawLine(120);
-    printf("\t\t\t\t<<<<<-----Manage Discount and Offer----->>>>>\n");
+    printf("\t\t\t\t   <<<<<-----Manage Discount and Offer----->>>>>\n");
     drawLine(120);
     printf("\n");
-    printf("\n1.View Discount and Offer\n2.Add Discount and Offer\n");
+    printf("\nManage Discount and Offer\n\n\t[1].View Discount and Offer\n\n\t[2].Add Discount and Offer\n");
     int n;
-    printf("Enter Your Choice: ");
+    printf("\n\nEnter Your Choice: ");
     scanf("%d",&n);
 
     if (n==1)
@@ -1670,7 +2124,7 @@ viewadm()
 {
     system("CLS");
     drawLine(120);
-    printf("\t\t\t\t<<<<<-----View Discount and Offer----->>>>>\n");
+    printf("\t\t\t\t    <<<<<-----View Discount and Offer----->>>>>\n");
     drawLine(120);
     printf("\n");
 
@@ -1702,13 +2156,13 @@ Rules_and_Condition()
 {
     system("CLS");
     drawLine(120);
-    printf("\t\t\t\t<<<<<-----Rules and Condition----->>>>>\n");
+    printf("\t\t\t\t     <<<<<-----Rules and Condition----->>>>>\n");
     drawLine(120);
     printf("\n");
 
-    printf("Rules and Condition\n1.Rules and Condition\n2.Add Rules and Condition\n");
+    printf("Rules and Condition\n\n\t[1].View Rules and Condition\n\n\t[2].Add Rules and Condition\n");
     int n;
-    printf("Enter Your Choice: ");
+    printf("\n\nEnter Your Choice: ");
     scanf("%d",&n);
 
     if (n==1)
@@ -1736,7 +2190,7 @@ addr()
     FILE *file;
 
     getchar();
-    printf("Write Rules and Condition\n");
+    printf("\n\nWrite Rules and Condition\n");
     gets(a);
 
     file = fopen("Rules_and_Condition.txt", "a");
@@ -1817,11 +2271,7 @@ viewr()
 }
 add_item()
 {
-    system("CLS");
-    drawLine(120);
-    printf("\t\t\t\t<<<<<-----Update Event Items----->>>>>\n");
-    drawLine(120);
-    printf("\n");
+
 
     FILE *log;
 
@@ -1833,7 +2283,7 @@ add_item()
     }
     char vname[100];
     getchar();
-    printf("enter venue: ");
+    printf("\nenter venue: ");
     gets(vname);
     fprintf(log, "%s\n", vname);
 
@@ -1844,13 +2294,42 @@ add_item()
     admin_dashboard();
 
 }
+getPassword(char *pass)
+{
+    int i = 0;
+    char ch;
+    while (1)
+    {
+        ch = getch();
+        if (ch == 13)
+        {
+            pass[i] = '\0';
+            break;
+        }
+        else if (ch == 8)
+        {
+            if (i > 0)
+            {
+                i--;
+                printf("\b \b");
+            }
+        }
+        else
+        {
+            pass[i++] = ch;
+            printf("#");
+        }
+    }
+}
+
+
 change_password() {
     struct login l;
-    char uname[50], old_pass[50], new_pass[50];
+    char uname[100], old_pass[100], new_pass[100];
     int found = 0;
 
     FILE *fp = fopen("login.txt", "r");
-    FILE *temp = fopen("temp.txt", "w");
+    FILE *temp1 = fopen("temp1.txt", "w");
 
     if (fp == NULL) {
         printf("User file not found!\n");
@@ -1860,29 +2339,32 @@ change_password() {
     printf("Enter Username: ");
     scanf("%s", uname);
     printf("Enter Current Password: ");
-    scanf("%s", old_pass);
+    getPassword(old_pass);
 
-    while (fscanf(fp, "%s\t%s\t%s\t%s\t%s", l.fname, l.lname, l.username, l.pass, l.num) != EOF) {
+    while (fscanf(fp, "%s %s %s %s %s",
+                  l.fname, l.lname, l.username, l.pass, l.num) != EOF) {
         if (strcmp(l.username, uname) == 0 && strcmp(l.pass, old_pass) == 0) {
             found = 1;
             printf("Enter New Password: ");
-            scanf("%s", new_pass);
+            getPassword(new_pass);
             strcpy(l.pass, new_pass);
         }
-        fprintf(temp, "%s\t\t%s\t\t%s\t\t%s\t\t%s\n", l.fname, l.lname, l.username, l.pass, l.num);
+        fprintf(temp1, "%s\t\t%s\t\t%s\t\t%s\t\t%s\n", l.fname, l.lname, l.username, l.pass, l.num);
     }
 
     fclose(fp);
-    fclose(temp);
+    fclose(temp1);
 
     remove("login.txt");
-    rename("temp.txt", "login.txt");
+    rename("temp1.txt", "login.txt");
 
     if (found)
         printf("\nPassword changed successfully!\n");
     else
         printf("\nInvalid username or password!\n");
 }
+
+
 
 
 

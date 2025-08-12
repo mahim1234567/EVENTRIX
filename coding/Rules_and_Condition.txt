@@ -1,6 +1,8 @@
-1. Event must be booked at least 7 days before.
-2. 50% payment must be given in advance.
-3. 20% charge if canceled within 3 days.
-4. Customer will pay for any damage.
-5. Extra time will cost extra money.
+1.All users (Customer & Admin) must register with valid name, email, and phone number.
+2.Users must provide correct Event Type, Date, Venue, and Guest Count during booking.
+3.Payments must be made using approved methods (Cash, Card, Mobile Banking).
+4.All decorations, equipment, and services must be used carefully to avoid damage.
+5.Any damaged items must be compensated through repair or replacement charges.
+6.Outside food or unauthorized vendors are not allowed unless approved.
+7.Misbehavior or abusive language towards staff, guests, or vendors is strictly prohibited.
 
