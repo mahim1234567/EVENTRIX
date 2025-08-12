@@ -1400,30 +1400,196 @@ Service_Request()
     printf("\t\t\t\t\t<<<<<-----Service Request----->>>>>\n");
     drawLine(120);
     printf("\n");
-    char n[100];
-    getchar();
-    printf("Enter Your Name: ");
-    gets(n);
-    char a[100];
 
-    printf("\nDecoration Services\n\t[1].Stage.\n\t[2].Floral.\n\t[3].Balloon.\n");
-    printf("Write Here: ");
+    char a[100];
+    int c1,c2,c3,c4,s1,s2,s3,s4;
+    printf("\nDecoration Services\n\t[1].Stage.(10000TK)\n\t[2].Floral.(12000TK)\n\t[3].Balloon.(5000TK)\n");
+    printf("\nEnter Your Choice: ");
+    scanf("%d",&c1);
+
+
+    while(1)
+    {
+      if(c1==1)
+    {
+        s1=10000;
+        break;
+    }
+    else if(c1==2)
+    {
+        s1=12000;
+        break;
+    }
+    else if(c1==3)
+    {
+        s1=5000;
+        break;
+    }
+    else
+    {
+        printf("\nWrong choice...\n\n");
+    }
+
+    break;
+    }
+    getchar();
+    printf("\nWrite Here: ");
     gets(a);
 
     char b[100];
+    printf("\nLighting Services\n\t1.Yes(4000TK)\n\t2.No\n");
+    printf("\nEnter Your Choice: ");
+    scanf("%d",&c2);
 
-    printf("Lighting Services\n\t1.Yes\n\t2.No\n");
-    printf("Write Here: ");
+
+    while(1)
+    {
+      if(c2==1)
+    {
+        s2=4000;
+        break;
+    }
+    else if(c2==2)
+    {
+        s2=0;
+        break;
+    }
+    else
+    {
+        printf("\nWrong choice...\n\n");
+    }
+
+    break;
+    }
+    getchar();
+    printf("\nWrite Here: ");
     gets(b);
-    char c[100];
 
-    printf("Sound System Setup Services\n\t1.Yes\n\t2.No\n");
-    printf("Write Here: ");
+    char c[100];
+    printf("\nSound System Setup Services\n\t1.Yes(3000TK)\n\t2.No\n");
+    printf("\nEnter Your Choice: ");
+    scanf("%d",&c3);
+
+
+    while(1)
+    {
+      if(c3==1)
+    {
+        s3=3000;
+        break;
+    }
+    else if(c3==2)
+    {
+        s3=0;
+        break;
+    }
+    else
+    {
+        printf("\nWrong choice...\n\n");
+    }
+
+    break;
+    }
+    getchar();
+    printf("\nWrite Here: ");
     gets(c);
+
     char d[100];
-    printf("Photography & Videography Services\n\t1.Yes\n\t2.No\n");
-    printf("Write Here: ");
+    printf("\nPhotography & Videography Services\n\t1.Yes(2000TK)\n\t2.No\n");
+    printf("\nEnter Your Choice: ");
+    scanf("%d",&c4);
+
+    while(1)
+    {
+      if(c4==1)
+    {
+        s4=2000;
+        break;
+    }
+    else if(c1==2)
+    {
+        s4=0;
+        break;
+    }
+    else
+    {
+        printf("\nWrong choice...\n\n");
+    }
+
+    break;
+    }
+    getchar();
+    printf("\nWrite Here: ");
     gets(d);
+
+
+    int sum;
+
+    sum=s1+s2+s3+s4;
+
+
+
+
+    system("CLS");
+    printf("Complete Your Payment %d Tk\n",sum);
+    printf("\nSelect Payment Method\n1.Bkash\n2.Nagad\n3.Bank\n");
+
+    int che;
+    printf("Enter your Choice: ");
+    scanf("%d",&che);
+
+
+
+
+
+    long int amu,n,due;
+    char name[100];
+    getchar();
+    if(che==1 || che==2)
+    {
+        long int p;
+        printf("Enter User Name: ");
+        gets(name);
+        printf("Enter Number:");
+        scanf("%ld",&n);
+        printf("Enter Amount:");
+        scanf("%ld",&amu);
+        printf("Enter PIN:");
+        scanf("%ld",&p);
+    }
+    else if(che==3)
+    {
+        long int n,p;
+        printf("Enter User Name: ");
+        gets(name);
+        printf("Enter Account Number:");
+        scanf("%ld",&n);
+        printf("Enter Amount:");
+        scanf("%ld",&amu);
+        printf("Enter PIN:");
+        scanf("%ld",&p);
+    }
+
+
+    printf("\n");
+
+    if(sum==amu)
+    {
+        due=0;
+        printf("\nPayment successfully\n");
+    }
+    else if(amu>sum)
+    {
+        due=0;
+        printf("\nPayment successfully.Return %ld Tk.\n",amu-sum);
+    }
+    else if(amu<sum)
+    {
+        due=sum-amu;
+        printf("\nPayment Not successfully.Due %ld Tk.\n",due);
+    }
+
+
 
     FILE *sr;
     sr = fopen("service_request.txt", "a");
@@ -1432,7 +1598,7 @@ Service_Request()
         printf("File not found!\n");
         return;
     }
-    fprintf(sr,"%s %s %s %s %s", n, a, b, c, d);
+    fprintf(sr,"%s %s %s %s %s %ld %ld %ld\n", name, a, b, c, d, amu, due, n);
 
 
     fclose(sr);
@@ -1459,12 +1625,14 @@ View_Service_Request()
     }
 
     char n[100], a[100], b[100], c[100], d[100];
-    printf("Name\tDecoration\tLighting\tSound\tPhoto/Video\n");
-    drawLine(60);
+    long int amu,p,due;
 
-    while (fscanf(sr, "%s\t%s\t%s\t%s\t%s\n", n, a, b, c, d) != EOF)
+    printf("Name\tDecoration\tLighting\tSound\tPhoto/Video\tPayment\tDue\tNumber\n");
+    drawLine(120);
+
+    while (fscanf(sr, "%s\t%s\t%s\t%s\t%s\t%ld\t%ld\t%ld\n", n, a, b, c, d, &amu, &due, &p) != EOF)
     {
-        printf("%s\t%s\t\t%s\t\t%s\t%s\n", n, a, b, c, d);
+        printf("%s\t%s\t\t%s\t\t%s\t%s\t\t%ld\t%ld\t%ld\n", n, a, b, c, d, amu, due, p);
     }
 
     fclose(sr);
@@ -2031,5 +2199,7 @@ void change_password() {
     else
         printf("\nInvalid username or password!\n");
 }
+
+
 
 
