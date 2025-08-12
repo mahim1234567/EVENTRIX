@@ -103,9 +103,9 @@ int main()
             printf("\t\t\t\t\t<<<<<-----Admin Registration/Login Page----->>>>>\n");
             drawLine(120);
             printf("\n\n");
-            printf("1.Registration.\n");
-            printf("2.Login.\n");
-            printf("0.Back.\n\n");
+            printf("[1].Registration.\n");
+            printf("[2].Login.\n");
+            printf("[0].Back.\n\n");
             printf("Enter your Choice: ");
             scanf("%d",&cho3);
             printf("\n\n");
@@ -226,6 +226,13 @@ int registeA()
     scanf("%s", l.num);
     printf("Enter password: ");
     getPassword(l.pass);
+    if (log1 == NULL)
+    {
+        printf("File not found!\n");
+        return;
+    }
+
+
     fprintf(log1, "%s\t\t%s\t\t%s\t\t%s\t\t%s\n", l.fname, l.lname, l.username, l.pass,l.num);
 
     fclose(log1);
@@ -252,6 +259,11 @@ int login()
     getPassword(pass);
 
     int found = 0;
+    if (log == NULL)
+    {
+        printf("File not found!\n");
+        return;
+    }
 
     while (fscanf(log,"%s\t\t%s\t\t%s\t\t%s\t\t%s", l.fname, l.lname, l.username, l.pass, l.num) != EOF)
     {
@@ -291,6 +303,12 @@ int loginA()
 
     int found = 0;
 
+    if (log1 == NULL)
+    {
+        printf("File not found!\n");
+        return;
+    }
+
     while (fscanf(log1,"%s\t\t%s\t\t%s\t\t%s\t\t%s", l.fname, l.lname, l.username, l.pass, l.num) != EOF)
     {
         if (strcmp(usernameA, l.username) == 0 && strcmp(passA, l.pass) == 0)
@@ -320,14 +338,16 @@ int Delete_Event()
 {
     system("CLS");
     drawLine(120);
-    printf("\t\t\t\t<<<<<-----Delete Event----->>>>>\n");
+    printf("\t\t\t\t\t<<<<<-----Delete Event----->>>>>\n");
     drawLine(120);
     printf("\n");
 
-    char searchName[100];
+    char searchName[100],number[100];
     getchar();
-    printf("Enter user name to delete: ");
+    printf("Enter user name to Delete Event: ");
     gets(searchName);
+    printf("Enter user Number to Delete Event: ");
+    gets(number);
 
     FILE *M = fopen("booking.txt", "r");
     FILE *temp = fopen("temp.txt", "w");
@@ -340,19 +360,18 @@ int Delete_Event()
 
     int found = 0;
 
-    char ename[100], uname[100], pname[100], vname[100], dname[100];
-    int g, b;
-    long int a;
+    char paname[100], ynumber[100],xname[100],pvname[100],zname[100];
 
-    while (fscanf(M, "%s %s %s %s %d %d %s %ld", ename, uname, pname, vname, &g, &b, dname, &a) != EOF)
+
+    while (fscanf(M,"%s\t%s\t%s\t%s\t%s\n", zname, xname, ynumber, pvname, paname) != EOF)
     {
-        if (strcmp(uname, searchName) == 0)
+        if (strcmp(searchName, xname) == 0 &&  strcmp(number, ynumber) == 0)
         {
             found = 1;
             continue;
         }
 
-        fprintf(temp, "%s %s %s %s %d %d %s %ld\n", ename, uname, pname, vname, g, b, dname, a);
+        fprintf(temp,"%s\t%s\t%s\t%s\t%s\n", zname, xname, ynumber, pvname, paname);
     }
 
     fclose(M);
@@ -477,17 +496,17 @@ int admin_dashboard()
     drawLine(120);
     printf("\t\t\t\t\t<<<<<-----Admin Dashboard----->>>>>\n");
     drawLine(120);
-    printf("\n1.View All Event\n");
-    printf("2.Find Event.\n");
-    printf("3.Event Approval\n");
-    printf("4.View Service Request\n");
-    printf("5.View Equipment Rental Request\n");
-    printf("6.view payment\n");
-    printf("7.Update Event Items\n");
-    printf("8.Manage Discount and Offer\n");
-    printf("9.Set Rules and Condition\n");
-    printf("10.View Feedback History\n");
-    printf("11.Update Event Items\n");
+    printf("\n[1].View All Event\n");
+    printf("[2].Find Event.\n");
+    printf("[3].Event Approval\n");
+    printf("[4].View Service Request\n");
+    printf("[5].View Equipment Rental Request\n");
+    printf("[6].View payment\n");
+    printf("[7].Delete Event\n");
+    printf("[8].Manage Discount and Offer\n");
+    printf("[9].Set Rules and Condition\n");
+    printf("[10].View Feedback History\n");
+    printf("[11].Update Event Items\n");
     printf("[0].Home Page\n");
     int ch;
     printf("Enter your Choice: ");
@@ -1031,7 +1050,7 @@ Booking()
         return;
     }
 
-    fprintf(M,"|%s\t|%s\t|%s\t|%s\t|%s\n", ename, uname, number, vname, pname);
+    fprintf(M,"%s\t%s\t%s\t%s\t%s\n", ename, uname, number, vname, pname);
 
     fclose(M);
 
