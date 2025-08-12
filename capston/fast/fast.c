@@ -570,8 +570,41 @@ int admin_dashboard()
     }
     else if(ch==11)
     {
-        add_item();
+    system("CLS");
+    drawLine(120);
+    printf("\t\t\t\t<<<<<-----Update Event Items----->>>>>\n");
+    drawLine(120);
+    printf("\n");
+
+    printf("\n[1].Update Venue.\n\n[0].Exit.\n\n");
+
+
+
+    while(1)
+    {
+        int cho;
+        printf("Enter Your Choice: ");
+        scanf("%d",&cho);
+        if(cho==1)
+        {
+            add_item();
+            break;
+        }
+        else if(cho==0)
+        {
+            system("CLS");
+            admin_dashboard();
+            break;
+        }
+        else
+        {
+            printf("\nWrong choice\n");
+        }
+        break;
     }
+
+    }
+
     else
     {
         system("CLS");
@@ -2131,11 +2164,7 @@ viewr()
 }
 add_item()
 {
-    system("CLS");
-    drawLine(120);
-    printf("\t\t\t\t<<<<<-----Update Event Items----->>>>>\n");
-    drawLine(120);
-    printf("\n");
+
 
     FILE *log;
 
@@ -2147,7 +2176,7 @@ add_item()
     }
     char vname[100];
     getchar();
-    printf("enter venue: ");
+    printf("\nenter venue: ");
     gets(vname);
     fprintf(log, "%s\n", vname);
 
@@ -2199,6 +2228,7 @@ void change_password() {
     else
         printf("\nInvalid username or password!\n");
 }
+
 
 
 
