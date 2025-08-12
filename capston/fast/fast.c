@@ -1590,7 +1590,7 @@ Submit_Feedback()
         return;
     }
 
-    fprintf(file, "Name: %s\nFeedback: %s\n", name, feedback);
+    fprintf(file, "Name: %s\n\n=>Feedback: %s\n\n\n", name, feedback);
     fclose(file);
 
     printf("\nThank you! Your feedback has been recorded.\n");
@@ -1650,12 +1650,12 @@ Manage_Discount_and_Offer()
 {
     system("CLS");
     drawLine(120);
-    printf("\t\t\t\t<<<<<-----Manage Discount and Offer----->>>>>\n");
+    printf("\t\t\t\t   <<<<<-----Manage Discount and Offer----->>>>>\n");
     drawLine(120);
     printf("\n");
-    printf("\n1.View Discount and Offer\n2.Add Discount and Offer\n");
+    printf("\nManage Discount and Offer\n\n\t[1].View Discount and Offer\n\n\t[2].Add Discount and Offer\n");
     int n;
-    printf("Enter Your Choice: ");
+    printf("\n\nEnter Your Choice: ");
     scanf("%d",&n);
 
     if (n==1)
@@ -1740,7 +1740,7 @@ viewadm()
 {
     system("CLS");
     drawLine(120);
-    printf("\t\t\t\t<<<<<-----View Discount and Offer----->>>>>\n");
+    printf("\t\t\t\t    <<<<<-----View Discount and Offer----->>>>>\n");
     drawLine(120);
     printf("\n");
 
@@ -1772,13 +1772,13 @@ Rules_and_Condition()
 {
     system("CLS");
     drawLine(120);
-    printf("\t\t\t\t<<<<<-----Rules and Condition----->>>>>\n");
+    printf("\t\t\t\t     <<<<<-----Rules and Condition----->>>>>\n");
     drawLine(120);
     printf("\n");
 
-    printf("Rules and Condition\n1.Rules and Condition\n2.Add Rules and Condition\n");
+    printf("Rules and Condition\n\n\t[1].View Rules and Condition\n\n\t[2].Add Rules and Condition\n");
     int n;
-    printf("Enter Your Choice: ");
+    printf("\n\nEnter Your Choice: ");
     scanf("%d",&n);
 
     if (n==1)
@@ -1806,7 +1806,7 @@ addr()
     FILE *file;
 
     getchar();
-    printf("Write Rules and Condition\n");
+    printf("\n\nWrite Rules and Condition\n");
     gets(a);
 
     file = fopen("Rules_and_Condition.txt", "a");
