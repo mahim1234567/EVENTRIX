@@ -2,6 +2,69 @@
 #include <conio.h>
 #include <string.h>
 
+
+#define AC_BLACK "\x1b[30m"
+#define AC_RED "\x1b[31m"
+#define AC_GREEN "\x1b[32m"
+#define AC_YELLOW "\x1b[33m"
+#define AC_BLUE "\x1b[34m"
+#define AC_MAGENTA "\x1b[35m"
+#define AC_CYAN "\x1b[36m"
+#define AC_WHITE "\x1b[37m"
+#define AC_NORMAL "\x1b[m"
+
+
+front()
+{
+    printf("\n");
+    printf("%s",AC_BLUE);
+    printf("\t\t\t\t\t");
+    printf("<o>      \\o/   v\\ \\o/       o       <o>      \\o      |      o/   \\o   \n");
+    printf("\t\t\t\t\t");
+    printf(" |        |     <\\ |       <|        |        v\\     o     /v     v\\  \n");
+    printf("\t\t\t\t\t");
+    printf("/ \\      / \\      < \\      / \\      / \\        <\\  __|>_  />       <\\ \n");
+
+    printf("\n\n\n");
+
+    printf("%s",AC_RED);
+    printf("\t\t\t\t");
+    printf("_////////_//         _//_////////_///     _//_///////////_/////// _ //////_//      _//\n",AC_RED);
+    printf("\t\t\t\t");
+    printf("_//       _//       _// _//      _/ _//   _//     _//    _//    _//  _//   _//   _//  \n");
+    printf("\t\t\t\t");
+    printf("_//        _//     _//  _//      _// _//  _//     _//    _//    _//  _//    _// _//   \n");
+    printf("\t\t\t\t");
+    printf("_//////     _//   _//   _//////  _//  _// _//     _//    _/ _//      _//      _//     \n");
+    printf("\t\t\t\t");
+    printf("_//          _// _//    _//      _//   _/ _//     _//    _//  _//    _//    _// _//   \n");
+    printf("\t\t\t\t");
+    printf("_//           _////     _//      _//    _/ //     _//    _//    _//  _//   _//   _//  \n");
+    printf("\t\t\t\t");
+    printf("_////////      _//      _////////_//      _//     _//    _//      _ //////_//      _//\n");
+
+
+    printf("\n\n\n");
+    printf("%s",AC_CYAN);
+
+    printf("\t\t\t\t");
+    printf("     __          _            __                        __            ___         \n");
+    printf("\t\t\t\t");
+    printf("    (_ . _  _ |.(_  . _  _   |_    _ _ |_  |  |.|_|_   (_  _  _  _|_   | _. _|  _ \n");
+    printf("\t\t\t\t");
+    printf("    __)|||||_)||| \\/|| )(_)  |__\\/(-| )|_  |/\\|||_| )  __)|||(_|| |_   || |(_|(_) \n");
+    printf("\t\t\t\t");
+    printf("           |      /     _/                                                         \n");
+
+}
+frontpage()
+{
+    front();
+    printf("%s",AC_GREEN);
+    printf("\n\n\n\n\t\t\t\t\t\t\t    Any key to continue............");
+    getch();
+    system("CLS");
+}
 drawLine(int len)
 {
     for (int i = 0; i < len; i++) printf("=");
@@ -10,52 +73,80 @@ drawLine(int len)
 
 int main()
 {
-    printf("\t\t\t   ===============================================================\n");
-    printf("\t\t\t   =   EEEEE  V     V  EEEEE  N   N  TTTTT  RRRR   III  X   X    =\n");
-    printf("\t\t\t   =   E      V     V  E      NN  N    T    R   R   I    X X     =\n");
-    printf("\t\t\t   =   EEEE   V     V  EEEE   N N N    T    RRRR    I     X      =\n");
-    printf("\t\t\t   =   E       V   V   E      N  NN    T    R  R    I    X X     =\n");
-    printf("\t\t\t   =   EEEEE    VVV    EEEEE  N   N    T    R   R  III  X   X    =\n");
-    printf("\t\t\t   ===============================================================\n");
 
-    printf("\n\t\t\t\t\tSimplifying Event With Smart Tricks\n");
-    printf("\n\nAny key to continue............");
-    getch();
-    system("CLS");
+    //frontpage();
 
+    printf("%s",AC_RED);
     int cho,cho2,cho3;
     drawLine(118);
-    printf("======\t\t\t\t\t <<<<<-----WELCOME EVENTRIX----->>>>>  \t\t\t\t\t======\n");
+    printf("======\t\t\t\t\t <<<<<-----WELCOME TO EVENTRIX----->>>>>  \t\t\t\t======\n");
     drawLine(118);
     printf("\n\n");
-    printf("[1].User/Coustomer.\n");
-    printf("[2].Admin/Manager.\n");
-    printf("[3].Exit.\n\n");
-    printf("Enter your Choice: ");
+    printf("%s",AC_BLUE);
+    printf("\t\t\t\t\t\t  [1].User/Coustomer.\n\n");
+    printf("%s",AC_MAGENTA);
+    printf("\t\t\t\t\t\t  [2].Admin/Manager.\n\n");
+    printf("%s",AC_RED);
+    printf("\t\t\t\t\t\t  [3].Exit.\n\n");
+    printf("%s",AC_CYAN);
+    printf("\t\t\t\t\t\t  Enter your Choice: ");
     scanf("%d",&cho);
     while(1)
     {
         if (cho == 1)
         {
+
             system("CLS");
+            printf("%s",AC_RED);
             drawLine(120);
-            printf("=\t\t\t\t\t<<<<<-----User Registration/Login Page----->>>>>\t\t\t\t\t=\n");
+            printf("  [ EVENTTRIX ]\t\t\t <<<<<-----User Registration/Login Page----->>>>>\t\t\t[ EVENTTRIX ]\n");
             drawLine(120);
             printf("\n\n");
-            printf("[1].Registration.\n");
-            printf("[2].Login.\n");
-            printf("[0].Back.\n\n");
-            printf("Enter your Choice: ");
+            printf("%s",AC_BLUE);
+            printf("\t\t\t\t\t\t  [1].Registration.\n\n");
+            printf("%s",AC_MAGENTA);
+            printf("\t\t\t\t\t\t  [2].Login.\n\n");
+            printf("%s",AC_RED);
+            printf("\t\t\t\t\t\t  [0].Back.\n\n");
+            printf("%s",AC_CYAN);
+            printf("\t\t\t\t\t\t  Enter your Choice: ");
             scanf("%d",&cho2);
             printf("\n\n");
             if(cho2==1)
             {
+                int cr;
                 system("CLS");
+                printf("%s",AC_RED);
                 drawLine(120);
-                printf("\t\t\t\t\t<<<<<-----User Registration----->>>>>\n");
+                printf("  [ EVENTTRIX ]\t\t\t\t<<<<<-----User Registration----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
                 drawLine(120);
                 printf("\n\n");
-                registe();
+                printf("%s",AC_BLUE);
+                printf("\t\t\t\t\t  [1].Complete Your Registration.\n\n");
+                printf("%s",AC_MAGENTA);
+                printf("\t\t\t\t\t  [0].Back.\n\n");
+                printf("%s",AC_CYAN);
+                printf("\t\t\t\t\t  Enter your Choice: ");
+                scanf("%d",&cr);
+
+                if(cr==1)
+                {
+                    system("CLS");
+                    printf("%s",AC_RED);
+                    drawLine(120);
+                    printf("  [ EVENTTRIX ]\t\t\t\t<<<<<-----User Registration----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
+                    drawLine(120);
+                    printf("\n\n");
+
+                    registe();
+                }
+                else
+                {
+                    system("CLS");
+                    main();
+                }
+
+
             }
             else if(cho2==2)
             {
@@ -134,16 +225,22 @@ int main()
             system("CLS");
             printf("\n\n");
             drawLine(120);
-            printf("\t\t\t\tThanks for using Eventrix Hope to see you again soon.\n");
+            printf("===\t\t\t\tThanks for using Eventrix Hope to see you again soon.\t\t\t\t     ===\n");
             drawLine(120);
             printf("\n\n");
+            getch();
+            system("CLS");
+            front();
             break;
 
         }
+
         else
         {
             system("CLS");
             main();
+
+
         }
     }
     getch();
@@ -153,7 +250,7 @@ struct login
 {
 
     char fname[100];
-    char lname[100];
+    char lname[12];
     char username[100];
     char pass[100];
     char num[100];
@@ -162,16 +259,55 @@ struct login
 int registe()
 {
     struct login l;
+    printf("%s",AC_BLUE);
     printf("Enter First name: ");
     scanf("%s", l.fname);
-    printf("Enter Last name: ");
+    printf("\nEnter Last name: ");
     scanf("%s", l.lname);
-    printf("Enter User name: ");
+    printf("%s",AC_MAGENTA);
+    printf("\nEnter User name: ");
     scanf("%s", l.username);
-    printf("Enter Your Phone Number: ");
-    scanf("%s", l.num);
-    printf("Enter password: ");
-    getPassword(l.pass);
+
+
+
+   while(1) {
+        printf("\nEnter Your Phone Number: ");
+        scanf("%11s", l.num);
+
+        int valid = 1;
+
+
+        if(strlen(l.num) != 11)
+            valid = 0;
+
+
+        if(l.num[0] != '0' || l.num[1] != '1' || (l.num[2] != '1' && l.num[2] != '2'))
+            valid = 0;
+
+
+        for(int i = 0; i < 11; i++) {
+            if(!isdigit(l.num[i])) {
+                valid = 0;
+                break;
+            }
+        }
+
+        if(valid) {
+            printf("\nEnter password: ");
+            getPassword(l.pass);
+            break;
+        } else {
+            printf("\nWrong Number Format! Please try again...\n");
+        }
+    }
+
+
+
+
+
+
+
+
     FILE *log;
 
     log = fopen("login.txt", "a");
@@ -185,11 +321,13 @@ int registe()
     fprintf(log, "%s\t\t%s\t\t%s\t\t%s\t\t%s\n", l.fname, l.lname, l.username, l.pass, l.num);
 
     fclose(log);
+    printf("%s",AC_YELLOW);
 
-    printf("\nRegistration successfully\n\n");
+    printf("\n\nRegistration successfully\n");
 
     printf("Your User name is your User id\n\n");
 
+    printf("%s",AC_GREEN);
     printf("Any key to continue..........");
     getch();
     system("CLS");
@@ -556,38 +694,38 @@ int admin_dashboard()
     }
     else if(ch==11)
     {
-    system("CLS");
-    drawLine(120);
-    printf("\t\t\t\t<<<<<-----Update Event Items----->>>>>\n");
-    drawLine(120);
-    printf("\n");
+        system("CLS");
+        drawLine(120);
+        printf("\t\t\t\t<<<<<-----Update Event Items----->>>>>\n");
+        drawLine(120);
+        printf("\n");
 
-    printf("\n[1].Update Venue.\n\n[0].Exit.\n\n");
+        printf("\n[1].Update Venue.\n\n[0].Exit.\n\n");
 
 
 
-    while(1)
-    {
-        int cho;
-        printf("Enter Your Choice: ");
-        scanf("%d",&cho);
-        if(cho==1)
+        while(1)
         {
-            add_item();
+            int cho;
+            printf("Enter Your Choice: ");
+            scanf("%d",&cho);
+            if(cho==1)
+            {
+                add_item();
+                break;
+            }
+            else if(cho==0)
+            {
+                system("CLS");
+                admin_dashboard();
+                break;
+            }
+            else
+            {
+                printf("\nWrong choice\n");
+            }
             break;
         }
-        else if(cho==0)
-        {
-            system("CLS");
-            admin_dashboard();
-            break;
-        }
-        else
-        {
-            printf("\nWrong choice\n");
-        }
-        break;
-    }
 
     }
 
@@ -629,8 +767,8 @@ Find_Event()
     {
         if (strcmp(searchName, xname) == 0 &&  strcmp(number, ynumber) == 0)
         {
-           printf("%s\t%s\t%s\t%s\t%s\n", zname, xname, ynumber, pvname, paname);
-           found=1;
+            printf("%s\t%s\t%s\t%s\t%s\n", zname, xname, ynumber, pvname, paname);
+            found=1;
         }
     }
 
@@ -662,8 +800,8 @@ Find_Event()
         if (strcmp(searchName, n) == 0 &&  strcmp(number, p) == 0)
 
         {
-           printf("%s\t%s\t\t%s\t\t%s\t%s\t\t%ld\t%ld\t%s\n", n, a, b, c, d, amu, due, p);
-           found1=1;
+            printf("%s\t%s\t\t%s\t\t%s\t%s\t\t%ld\t%ld\t%s\n", n, a, b, c, d, amu, due, p);
+            found1=1;
         }
 
     }
@@ -676,7 +814,7 @@ Find_Event()
     }
 
 
- printf("\n\n\n");
+    printf("\n\n\n");
 
     int found2 = 0;
 
@@ -703,8 +841,8 @@ Find_Event()
     {
         if (strcmp(searchName, name) == 0 &&  strcmp(number, na) == 0)
         {
-           printf("%s\t\t%s\t\t%d\t%ld\t\t%ld\t\t%s\n", name, equipment, quantity, amu1, due1, na);
-           found2=1;
+            printf("%s\t\t%s\t\t%d\t%ld\t\t%ld\t\t%s\n", name, equipment, quantity, amu1, due1, na);
+            found2=1;
         }
 
     }
@@ -718,7 +856,7 @@ Find_Event()
     }
 
 
- printf("\n\n\n");
+    printf("\n\n\n");
 
     int found3 = 0;
     char name1[100],dname[100],n2[100];
@@ -738,15 +876,15 @@ Find_Event()
         if (strcmp(searchName, name1) == 0 &&  strcmp(number, n2) == 0)
 
         {
-        printf("\n");
-        printf("\t\t\t\t\t");
-        drawLine(30);
-        printf("\t\t\t\t\tPayment Details\n\n");
-        printf("\t\t\t\t\tName\t:%s\n\t\t\t\t\tGuest\t:%ld\n\t\t\t\t\tPayment :%ld\n\t\t\t\t\tDue\t:%ld\n\t\t\t\t\tDate\t:%s\n\t\t\t\t\tNumber\t:%s\n", name1, g, amount, due, dname, n2);
-        printf("\t\t\t\t\t");
-        drawLine(30);
-        printf("\n\n");
-        found3=1;
+            printf("\n");
+            printf("\t\t\t\t\t");
+            drawLine(30);
+            printf("\t\t\t\t\tPayment Details\n\n");
+            printf("\t\t\t\t\tName\t:%s\n\t\t\t\t\tGuest\t:%ld\n\t\t\t\t\tPayment :%ld\n\t\t\t\t\tDue\t:%ld\n\t\t\t\t\tDate\t:%s\n\t\t\t\t\tNumber\t:%s\n", name1, g, amount, due, dname, n2);
+            printf("\t\t\t\t\t");
+            drawLine(30);
+            printf("\n\n");
+            found3=1;
         }
 
     }
@@ -847,9 +985,9 @@ Event_Approval()
 View_Event_Approval()
 {
 
-        char pname[100],dname[100],uname[100],vname[100],ename[100],number[100],approve[100];
+    char pname[100],dname[100],uname[100],vname[100],ename[100],number[100],approve[100];
 
-        system("CLS");
+    system("CLS");
     drawLine(120);
     printf("\t\t\t\t\t<<<<<-----Payment List----->>>>>\n");
     drawLine(120);
@@ -953,241 +1091,246 @@ Booking()
 
     printf("\n");
     while (1)
-{
-    printf("<<<Place Name>>>\n");
-    drawLine(20);
-    printf("\n[1].Dhaka");
-    printf("\n[2].Chattogram");
-    printf("\n[3].Rajshahi");
-    printf("\n[4].Gazipur");
-    printf("\n[5].Tangail");
-    printf("\n\nEnter Your Choice: ");
-    scanf("%d", &cho);
-    getchar();
-
-    if (cho ==1 )
     {
-        while (1)
+        printf("<<<Place Name>>>\n");
+        drawLine(20);
+        printf("\n[1].Dhaka");
+        printf("\n[2].Chattogram");
+        printf("\n[3].Rajshahi");
+        printf("\n[4].Gazipur");
+        printf("\n[5].Tangail");
+        printf("\n\nEnter Your Choice: ");
+        scanf("%d", &cho);
+        getchar();
+
+        if (cho ==1 )
         {
-            printf("\nEnter Place Name: ");
-            gets(pname);
-
-            FILE *log2 = fopen("dhaka.txt", "r");
-            if (!log2) {
-                printf("File not found!\n");
-                exit(1);
-            }
-
-            int found = 0;
-            char cname[100];
-
-            while (fscanf(log2, "%s", cname) != EOF)
+            while (1)
             {
-                if (strcmp(pname, cname) == 0)
+                printf("\nEnter Place Name: ");
+                gets(pname);
+
+                FILE *log2 = fopen("dhaka.txt", "r");
+                if (!log2)
                 {
-                    printf("\n<<<Venue Name>>>\n");
-                    drawLine(20);
-                    printf("\n\t[1].Dhaka Convention Center(DCC)\n\t[2].International Convention City Bashundhara (ICCB)");
-                    found = 1;
+                    printf("File not found!\n");
+                    exit(1);
+                }
+
+                int found = 0;
+                char cname[100];
+
+                while (fscanf(log2, "%s", cname) != EOF)
+                {
+                    if (strcmp(pname, cname) == 0)
+                    {
+                        printf("\n<<<Venue Name>>>\n");
+                        drawLine(20);
+                        printf("\n\t[1].Dhaka Convention Center(DCC)\n\t[2].International Convention City Bashundhara (ICCB)");
+                        found = 1;
+                        break;
+                    }
+                }
+                fclose(log2);
+
+                if (!found)
+                {
+                    printf("\nWrong Format Try again....\n");
+                }
+                else
+                {
                     break;
                 }
             }
-            fclose(log2);
-
-            if (!found)
-            {
-                printf("\nWrong Format Try again....\n");
-            }
-            else
-            {
-                break;
-            }
+            break;
         }
-        break;
-    }
 
 
 
 
-    else if (cho ==2 )
-    {
-        while (1)
+        else if (cho ==2 )
         {
-            printf("\nEnter Place Name: ");
-            gets(pname);
-
-            FILE *log2 = fopen("Chattogram.txt", "r");
-            if (!log2) {
-                printf("File not found!\n");
-                exit(1);
-            }
-
-            int found = 0;
-            char cname[100];
-
-            while (fscanf(log2, "%s", cname) != EOF)
+            while (1)
             {
-                if (strcmp(pname, cname) == 0)
+                printf("\nEnter Place Name: ");
+                gets(pname);
+
+                FILE *log2 = fopen("Chattogram.txt", "r");
+                if (!log2)
                 {
-                    printf("\n<<<Venue Name>>>\n");
-                    drawLine(20);
-                    printf("\n\t[1].GEC Covention Center(GCC)\n\t[2].Radisson Blu Chattogram Bay View(RBCBY)");
-                    found = 1;
+                    printf("File not found!\n");
+                    exit(1);
+                }
+
+                int found = 0;
+                char cname[100];
+
+                while (fscanf(log2, "%s", cname) != EOF)
+                {
+                    if (strcmp(pname, cname) == 0)
+                    {
+                        printf("\n<<<Venue Name>>>\n");
+                        drawLine(20);
+                        printf("\n\t[1].GEC Covention Center(GCC)\n\t[2].Radisson Blu Chattogram Bay View(RBCBY)");
+                        found = 1;
+                        break;
+                    }
+                }
+                fclose(log2);
+
+                if (!found)
+                {
+                    printf("\nWrong Format Try again....\n");
+                }
+                else
+                {
                     break;
                 }
             }
-            fclose(log2);
-
-            if (!found)
-            {
-                printf("\nWrong Format Try again....\n");
-            }
-            else
-            {
-                break;
-            }
+            break;
         }
-        break;
-    }
 
 
-    else if (cho ==3 )
-    {
-        while (1)
+        else if (cho ==3 )
         {
-            printf("\nEnter Place Name: ");
-            gets(pname);
-
-            FILE *log2 = fopen("Rajshahi.txt", "r");
-            if (!log2) {
-                printf("File not found!\n");
-                exit(1);
-            }
-
-            int found = 0;
-            char cname[100];
-
-            while (fscanf(log2, "%s", cname) != EOF)
+            while (1)
             {
-                if (strcmp(pname, cname) == 0)
+                printf("\nEnter Place Name: ");
+                gets(pname);
+
+                FILE *log2 = fopen("Rajshahi.txt", "r");
+                if (!log2)
                 {
-                    printf("\n<<<Venue Name>>>\n");
-                    drawLine(20);
-                    printf("\n\t[1].Padma Convention Center(PCC)\n\t[2].Hotel Nice International Banquet Hall(HNIBH)");
-                    found = 1;
+                    printf("File not found!\n");
+                    exit(1);
+                }
+
+                int found = 0;
+                char cname[100];
+
+                while (fscanf(log2, "%s", cname) != EOF)
+                {
+                    if (strcmp(pname, cname) == 0)
+                    {
+                        printf("\n<<<Venue Name>>>\n");
+                        drawLine(20);
+                        printf("\n\t[1].Padma Convention Center(PCC)\n\t[2].Hotel Nice International Banquet Hall(HNIBH)");
+                        found = 1;
+                        break;
+                    }
+                }
+                fclose(log2);
+
+                if (!found)
+                {
+                    printf("\nWrong Format Try again....\n");
+                }
+                else
+                {
                     break;
                 }
             }
-            fclose(log2);
-
-            if (!found)
-            {
-                printf("\nWrong Format Try again....\n");
-            }
-            else
-            {
-                break;
-            }
+            break;
         }
-        break;
-    }
 
 
 
-    else if (cho ==4 )
-    {
-        while (1)
+        else if (cho ==4 )
         {
-            printf("\nEnter Place Name: ");
-            gets(pname);
-
-            FILE *log2 = fopen("Gazipur.txt", "r");
-            if (!log2) {
-                printf("File not found!\n");
-                exit(1);
-            }
-
-            int found = 0;
-            char cname[100];
-
-            while (fscanf(log2, "%s", cname) != EOF)
+            while (1)
             {
-                if (strcmp(pname, cname) == 0)
+                printf("\nEnter Place Name: ");
+                gets(pname);
+
+                FILE *log2 = fopen("Gazipur.txt", "r");
+                if (!log2)
                 {
-                    printf("\n<<<Venue Name>>>\n");
-                    drawLine(20);
-                    printf("\n\t[1].Dream Square Resort(DSR)\n\t[2].Padma Resort(PR)");
-                    found = 1;
+                    printf("File not found!\n");
+                    exit(1);
+                }
+
+                int found = 0;
+                char cname[100];
+
+                while (fscanf(log2, "%s", cname) != EOF)
+                {
+                    if (strcmp(pname, cname) == 0)
+                    {
+                        printf("\n<<<Venue Name>>>\n");
+                        drawLine(20);
+                        printf("\n\t[1].Dream Square Resort(DSR)\n\t[2].Padma Resort(PR)");
+                        found = 1;
+                        break;
+                    }
+                }
+                fclose(log2);
+
+                if (!found)
+                {
+                    printf("\nWrong Format Try again....\n");
+                }
+                else
+                {
                     break;
                 }
             }
-            fclose(log2);
-
-            if (!found)
-            {
-                printf("\nWrong Format Try again....\n");
-            }
-            else
-            {
-                break;
-            }
+            break;
         }
-        break;
-    }
 
 
 
 
-    else if (cho ==5 )
-    {
-        while (1)
+        else if (cho ==5 )
         {
-            printf("\nEnter Place Name: ");
-            gets(pname);
-
-            FILE *log2 = fopen("Tangail.txt", "r");
-            if (!log2) {
-                printf("File not found!\n");
-                exit(1);
-            }
-
-            int found = 0;
-            char cname[100];
-
-            while (fscanf(log2, "%s", cname) != EOF)
+            while (1)
             {
-                if (strcmp(pname, cname) == 0)
+                printf("\nEnter Place Name: ");
+                gets(pname);
+
+                FILE *log2 = fopen("Tangail.txt", "r");
+                if (!log2)
                 {
-                    printf("\n<<<Venue Name>>>\n");
-                    drawLine(20);
-                    printf("\n\t[1].Tangail Town Convention Hall(TTCH)\n\t[2].Elenga Resort(ER)");
-                    found = 1;
+                    printf("File not found!\n");
+                    exit(1);
+                }
+
+                int found = 0;
+                char cname[100];
+
+                while (fscanf(log2, "%s", cname) != EOF)
+                {
+                    if (strcmp(pname, cname) == 0)
+                    {
+                        printf("\n<<<Venue Name>>>\n");
+                        drawLine(20);
+                        printf("\n\t[1].Tangail Town Convention Hall(TTCH)\n\t[2].Elenga Resort(ER)");
+                        found = 1;
+                        break;
+                    }
+                }
+                fclose(log2);
+
+                if (!found)
+                {
+                    printf("\nWrong Format Try again....\n");
+                }
+                else
+                {
                     break;
                 }
             }
-            fclose(log2);
-
-            if (!found)
-            {
-                printf("\nWrong Format Try again....\n");
-            }
-            else
-            {
-                break;
-            }
+            break;
         }
-        break;
+
+
+
+
+
+        else
+        {
+            printf("\nWrong Choice, try again...\n\n");
+        }
     }
-
-
-
-
-
-    else
-    {
-        printf("\nWrong Choice, try again...\n\n");
-    }
-}
 
 
 
@@ -1262,101 +1405,101 @@ paymentp()
     while(1)
     {
         printf("\n\nEnter Number of Guest[MAX-100]: ");
-    scanf("%ld",&g);
-    getchar();
-    if (g > 0 && g <= 40)
-    {
-        printf("\n***Budget Type***\n");
-        drawLine(20);
-        a=g*500;
-        b=g*750;
-        printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",a,b);
-        printf("\n\nEnter Your Choice: ");
-        scanf("%d",&cho);
-        if(cho==1)
+        scanf("%ld",&g);
+        getchar();
+        if (g > 0 && g <= 40)
         {
-            amount=a;
+            printf("\n***Budget Type***\n");
+            drawLine(20);
+            a=g*500;
+            b=g*750;
+            printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",a,b);
+            printf("\n\nEnter Your Choice: ");
+            scanf("%d",&cho);
+            if(cho==1)
+            {
+                amount=a;
+            }
+            else
+            {
+                amount=b;
+            }
+            getchar();
+            break;
+        }
+        else if (g > 40 && g <= 60)
+        {
+            printf("\n***Budget Type***\n");
+            drawLine(20);
+            c=g*450;
+            d=g*675;
+            printf("You've got [10 Percent] discount on the original Budget price\n\n");
+            printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",c,d);
+            printf("\n\nEnter Your Choice: ");
+            scanf("%d",&cho);
+            if(cho==1)
+            {
+                amount=c;
+            }
+            else
+            {
+                amount=d;
+            }
+            getchar();
+            found=1;
+            break;
+        }
+        else if (g > 60 && g <= 80)
+        {
+            printf("\n***Budget Type***\n");
+            drawLine(20);
+            e=g*400;
+            f=g*600;
+            printf("You've got [20 Percent] discount on the original Budget price\n\n");
+            printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",e,f);
+            printf("\n\nEnter Your Choice: ");
+            scanf("%d",&cho);
+            if(cho==1)
+            {
+                amount=e;
+            }
+            else
+            {
+                amount=f;
+            }
+            getchar();
+            found=1;
+            break;
+        }
+        else if (g > 80 && g <= 100)
+        {
+            printf("\n***Budget Type***\n");
+            drawLine(20);
+            i=350*g;
+            h=525*g;
+            printf("You've got [30 Percent] discount on the original Budget price\n\n");
+            printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",i,h);
+            printf("\n\nEnter Your Choice: ");
+            scanf("%d",&cho);
+            if(cho==1)
+            {
+                amount=i;
+            }
+            else
+            {
+                amount=h;
+            }
+            getchar();
+            found=1;
+            break;
         }
         else
         {
-            amount=b;
+            printf("\nInvalid guest number.\n");
         }
-        getchar();
-        break;
-    }
-    else if (g > 40 && g <= 60)
-    {
-        printf("\n***Budget Type***\n");
-        drawLine(20);
-        c=g*450;
-        d=g*675;
-        printf("You've got [10 Percent] discount on the original Budget price\n\n");
-        printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",c,d);
-        printf("\n\nEnter Your Choice: ");
-        scanf("%d",&cho);
-        if(cho==1)
-        {
-            amount=c;
-        }
-        else
-        {
-            amount=d;
-        }
-        getchar();
-        found=1;
-        break;
-    }
-    else if (g > 60 && g <= 80)
-    {
-        printf("\n***Budget Type***\n");
-        drawLine(20);
-        e=g*400;
-        f=g*600;
-        printf("You've got [20 Percent] discount on the original Budget price\n\n");
-        printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",e,f);
-        printf("\n\nEnter Your Choice: ");
-        scanf("%d",&cho);
-        if(cho==1)
-        {
-            amount=e;
-        }
-        else
-        {
-            amount=f;
-        }
-        getchar();
-        found=1;
-        break;
-    }
-    else if (g > 80 && g <= 100)
-    {
-        printf("\n***Budget Type***\n");
-        drawLine(20);
-        i=350*g;
-        h=525*g;
-        printf("You've got [30 Percent] discount on the original Budget price\n\n");
-        printf("\n\t[1].Common Type[%ld TK]\n\t[2].Premium Type[%ld TK]",i,h);
-        printf("\n\nEnter Your Choice: ");
-        scanf("%d",&cho);
-        if(cho==1)
-        {
-            amount=i;
-        }
-        else
-        {
-            amount=h;
-        }
-        getchar();
-        found=1;
-        break;
-    }
-    else
-    {
-        printf("\nInvalid guest number.\n");
-    }
 
-    if(found==1)
-        break;
+        if(found==1)
+            break;
 
     }
 
@@ -1527,8 +1670,8 @@ userview()
 }
 adminview()
 {
-   View_Event_Information();
-   admin_dashboard();
+    View_Event_Information();
+    admin_dashboard();
 }
 
 
@@ -1549,27 +1692,27 @@ Service_Request()
 
     while(1)
     {
-      if(c1==1)
-    {
-        s1=10000;
-        break;
-    }
-    else if(c1==2)
-    {
-        s1=12000;
-        break;
-    }
-    else if(c1==3)
-    {
-        s1=5000;
-        break;
-    }
-    else
-    {
-        printf("\nWrong choice...\n\n");
-    }
+        if(c1==1)
+        {
+            s1=10000;
+            break;
+        }
+        else if(c1==2)
+        {
+            s1=12000;
+            break;
+        }
+        else if(c1==3)
+        {
+            s1=5000;
+            break;
+        }
+        else
+        {
+            printf("\nWrong choice...\n\n");
+        }
 
-    break;
+        break;
     }
     getchar();
     printf("\nWrite Here: ");
@@ -1583,22 +1726,22 @@ Service_Request()
 
     while(1)
     {
-      if(c2==1)
-    {
-        s2=4000;
-        break;
-    }
-    else if(c2==2)
-    {
-        s2=0;
-        break;
-    }
-    else
-    {
-        printf("\nWrong choice...\n\n");
-    }
+        if(c2==1)
+        {
+            s2=4000;
+            break;
+        }
+        else if(c2==2)
+        {
+            s2=0;
+            break;
+        }
+        else
+        {
+            printf("\nWrong choice...\n\n");
+        }
 
-    break;
+        break;
     }
     getchar();
     printf("\nWrite Here: ");
@@ -1612,22 +1755,22 @@ Service_Request()
 
     while(1)
     {
-      if(c3==1)
-    {
-        s3=3000;
-        break;
-    }
-    else if(c3==2)
-    {
-        s3=0;
-        break;
-    }
-    else
-    {
-        printf("\nWrong choice...\n\n");
-    }
+        if(c3==1)
+        {
+            s3=3000;
+            break;
+        }
+        else if(c3==2)
+        {
+            s3=0;
+            break;
+        }
+        else
+        {
+            printf("\nWrong choice...\n\n");
+        }
 
-    break;
+        break;
     }
     getchar();
     printf("\nWrite Here: ");
@@ -1640,22 +1783,22 @@ Service_Request()
 
     while(1)
     {
-      if(c4==1)
-    {
-        s4=2000;
-        break;
-    }
-    else if(c1==2)
-    {
-        s4=0;
-        break;
-    }
-    else
-    {
-        printf("\nWrong choice...\n\n");
-    }
+        if(c4==1)
+        {
+            s4=2000;
+            break;
+        }
+        else if(c1==2)
+        {
+            s4=0;
+            break;
+        }
+        else
+        {
+            printf("\nWrong choice...\n\n");
+        }
 
-    break;
+        break;
     }
     getchar();
     printf("\nWrite Here: ");
@@ -2316,13 +2459,14 @@ getPassword(char *pass)
         else
         {
             pass[i++] = ch;
-            printf("#");
+            printf("-");
         }
     }
 }
 
 
-change_password() {
+change_password()
+{
     struct login l;
     char uname[100], old_pass[100], new_pass[100];
     int found = 0;
@@ -2330,7 +2474,8 @@ change_password() {
     FILE *fp = fopen("login.txt", "r");
     FILE *temp1 = fopen("temp1.txt", "w");
 
-    if (fp == NULL) {
+    if (fp == NULL)
+    {
         printf("User file not found!\n");
         return;
     }
@@ -2341,8 +2486,10 @@ change_password() {
     getPassword(old_pass);
 
     while (fscanf(fp, "%s %s %s %s %s",
-                  l.fname, l.lname, l.username, l.pass, l.num) != EOF) {
-        if (strcmp(l.username, uname) == 0 && strcmp(l.pass, old_pass) == 0) {
+                  l.fname, l.lname, l.username, l.pass, l.num) != EOF)
+    {
+        if (strcmp(l.username, uname) == 0 && strcmp(l.pass, old_pass) == 0)
+        {
             found = 1;
             printf("Enter New Password: ");
             getPassword(new_pass);
@@ -2362,7 +2509,6 @@ change_password() {
     else
         printf("\nInvalid username or password!\n");
 }
-
 
 
 
