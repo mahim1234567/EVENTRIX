@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include <conio.h>
 #include <string.h>
-
+#include<windows.h>
 
 #define AC_BLACK "\x1b[30m"
 #define AC_RED "\x1b[31m"
@@ -29,7 +29,7 @@ front()
 
     printf("%s",AC_RED);
     printf("\t\t\t\t");
-    printf("_////////_//         _//_////////_///     _//_///////////_/////// _ //////_//      _//\n",AC_RED);
+    printf("_////////_//         _//_////////_///     _//_///////////_/////// _ //////_//      _//\n"AC_RED);
     printf("\t\t\t\t");
     printf("_//       _//       _// _//      _/ _//   _//     _//    _//    _//  _//   _//   _//  \n");
     printf("\t\t\t\t");
@@ -74,7 +74,7 @@ drawLine(int len)
 int main()
 {
 
-    //frontpage();
+    frontpage();
 
     printf("%s",AC_RED);
     int cho,cho2,cho3;
@@ -82,7 +82,7 @@ int main()
     printf("======\t\t\t\t\t <<<<<-----WELCOME TO EVENTRIX----->>>>>  \t\t\t\t======\n");
     drawLine(118);
     printf("\n\n");
-    printf("%s",AC_BLUE);
+printf("%s",AC_RED);
     printf("\t\t\t\t\t\t  [1].User/Coustomer.\n\n");
     printf("%s",AC_MAGENTA);
     printf("\t\t\t\t\t\t  [2].Admin/Manager.\n\n");
@@ -151,8 +151,9 @@ int main()
             else if(cho2==2)
             {
                 system("CLS");
+                printf("%s",AC_RED);
                 drawLine(120);
-                printf("\t\t\t\t\t<<<<<-----User Login----->>>>>\n");
+                printf("  [ EVENTTRIX ]\t\t\t\t <<<<<-----User Login Page----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
                 drawLine(120);
                 printf("\n\n");
                 login();
@@ -268,38 +269,52 @@ int registe()
     printf("\nEnter User name: ");
     scanf("%s", l.username);
 
+    int valid = 0;
+
+    while (!valid) {
+        printf("\nEnter a number (11 digits, starting with 01): ");
+        scanf("%16s", l.num);
+
+        int len = strlen(l.num);
+
+        if (len != 11) {
+            printf("\nInvalid: Number must be exactly 11 digits.\n");
+            continue;
+        }
+
+        if (l.num[0] != '0' || l.num[1] != '1') {
+            printf("\nInvalid: Number must start with 01.\n");
+            continue;
+        }
 
 
-   while(1) {
-        printf("\nEnter Your Phone Number: ");
-        scanf("%11s", l.num);
-
-        int valid = 1;
-
-
-        if(strlen(l.num) != 11)
-            valid = 0;
+        if (!isdigit(l.num[2]) || l.num[2] <= '2') {
+            printf("\nInvalid: 3rd digit must be greater than 2.\n");
+            continue;
+        }
 
 
-        if(l.num[0] != '0' || l.num[1] != '1' || (l.num[2] != '1' && l.num[2] != '2'))
-            valid = 0;
 
-
-        for(int i = 0; i < 11; i++) {
-            if(!isdigit(l.num[i])) {
-                valid = 0;
+        int all_digits = 1;
+        for (int i = 0; i < 11; i++) {
+            if (!isdigit(l.num[i])) {
+                all_digits = 0;
                 break;
             }
         }
 
-        if(valid) {
-            printf("\nEnter password: ");
-            getPassword(l.pass);
-            break;
-        } else {
-            printf("\nWrong Number Format! Please try again...\n");
+        if (!all_digits) {
+            printf("\nInvalid: Must contain only digits.\n");
+            continue;
         }
+
+        valid = 1;  // input is valid
     }
+
+    printf("\nEnter password: ");
+            getPassword(l.pass);
+
+
 
 
 
@@ -372,14 +387,20 @@ int registeA()
 }
 int login()
 {
-    char username[100];
+
+
+
+    while(1)
+    {
+        char username[100];
     char pass[100];
     FILE *log;
     log = fopen("login.txt", "r");
     struct login l;
+    printf("%s",AC_BLUE);
     printf("Enter user ID: ");
     scanf("%s", username);
-    printf("Enter Password: ");
+    printf("\nEnter Password: ");
     getPassword(pass);
 
     int found = 0;
@@ -393,8 +414,10 @@ int login()
     {
         if (strcmp(username, l.username) == 0 && strcmp(pass, l.pass) == 0)
         {
-            printf("\nSuccessfully login\n");
-            printf("Any key to continue..........");
+            printf("%s",AC_MAGENTA);
+            printf("\n\nSuccessfully login\n");
+            printf("%s",AC_GREEN);
+            printf("\nAny key to continue..........");
             getch();
             system("CLS");
             coustomer_dashboard();
@@ -405,13 +428,13 @@ int login()
 
     if (!found)
     {
-        printf("\nIncorrect username or password\n");
-        printf("Any key to continue..........");
-        getch();
-        system("CLS");
-        main();
+        printf("%s",AC_RED);
+        printf("\n\nIncorrect username or password try again............\n\n");
     }
     fclose(log);
+
+    }
+
 }
 int loginA()
 {
