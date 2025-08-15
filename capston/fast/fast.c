@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include <conio.h>
 #include <string.h>
-#include<windows.h>
+#include <time.h>
 
 #define AC_BLACK "\x1b[30m"
 #define AC_RED "\x1b[31m"
@@ -74,15 +74,22 @@ drawLine(int len)
 int main()
 {
 
-    frontpage();
+    //frontpage();
+    frontnext();
 
+
+
+}
+
+frontnext()
+{
     printf("%s",AC_RED);
     int cho,cho2,cho3;
     drawLine(118);
     printf("======\t\t\t\t\t <<<<<-----WELCOME TO EVENTRIX----->>>>>  \t\t\t\t======\n");
     drawLine(118);
     printf("\n\n");
-printf("%s",AC_RED);
+    printf("%s",AC_BLUE);
     printf("\t\t\t\t\t\t  [1].User/Coustomer.\n\n");
     printf("%s",AC_MAGENTA);
     printf("\t\t\t\t\t\t  [2].Admin/Manager.\n\n");
@@ -111,7 +118,7 @@ printf("%s",AC_RED);
             printf("%s",AC_CYAN);
             printf("\t\t\t\t\t\t  Enter your Choice: ");
             scanf("%d",&cho2);
-            printf("\n\n");
+
             if(cho2==1)
             {
                 int cr;
@@ -137,13 +144,12 @@ printf("%s",AC_RED);
                     printf("  [ EVENTTRIX ]\t\t\t\t<<<<<-----User Registration----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
                     drawLine(120);
                     printf("\n\n");
-
                     registe();
                 }
                 else
                 {
                     system("CLS");
-                    main();
+                    frontnext();
                 }
 
 
@@ -161,7 +167,7 @@ printf("%s",AC_RED);
             else if(cho2==0)
             {
                 system("CLS");
-                main();
+                frontnext();
             }
             else
             {
@@ -174,33 +180,69 @@ printf("%s",AC_RED);
 
             }
         }
+
+        ///////////////////////////////////////
         else if (cho == 2)
         {
             system("CLS");
+            printf("%s",AC_RED);
             drawLine(120);
-            printf("\t\t\t\t\t<<<<<-----Admin Registration/Login Page----->>>>>\n");
+            printf("  [ EVENTTRIX ]\t\t\t <<<<<-----Admin Registration/Login Page----->>>>>\t\t\t[ EVENTTRIX ]\n");
             drawLine(120);
             printf("\n\n");
-            printf("[1].Registration.\n");
-            printf("[2].Login.\n");
-            printf("[0].Back.\n\n");
-            printf("Enter your Choice: ");
+            printf("%s",AC_BLUE);
+            printf("\t\t\t\t\t\t  [1].Registration.\n\n");
+            printf("%s",AC_MAGENTA);
+            printf("\t\t\t\t\t\t  [2].Login.\n\n");
+            printf("%s",AC_RED);
+            printf("\t\t\t\t\t\t  [0].Back.\n\n");
+            printf("%s",AC_CYAN);
+            printf("\t\t\t\t\t\t  Enter your Choice: ");
             scanf("%d",&cho3);
-            printf("\n\n");
+
+
             if(cho3==1)
             {
+                int cr;
                 system("CLS");
+                printf("%s",AC_RED);
                 drawLine(120);
-                printf("\t\t\t\t\t<<<<<-----Admin Registration----->>>>>\n");
+                printf("  [ EVENTTRIX ]\t\t\t\t<<<<<-----Admin Registration----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
                 drawLine(120);
                 printf("\n\n");
-                registeA();
+                printf("%s",AC_BLUE);
+                printf("\t\t\t\t\t  [1].Complete Your Registration.\n\n");
+                printf("%s",AC_MAGENTA);
+                printf("\t\t\t\t\t  [0].Back.\n\n");
+                printf("%s",AC_CYAN);
+                printf("\t\t\t\t\t  Enter your Choice: ");
+                scanf("%d",&cr);
+
+
+                if(cr==1)
+                {
+                    system("CLS");
+                    printf("%s",AC_RED);
+                    drawLine(120);
+                    printf("  [ EVENTTRIX ]\t\t\t\t<<<<<-----Admin Registration----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
+                    drawLine(120);
+                    printf("\n\n");
+                    registeA();
+                }
+                else
+                {
+                    system("CLS");
+                    frontnext();
+                }
+
+
             }
             else if(cho3==2)
             {
                 system("CLS");
+                printf("%s",AC_RED);
                 drawLine(120);
-                printf("\t\t\t\t\t<<<<<-----Admin Login----->>>>>\n");
+                printf("  [ EVENTTRIX ]\t\t\t\t <<<<<-----Admin Login Page----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
                 drawLine(120);
                 printf("\n\n");
                 loginA();
@@ -208,7 +250,7 @@ printf("%s",AC_RED);
             else if(cho2==0)
             {
                 system("CLS");
-                main();
+                frontnext();
             }
             else
             {
@@ -221,7 +263,7 @@ printf("%s",AC_RED);
 
             }
         }
-        else if(cho==3)
+        else if(cho3==3)
         {
             system("CLS");
             printf("\n\n");
@@ -245,7 +287,6 @@ printf("%s",AC_RED);
         }
     }
     getch();
-
 }
 struct login
 {
@@ -261,65 +302,67 @@ int registe()
 {
     struct login l;
     printf("%s",AC_BLUE);
-    printf("Enter First name: ");
+    printf("\t\t\t\t\tEnter First name: ");
     scanf("%s", l.fname);
-    printf("\nEnter Last name: ");
+    printf("\n\t\t\t\t\tEnter Last name: ");
     scanf("%s", l.lname);
     printf("%s",AC_MAGENTA);
-    printf("\nEnter User name: ");
+    printf("\n\t\t\t\t\tEnter User name: ");
     scanf("%s", l.username);
 
     int valid = 0;
 
-    while (!valid) {
-        printf("\nEnter a number (11 digits, starting with 01): ");
+    while (!valid)
+    {
+
+        printf("\n\t\t\t\t\tEnter a number (11 digits, starting with 01): ");
         scanf("%16s", l.num);
 
         int len = strlen(l.num);
 
-        if (len != 11) {
-            printf("\nInvalid: Number must be exactly 11 digits.\n");
+        if (len != 11)
+        {
+            printf("%s",AC_RED);
+            printf("\n\t\t\t\t\tInvalid: Number must be exactly 11 digits.\n");
             continue;
         }
 
-        if (l.num[0] != '0' || l.num[1] != '1') {
-            printf("\nInvalid: Number must start with 01.\n");
+        if (l.num[0] != '0' || l.num[1] != '1')
+        {
+            printf("\n\t\t\t\t\tInvalid: Number must start with 01.\n");
             continue;
         }
 
 
-        if (!isdigit(l.num[2]) || l.num[2] <= '2') {
-            printf("\nInvalid: 3rd digit must be greater than 2.\n");
+        if (!isdigit(l.num[2]) || l.num[2] <= '2')
+        {
+            printf("\n\t\t\t\t\t\tInvalid: 3rd digit must be greater than 2.\n");
             continue;
         }
 
 
 
         int all_digits = 1;
-        for (int i = 0; i < 11; i++) {
-            if (!isdigit(l.num[i])) {
+        for (int i = 0; i < 11; i++)
+        {
+            if (!isdigit(l.num[i]))
+            {
                 all_digits = 0;
                 break;
             }
         }
 
-        if (!all_digits) {
-            printf("\nInvalid: Must contain only digits.\n");
+        if (!all_digits)
+        {
+            printf("\n\t\t\t\t\tInvalid: Must contain only digits.\n");
             continue;
         }
 
-        valid = 1;  // input is valid
+        valid = 1;
     }
 
-    printf("\nEnter password: ");
-            getPassword(l.pass);
-
-
-
-
-
-
-
+    printf("\n\t\t\t\t\tEnter password: ");
+    getPassword(l.pass);
 
 
 
@@ -338,49 +381,105 @@ int registe()
     fclose(log);
     printf("%s",AC_YELLOW);
 
-    printf("\n\nRegistration successfully\n");
+    printf("\n\n\t\t\t\t\tRegistration successfully\n");
 
-    printf("Your User name is your User id\n\n");
+    printf("\n\t\t\t\t\tYour User name is your User id\n\n");
 
     printf("%s",AC_GREEN);
-    printf("Any key to continue..........");
+    printf("\t\t\t\t\tAny key to continue..........");
     getch();
     system("CLS");
     login();
 }
 int registeA()
 {
-    FILE *log1;
-
-    log1 = fopen("loginA.txt", "a");
     struct login l;
-
-    printf("Enter Fast name: ");
+    printf("%s",AC_BLUE);
+    printf("\t\t\t\t\tEnter First name: ");
     scanf("%s", l.fname);
-    printf("Enter Last name: ");
+    printf("\n\t\t\t\t\tEnter Last name: ");
     scanf("%s", l.lname);
-    printf("Enter User name: ");
+    printf("%s",AC_MAGENTA);
+    printf("\n\t\t\t\t\tEnter User name: ");
     scanf("%s", l.username);
-    printf("Enter Your Phone Number: ");
-    scanf("%s", l.num);
-    printf("Enter password: ");
+
+    int valid = 0;
+
+    while (!valid)
+    {
+
+        printf("\n\t\t\t\t\tEnter a number (11 digits, starting with 01): ");
+        scanf("%16s", l.num);
+
+        int len = strlen(l.num);
+
+        if (len != 11)
+        {
+            printf("%s",AC_RED);
+            printf("\n\t\t\t\t\tInvalid: Number must be exactly 11 digits.\n");
+            continue;
+        }
+
+        if (l.num[0] != '0' || l.num[1] != '1')
+        {
+            printf("\n\t\t\t\t\tInvalid: Number must start with 01.\n");
+            continue;
+        }
+
+
+        if (!isdigit(l.num[2]) || l.num[2] <= '2')
+        {
+            printf("\n\t\t\t\t\t\tInvalid: 3rd digit must be greater than 2.\n");
+            continue;
+        }
+
+
+
+        int all_digits = 1;
+        for (int i = 0; i < 11; i++)
+        {
+            if (!isdigit(l.num[i]))
+            {
+                all_digits = 0;
+                break;
+            }
+        }
+
+        if (!all_digits)
+        {
+            printf("\n\t\t\t\t\tInvalid: Must contain only digits.\n");
+            continue;
+        }
+
+        valid = 1;
+    }
+
+    printf("\n\t\t\t\t\tEnter password: ");
     getPassword(l.pass);
-    if (log1 == NULL)
+
+
+
+    FILE *log;
+
+    log = fopen("loginA.txt", "a");
+    if (log == NULL)
     {
         printf("File not found!\n");
         return;
     }
 
 
-    fprintf(log1, "%s\t\t%s\t\t%s\t\t%s\t\t%s\n", l.fname, l.lname, l.username, l.pass,l.num);
+    fprintf(log, "%s\t\t%s\t\t%s\t\t%s\t\t%s\n", l.fname, l.lname, l.username, l.pass, l.num);
 
-    fclose(log1);
+    fclose(log);
+    printf("%s",AC_YELLOW);
 
-    printf("\nRegistration successfully\n\n");
+    printf("\n\n\t\t\t\t\tRegistration successfully\n");
 
-    printf("Your User name is your User id\n\n");
+    printf("\n\t\t\t\t\tYour User name is your User id\n\n");
 
-    printf("Any key to continue..........");
+    printf("%s",AC_GREEN);
+    printf("\t\t\t\t\tAny key to continue..........");
     getch();
     system("CLS");
     loginA();
@@ -389,96 +488,165 @@ int login()
 {
 
 
-
-    while(1)
-    {
-        char username[100];
-    char pass[100];
-    FILE *log;
-    log = fopen("login.txt", "r");
-    struct login l;
+    int cr;
+    system("CLS");
+    printf("%s",AC_RED);
+    drawLine(120);
+    printf("  [ EVENTTRIX ]\t\t\t\t\t<<<<<-----User Login----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
+    drawLine(120);
+    printf("\n");
     printf("%s",AC_BLUE);
-    printf("Enter user ID: ");
-    scanf("%s", username);
-    printf("\nEnter Password: ");
-    getPassword(pass);
+    printf("\t\t\t\t\t       [1].Complete Your Loging.\n\n");
+    printf("%s",AC_MAGENTA);
+    printf("\t\t\t\t\t       [0].Back.\n\n");
+    printf("%s",AC_CYAN);
+    printf("\t\t\t\t\t       Enter your Choice: ");
+    scanf("%d",&cr);
+    system("CLS");
 
-    int found = 0;
-    if (log == NULL)
-    {
-        printf("File not found!\n");
-        return;
-    }
+    printf("%s",AC_RED);
+    drawLine(120);
+    printf("  [ EVENTTRIX ]\t\t\t\t\t<<<<<-----User Login----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
+    drawLine(120);
 
-    while (fscanf(log,"%s\t\t%s\t\t%s\t\t%s\t\t%s", l.fname, l.lname, l.username, l.pass, l.num) != EOF)
+
+    if(cr==1)
     {
-        if (strcmp(username, l.username) == 0 && strcmp(pass, l.pass) == 0)
+
+        while(1)
         {
-            printf("%s",AC_MAGENTA);
-            printf("\n\nSuccessfully login\n");
-            printf("%s",AC_GREEN);
-            printf("\nAny key to continue..........");
-            getch();
-            system("CLS");
-            coustomer_dashboard();
-            found = 1;
-            break;
+
+            char username[100];
+            char pass[100];
+            FILE *log;
+            log = fopen("login.txt", "r");
+            struct login l;
+            printf("%s",AC_BLUE);
+            printf("\n\t\t\t\t\t\t  Enter user ID: ");
+            scanf("%s", username);
+            printf("\n\t\t\t\t\t\t  Enter Password: ");
+            getPassword(pass);
+
+            int found = 0;
+            if (log == NULL)
+            {
+                printf("File not found!\n");
+                return;
+            }
+
+            while (fscanf(log,"%s\t\t%s\t\t%s\t\t%s\t\t%s", l.fname, l.lname, l.username, l.pass, l.num) != EOF)
+            {
+                if (strcmp(username, l.username) == 0 && strcmp(pass, l.pass) == 0)
+                {
+                    printf("%s",AC_MAGENTA);
+                    printf("\n\n\t\t\t\t\t\t  Successfully login\n");
+                    printf("%s",AC_GREEN);
+                    printf("\n\t\t\t\t\t\t  Any key to continue..........");
+                    getch();
+                    system("CLS");
+                    coustomer_dashboard();
+                    found = 1;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                printf("%s",AC_RED);
+                printf("\n\n\t\t\t\t\t\t  Incorrect username or password try again............\n\n");
+            }
+            fclose(log);
+
         }
     }
 
-    if (!found)
+    else
     {
-        printf("%s",AC_RED);
-        printf("\n\nIncorrect username or password try again............\n\n");
+        system("CLS");
+        frontnext();
     }
-    fclose(log);
 
-    }
 
 }
 int loginA()
 {
-    char usernameA[100];
-    char passA[100];
-    FILE *log1;
-    log1 = fopen("loginA.txt", "r");
-    struct login l;
-    printf("Enter user ID: ");
-    scanf("%s", usernameA);
-    printf("Enter Password: ");
-    getPassword(passA);
+    int cr;
+    system("CLS");
+    printf("%s",AC_RED);
+    drawLine(120);
+    printf("  [ EVENTTRIX ]\t\t\t\t\t<<<<<-----Admin Login----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
+    drawLine(120);
+    printf("\n");
+    printf("%s",AC_BLUE);
+    printf("\t\t\t\t\t       [1].Complete Your Loging.\n\n");
+    printf("%s",AC_MAGENTA);
+    printf("\t\t\t\t\t       [0].Back.\n\n");
+    printf("%s",AC_CYAN);
+    printf("\t\t\t\t\t       Enter your Choice: ");
+    scanf("%d",&cr);
+    system("CLS");
 
-    int found = 0;
+    printf("%s",AC_RED);
+    drawLine(120);
+    printf("  [ EVENTTRIX ]\t\t\t\t\t<<<<<-----Admin Login----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
+    drawLine(120);
 
-    if (log1 == NULL)
+
+    if(cr==1)
     {
-        printf("File not found!\n");
-        return;
-    }
 
-    while (fscanf(log1,"%s\t\t%s\t\t%s\t\t%s\t\t%s", l.fname, l.lname, l.username, l.pass, l.num) != EOF)
-    {
-        if (strcmp(usernameA, l.username) == 0 && strcmp(passA, l.pass) == 0)
+        while(1)
         {
-            printf("\nSuccessfully login\n");
-            printf("Any key to continue..........");
-            getch();
-            system("CLS");
-            admin_dashboard();
-            found = 1;
-            break;
+
+            char username[100];
+            char pass[100];
+            FILE *log;
+            log = fopen("loginA.txt", "r");
+            struct login l;
+            printf("%s",AC_BLUE);
+            printf("\n\t\t\t\t\t\t  Enter user ID: ");
+            scanf("%s", username);
+            printf("\n\t\t\t\t\t\t  Enter Password: ");
+            getPassword(pass);
+
+            int found = 0;
+            if (log == NULL)
+            {
+                printf("File not found!\n");
+                return;
+            }
+
+            while (fscanf(log,"%s\t\t%s\t\t%s\t\t%s\t\t%s", l.fname, l.lname, l.username, l.pass, l.num) != EOF)
+            {
+                if (strcmp(username, l.username) == 0 && strcmp(pass, l.pass) == 0)
+                {
+                    printf("%s",AC_MAGENTA);
+                    printf("\n\n\t\t\t\t\t\t  Successfully login\n");
+                    printf("%s",AC_GREEN);
+                    printf("\n\t\t\t\t\t\t  Any key to continue..........");
+                    getch();
+                    system("CLS");
+                    admin_dashboard();
+                    found = 1;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                printf("%s",AC_RED);
+                printf("\n\n\t\t\t\t\t\t  Incorrect username or password try again............\n\n");
+            }
+            fclose(log);
+
         }
     }
 
-    if (!found)
+    else
     {
-        printf("\nIncorrect username or password\n");
-        printf("Any key to continue..........");
-        getch();
         system("CLS");
-        main();
+        frontnext();
     }
-    fclose(log1);
 }
 
 int Delete_Event()
@@ -548,24 +716,29 @@ int Delete_Event()
 
 int coustomer_dashboard()
 {
+    printf("%s",AC_RED);
     drawLine(120);
-    printf("\t\t\t\t\t<<<<<-----Customer Dashboard----->>>>>\n");
+    printf("  [ EVENTTRIX ]\t\t\t\t<<<<<-----Customer Dashboard----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
     drawLine(120);
+    printf("%s",AC_BLUE);
     printf("\n\n");
-    printf("[1].Event Selection\n");
-    printf("[2].View Booking Event Information.\n");
-    printf("[3].Service Request\n");
-    printf("[4].Equipment Rental\n");
-    printf("[5].View Offer for Discount\n");
-    printf("[6].View Rules and Condition\n");
-    printf("[7].Event Approval Message\n");
-    printf("[8].Submit Feedback\n");
-    printf("[9].Contact Us\n");
-    printf("[10].Password Change\n");
-    printf("[0].Home Page\n");
+    printf("\t\t\t\t\t      [1].Event Selection\n\n");
+    printf("\t\t\t\t\t      [2].Service Request\n\n");
+    printf("\t\t\t\t\t      [3].Equipment Rental\n\n");
+    printf("%s",AC_MAGENTA);
+    printf("\t\t\t\t\t      [4].View Offer for Discount\n\n");
+    printf("\t\t\t\t\t      [5].View Rules and Condition\n\n");
+    printf("\t\t\t\t\t      [6].Event Approval Message\n\n");
+    printf("%s",AC_CYAN);
+    printf("\t\t\t\t\t      [7].Submit Feedback\n\n");
+    printf("\t\t\t\t\t      [8].Contact Us\n\n");
+    printf("\t\t\t\t\t      [9].Password Change\n\n");
+    printf("%s",AC_GREEN);
+    printf("\t\t\t\t\t      [0].Home Page\n\n");
     printf("\n");
     int c;
-    printf("Enter your Choice: ");
+    printf("%s",AC_CYAN);
+    printf("\t\t\t\t\t      Enter your Choice: ");
     scanf("%d",&c);
 
     if(c==1)
@@ -575,27 +748,23 @@ int coustomer_dashboard()
     }
     else if(c==2)
     {
-        userview();
+        Service_Request();
     }
     else if(c==3)
     {
-        Service_Request();
+        Equipment_Rental();
     }
     else if(c==4)
     {
-        Equipment_Rental();
-    }
-    else if(c==5)
-    {
         viewa();
     }
-    else if(c==6)
+    else if(c==5)
     {
 
         system("CLS");
         viewr();
     }
-    else if(c==7)
+    else if(c==6)
     {
         system("CLS");
         drawLine(120);
@@ -609,15 +778,15 @@ int coustomer_dashboard()
         coustomer_dashboard();
 
     }
-    else if(c==8)
+    else if(c==7)
     {
         Submit_Feedback();
     }
-    else if(c==9)
+    else if(c==8)
     {
         Contact_Us();
     }
-    else if(c==10)
+    else if(c==9)
     {
         system("CLS");
         drawLine(120);
@@ -1051,33 +1220,36 @@ View_Event_Approval()
 
 Event_Selection()
 {
+    printf("%s",AC_RED);
     drawLine(120);
-    printf("\t\t\t\t\t<<<<<-----Event Selection----->>>>>\n");
+    printf("  [ EVENTTRIX ]\t\t\t\t<<<<<-----Event Selection----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
     drawLine(120);
     printf("\n\n\n");
-
+    printf("%s",AC_CYAN);
     printf("\t\t\t\t    <<<<<-----[Available Event Type]----->>>>>\n");
     for(int i=1; i<=120; i++)
     {
         printf("-");
     }
     printf("\n\n");
-    printf("[A].Marriage Event Booking.\n\n");
-    printf("[B].Birthday Event Booking.\n\n");
-    printf("[C].Institution Event Booking.\n\n");
-    printf("[D].Cultural Event Booking.\n\n");
-    printf("[E].Seminar Event Booking.\n\n\n");
-    printf("\n\nAny key to continue..........");
+    printf("\t\t\t\t\t   [A].Marriage Event Booking.\n\n");
+    printf("\t\t\t\t\t   [B].Birthday Event Booking.\n\n");
+    printf("\t\t\t\t\t   [C].Institution Event Booking.\n\n");
+    printf("\t\t\t\t\t   [D].Cultural Event Booking.\n\n");
+    printf("\t\t\t\t\t   [E].Seminar Event Booking.\n\n\n");
+    printf("\n\n\t\t\t\t\t   Any key to continue..........");
     getch();
     system("CLS");
-
+    printf("%s",AC_RED);
     drawLine(120);
-    printf("\t\t\t\t\t    <<<<<-----Decision----->>>>>\n");
+    printf("  [ EVENTTRIX ]\t\t\t\t    <<<<<------Decision----->>>>>    \t\t\t\t[ EVENTTRIX ]\n");
     drawLine(120);
     printf("\n\n");
     int cho;
-    printf("[1].Event Booking.\n\n[2].Back To Customer Dashboard.");
-    printf("\n\nEnter your Choice: ");
+    printf("%s",AC_MAGENTA);
+    printf("\t\t\t\t\t   [1].Event Booking.\n\n\t\t\t\t\t   [2].Back To Customer Dashboard.");
+    printf("%s",AC_CYAN);
+    printf("\n\n\t\t\t\t\t   Enter your Choice: ");
     scanf("%d",&cho);
 
     if(cho==1)
@@ -1092,37 +1264,223 @@ Event_Selection()
     }
 
 }
-Booking()
-{
-    char pname[100],dname[100],uname[100],vname[100],ename[100],number[100],email[100];
-    int g,b,cho;
 
+int isLeapYear(int year) {
+    return ( (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0) );
+}
+
+int isValidDate(int d, int m, int y) {
+    if (y < 1900 || m < 1 || m > 12 || d < 1) return 0;
+
+    int daysInMonth[] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+    if (isLeapYear(y)) daysInMonth[2] = 29;
+
+    if (d > daysInMonth[m]) return 0;
+    return 1;
+}
+
+int isFutureDate(int d, int m, int y) {
+    time_t t = time(NULL);
+    struct tm today = *localtime(&t);
+
+    int cd = today.tm_mday;
+    int cm = today.tm_mon + 1;
+    int cy = today.tm_year + 1900;
+
+    if (y > cy) return 1;
+    if (y == cy && m > cm) return 1;
+    if (y == cy && m == cm && d >= cd) return 1;
+
+    return 0;
+}
+
+
+void Booking()
+{
+    char pname[100],dname[100],uname[100],vname[100],ename[100],number[100];
+    int g,b,cho;
+printf("%s",AC_RED);
     drawLine(120);
-    printf("\t\t\t\t\t<<<<<-----Event Booking----->>>>>\n");
+
+    printf("  [ EVENTTRIX ]\t\t\t\t    <<<<<-----Event Booking----->>>>>    \t\t\t[ EVENTTRIX ]\n");
     drawLine(120);
     printf("\n\n");
     getchar();
 
-    printf("Enter Event Type: ");
+    printf("%s",AC_BLUE);
+
+
+
+
+    while (1)
+{
+    printf("\t\t\t\t\t  Enter Event Type: ");
     gets(ename);
-    printf("Enter User Name: ");
-    gets(uname);
-    printf("Enter User Number: ");
-    gets(number);
-    printf("Enter User Email: ");
-    gets(email);
+
+    FILE *log3 = fopen("eventtype.txt", "r");
+    if (!log3)
+    {
+        printf("%s", AC_RED);
+        printf("\n\t\t\t\t\t  File not found!\n");
+        exit(1);
+    }
+
+    int found = 0;
+    char evname[100];
+
+    while (fscanf(log3, "%s", evname) != EOF)
+    {
+        if (strcmp(ename, evname) == 0)
+        {
+            found = 1;
+            break;
+        }
+    }
+    fclose(log3);
+
+    if (!found)
+    {
+        printf("%s", AC_RED);
+        printf("\n\n\t\t\t\t\t  Wrong event Try again....\n\n");
+        printf("%s", AC_BLUE);
+    }
+    else
+    {
+        break;
+    }
+}
+
+
+
+     printf("\n\t\t\t\t\t  Enter User Name:  ");
+        scanf("%s",uname );
+
+
+
+
+     int valid = 0;
+
+    while (!valid)
+    {
+
+        printf("\n\t\t\t\t\t  Enter User number[01XX..]:  ");
+        scanf("%16s", number);
+
+        int len = strlen(number);
+
+        if (len != 11)
+        {
+            printf("%s",AC_RED);
+            printf("\n\t\t\t\t\t  Invalid Number...\n");
+            printf("%s",AC_BLUE);
+            continue;
+        }
+
+        if (number[0] != '0' || number[1] != '1')
+        {
+            printf("%s",AC_RED);
+            printf("\n\t\t\t\t\t  Invalid Number...\n");
+            printf("%s",AC_BLUE);
+            continue;
+        }
+
+
+        if (!isdigit(number[2]) || number[2] <= '2')
+        {
+            printf("%s",AC_RED);
+            printf("\n\t\t\t\t\t  Invalid Number...\n");
+            printf("%s",AC_BLUE);
+            continue;
+        }
+
+
+
+        int all_digits = 1;
+        for (int i = 0; i < 11; i++)
+        {
+            if (!isdigit(number[i]))
+            {
+                all_digits = 0;
+                break;
+            }
+        }
+
+        if (!all_digits)
+        {
+            printf("%s",AC_RED);
+            printf("\n\t\t\t\t\t  Invalid Number...\n");
+            printf("%s",AC_BLUE);
+            continue;
+        }
+
+        valid = 1;
+    }
+
+    printf("%s",AC_MAGENTA);
+    // -------------------- Date Input --------------------
+    int day, month, year;
+    while (1) {
+        printf("\n\t\t\t\t\t  Enter Booking Date (dd mm yyyy): ");
+        scanf("%d %d %d", &day, &month, &year);
+        getchar();
+
+        if (!isValidDate(day, month, year)) {
+                printf("%s",AC_RED);
+            printf("\n\t\t\t\t\t  Invalid date format! Try again.\n");
+            printf("%s",AC_BLUE);
+            continue;
+        }
+        if (!isFutureDate(day, month, year)) {
+            printf("%s",AC_RED);
+            printf("\n\t\t\t\t\t  Invalid! Past date not allowed.\n");
+            printf("%s",AC_BLUE);
+            continue;
+        }
+        break;
+    }
+    // -----------------------------------------------------
+
+    struct tm bookingDate = {0}; // Initialize to 0
+    bookingDate.tm_mday = day;
+    bookingDate.tm_mon = month - 1; // Month 0-11
+    bookingDate.tm_year = year - 1900; // Years since 1900
+
+    // Normalize and calculate weekday
+    mktime(&bookingDate);
+
+    char *days[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+
+    printf("\n\t\t\t\t\t  Day of the week: %s\n", days[bookingDate.tm_wday]);
+
+
+    char startTime[10], endTime[10];
+
+    printf("%s", AC_BLUE);
+    printf("\n\t\t\t\t\t  Enter Event Starting Time (HH:MM): ");
+    scanf("%9s", startTime);
+
+    printf("\n\t\t\t\t\t  Enter Event Ending Time (HH:MM): ");
+    scanf("%9s", endTime);
+
+
+
+
 
     printf("\n");
     while (1)
     {
-        printf("<<<Place Name>>>\n");
+        printf("%s",AC_BLUE);
+        printf("\n\t\t\t\t\t  <<<Place Name>>>\n");
+        printf("\t\t\t\t\t  ");
         drawLine(20);
-        printf("\n[1].Dhaka");
-        printf("\n[2].Chattogram");
-        printf("\n[3].Rajshahi");
-        printf("\n[4].Gazipur");
-        printf("\n[5].Tangail");
-        printf("\n\nEnter Your Choice: ");
+        printf("%s",AC_GREEN);
+        printf("\n\t\t\t\t\t    [1].Dhaka");
+        printf("\n\t\t\t\t\t    [2].Chattogram");
+        printf("\n\t\t\t\t\t    [3].Rajshahi");
+        printf("\n\t\t\t\t\t    [4].Gazipur");
+        printf("\n\t\t\t\t\t    [5].Tangail");
+        printf("%s",AC_CYAN);
+        printf("\n\n\t\t\t\t\t  Enter Your Choice: ");
         scanf("%d", &cho);
         getchar();
 
@@ -1130,13 +1488,15 @@ Booking()
         {
             while (1)
             {
-                printf("\nEnter Place Name: ");
+                printf("%s",AC_BLUE);
+                printf("\n\n\t\t\t\t\t  Enter Place Name: ");
                 gets(pname);
 
                 FILE *log2 = fopen("dhaka.txt", "r");
                 if (!log2)
                 {
-                    printf("File not found!\n");
+                    printf("%s",AC_RED);
+                    printf("\n\t\t\t\t\t  File not found!\n");
                     exit(1);
                 }
 
@@ -1147,9 +1507,11 @@ Booking()
                 {
                     if (strcmp(pname, cname) == 0)
                     {
-                        printf("\n<<<Venue Name>>>\n");
+                        printf("%s",AC_CYAN);
+                        printf("\n\n\t\t\t\t\t  <<<Venue Name>>>\n");
+                        printf("\t\t\t\t\t  ");
                         drawLine(20);
-                        printf("\n\t[1].Dhaka Convention Center(DCC)\n\t[2].International Convention City Bashundhara (ICCB)");
+                        printf("\n\t\t\t\t\t  [1].Dhaka Convention Center(DCC)\n\t\t\t\t\t  [2].International Convention City Bashundhara (ICCB)");
                         found = 1;
                         break;
                     }
@@ -1158,7 +1520,8 @@ Booking()
 
                 if (!found)
                 {
-                    printf("\nWrong Format Try again....\n");
+                    printf("%s",AC_RED);
+                    printf("\n\n\t\t\t\t\t  Wrong Format Try again....\n");
                 }
                 else
                 {
@@ -1167,21 +1530,20 @@ Booking()
             }
             break;
         }
-
-
-
 
         else if (cho ==2 )
         {
             while (1)
             {
-                printf("\nEnter Place Name: ");
+                printf("%s",AC_BLUE);
+                printf("\n\t\t\t\t\t  Enter Place Name: ");
                 gets(pname);
 
                 FILE *log2 = fopen("Chattogram.txt", "r");
                 if (!log2)
                 {
-                    printf("File not found!\n");
+                    printf("%s",AC_RED);
+                    printf("\n\t\t\t\t\t  File not found!\n");
                     exit(1);
                 }
 
@@ -1192,9 +1554,13 @@ Booking()
                 {
                     if (strcmp(pname, cname) == 0)
                     {
-                        printf("\n<<<Venue Name>>>\n");
+                        printf("%s",AC_MAGENTA);
+                        printf("\n\n\t\t\t\t\t  <<<Venue Name>>>\n");
+                        printf("\t\t\t\t\t  ");
                         drawLine(20);
-                        printf("\n\t[1].GEC Covention Center(GCC)\n\t[2].Radisson Blu Chattogram Bay View(RBCBY)");
+                        printf("%s",AC_GREEN);
+
+                        printf("\n\t\t\t\t\t  [1].GEC Covention Center(GCC)\n\t\t\t\t\t  [2].Radisson Blu Chattogram Bay View(RBCBY)");
                         found = 1;
                         break;
                     }
@@ -1203,7 +1569,8 @@ Booking()
 
                 if (!found)
                 {
-                    printf("\nWrong Format Try again....\n");
+                    printf("%s",AC_RED);
+                    printf("\n\t\t\t\t\t  Wrong Format Try again....\n");
                 }
                 else
                 {
@@ -1212,19 +1579,20 @@ Booking()
             }
             break;
         }
-
 
         else if (cho ==3 )
         {
             while (1)
             {
-                printf("\nEnter Place Name: ");
+                printf("%s",AC_BLUE);
+                printf("\n\t\t\t\t\t  Enter Place Name: ");
                 gets(pname);
 
                 FILE *log2 = fopen("Rajshahi.txt", "r");
                 if (!log2)
                 {
-                    printf("File not found!\n");
+                    printf("%s",AC_RED);
+                    printf("\n\t\t\t\t\t  File not found!\n");
                     exit(1);
                 }
 
@@ -1235,9 +1603,11 @@ Booking()
                 {
                     if (strcmp(pname, cname) == 0)
                     {
-                        printf("\n<<<Venue Name>>>\n");
+                        printf("%s",AC_BLUE);
+                        printf("\n\t\t\t\t\t  <<<Venue Name>>>\n");
+                        printf("\t\t\t\t\t  ");
                         drawLine(20);
-                        printf("\n\t[1].Padma Convention Center(PCC)\n\t[2].Hotel Nice International Banquet Hall(HNIBH)");
+                        printf("\n\t\t\t\t\t  [1].Padma Convention Center(PCC)\n\t\t\t\t\t  [2].Hotel Nice International Banquet Hall(HNIBH)");
                         found = 1;
                         break;
                     }
@@ -1246,7 +1616,8 @@ Booking()
 
                 if (!found)
                 {
-                    printf("\nWrong Format Try again....\n");
+                    printf("%s",AC_RED);
+                    printf("\n\t\t\t\t\t  Wrong Format Try again....\n");
                 }
                 else
                 {
@@ -1255,20 +1626,20 @@ Booking()
             }
             break;
         }
-
-
 
         else if (cho ==4 )
         {
             while (1)
             {
-                printf("\nEnter Place Name: ");
+                printf("%s",AC_BLUE);
+                printf("\n\t\t\t\t\t  Enter Place Name: ");
                 gets(pname);
 
                 FILE *log2 = fopen("Gazipur.txt", "r");
                 if (!log2)
                 {
-                    printf("File not found!\n");
+                    printf("%s",AC_RED);
+                    printf("\n\t\t\t\t\t  File not found!\n");
                     exit(1);
                 }
 
@@ -1279,9 +1650,12 @@ Booking()
                 {
                     if (strcmp(pname, cname) == 0)
                     {
-                        printf("\n<<<Venue Name>>>\n");
+                        printf("%s",AC_MAGENTA);
+                        printf("\n\t\t\t\t\t  <<<Venue Name>>>\n");
+                        printf("\t\t\t\t\t\t  ");
                         drawLine(20);
-                        printf("\n\t[1].Dream Square Resort(DSR)\n\t[2].Padma Resort(PR)");
+                        printf("%s",AC_GREEN);
+                        printf("\n\t\t\t\t\t  [1].Dream Square Resort(DSR)\n\t\t\t\t\t  [2].Padma Resort(PR)");
                         found = 1;
                         break;
                     }
@@ -1290,7 +1664,8 @@ Booking()
 
                 if (!found)
                 {
-                    printf("\nWrong Format Try again....\n");
+                    printf("%s",AC_RED);
+                    printf("\n\t\t\t\t\t  Wrong Format Try again....\n");
                 }
                 else
                 {
@@ -1299,21 +1674,20 @@ Booking()
             }
             break;
         }
-
-
-
 
         else if (cho ==5 )
         {
             while (1)
             {
-                printf("\nEnter Place Name: ");
+                printf("%s",AC_BLUE);
+                printf("\n\t\t\t\t\t  Enter Place Name: ");
                 gets(pname);
 
                 FILE *log2 = fopen("Tangail.txt", "r");
                 if (!log2)
                 {
-                    printf("File not found!\n");
+                    printf("%s",AC_RED);
+                    printf("\n\t\t\t\t\t  File not found!\n");
                     exit(1);
                 }
 
@@ -1324,9 +1698,13 @@ Booking()
                 {
                     if (strcmp(pname, cname) == 0)
                     {
-                        printf("\n<<<Venue Name>>>\n");
+                        printf("%s",AC_MAGENTA);
+                        printf("\n\t\t\t\t\t  <<<Venue Name>>>\n");
+                        printf("\t\t\t\t\t  ");
+
                         drawLine(20);
-                        printf("\n\t[1].Tangail Town Convention Hall(TTCH)\n\t[2].Elenga Resort(ER)");
+                        printf("%s",AC_GREEN);
+                        printf("\n\t\t\t\t\t  [1].Tangail Town Convention Hall(TTCH)\n\t\t\t\t\t  [2].Elenga Resort(ER)");
                         found = 1;
                         break;
                     }
@@ -1335,7 +1713,8 @@ Booking()
 
                 if (!found)
                 {
-                    printf("\nWrong Format Try again....\n");
+                    printf("%s",AC_RED);
+                    printf("\n\t\t\t\t\t  Wrong Format Try again....\n");
                 }
                 else
                 {
@@ -1345,21 +1724,17 @@ Booking()
             break;
         }
 
-
-
-
-
         else
         {
-            printf("\nWrong Choice, try again...\n\n");
+            printf("%s",AC_RED);
+            printf("\n\t\t\t\t\t  Wrong Choice, try again...\n\n");
         }
     }
 
-
-
     while(1)
     {
-        printf("\n\nEnter Venue Name[Like (DCC)]: ");
+        printf("%s",AC_BLUE);
+        printf("\n\n\t\t\t\t\t  Enter Venue Name[Like (DCC)]: ");
         gets(vname);
         FILE *log1;
         log1 = fopen("venu.txt", "r");
@@ -1371,7 +1746,8 @@ Booking()
         {
             if (strcmp(vname, ckname) == 0)
             {
-                printf("\nSuccessfully select venue\n");
+                printf("%s",AC_GREEN);
+                printf("\n\t\t\t\t\t  Successfully select venue\n");
                 found = 1;
                 break;
             }
@@ -1379,7 +1755,8 @@ Booking()
 
         if (!found)
         {
-            printf("\nWrong Format Try again....\n");
+            printf("%s",AC_RED);
+            printf("\n\t\t\t\t\t  Wrong Format Try again....\n");
         }
         else
         {
@@ -1389,38 +1766,39 @@ Booking()
     }
 
     system("CLS");
-
-
-
-    printf("\nBooking successfully\n\n");
-    printf("Complete Your Payment\n\n");
-    printf("Any key to continue..........");
+    printf("%s",AC_BLUE);
+    printf("\n\n\t\t\t\t\t  Booking successfully\n\n");
+    printf("\n\n\t\t\t\t\t  Complete Your Payment\n\n");
+    printf("%s",AC_GREEN);
+    printf("\n\n\t\t\t\t\t  Any key to continue..........");
     getch();
     system("CLS");
 
-
     FILE *M;
-
     M = fopen("booking.txt", "a");
     if (M == NULL)
     {
-        printf("File not found!\n");
+        printf("%s",AC_RED);
+        printf("\n\t\t\t\t\t  File not found!\n");
         return;
     }
 
-    fprintf(M,"%s\t%s\t%s\t%s\t%s\n", ename, uname, number, vname, pname);
-
+    fprintf(M,"%s %s %s %s %s %s %02d/%02d/%04d %s-%s\n",ename, uname, number, vname, pname, days[bookingDate.tm_wday],day, month, year, startTime, endTime);
     fclose(M);
 
-
-    paymentp();
-
+    paymentp(days[bookingDate.tm_wday]);
 }
 
 
 
-paymentp()
+paymentp(char day[])
 {
+    char weekf[100]={"Friday"};
+    char weeks[100]={"Saturday"};
+    if(strcmp(day,weekf)==0 || strcmp(day,weeks)==0)
+    {
+        printf("You get 10 persent discount");
+    }
     long int g,b,a,c,d,e,f,i,h,amount,cho,return_tk,due;
     char dname[100];
     int found=0;
@@ -1525,10 +1903,6 @@ paymentp()
             break;
 
     }
-
-
-    printf("Enter Date[Like 3-May]: ");
-    gets(dname);
 
 
 
@@ -1654,7 +2028,8 @@ view_payment()
 
 View_Event_Information()
 {
-    char pname[100], number[100],uname[100],vname[100],ename[100];
+    char pname[100], number[100], uname[100], vname[100], ename[100], date[100], day[100];
+    char startTime[10], endTime[10];
 
     system("CLS");
     drawLine(120);
@@ -1669,20 +2044,20 @@ View_Event_Information()
         return;
     }
 
-    printf("Event Type\tName\tNumber\t\tVenue\tPlace\n");
+    printf("Event Type\tName\tNumber\t\tVenue\tPlace\t\tDay\t\tDate\t\tTime\n");
     drawLine(120);
-    while (fscanf(M,"%s\t%s\t%s\t%s\t%s\n", ename, uname, number, vname, pname) != EOF)
+
+    while (fscanf(M, "%s %s %s %s %s %s %s %s-%s",ename, uname, number, vname, pname, day, date, startTime, endTime) != EOF)
     {
-        printf("%s\t%s\t%s\t%s\t%s\n", ename, uname, number, vname, pname);
+        printf("%s\t%s\t%s\t%s\t%s\t\t%s\t%s\t%s-%s\n",
+               ename, uname, number, vname, pname, day, date, startTime, endTime);
     }
 
     fclose(M);
 
-
     printf("\n\nAny key to continue..........");
     getch();
     system("CLS");
-
 }
 
 userview()
@@ -2532,6 +2907,9 @@ change_password()
     else
         printf("\nInvalid username or password!\n");
 }
+
+
+
 
 
 
