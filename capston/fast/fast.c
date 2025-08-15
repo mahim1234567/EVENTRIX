@@ -653,12 +653,32 @@ int loginA()
 void Delete_Event()
 {
     system("CLS");
-    printf("%s",AC_RED);
+    printf("%s", AC_RED);
     drawLine(120);
-    printf("  [ EVENTTRIX ]\t\t\t\t<<<<<-----Delete Event----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
+    printf("  [ EVENTTRIX ]\t\t\t\t   <<<<<-----Delete Event----->>>>>   \t\t\t\t[ EVENTTRIX ]\n");
     drawLine(120);
-    printf("\n");
-    char ename[100], uname[100];
+    printf("%s", AC_MAGENTA);
+    printf("\n\n");
+    int choice;
+    printf("\t\t\t\t\t      [1].Delete Event\n\n");
+    printf("\t\t\t\t\t      [0].Back\n\n");
+    printf("\t\t\t\t\t      Enter Your Choice: ");
+    scanf("%d", &choice);
+    system("CLS");
+
+
+    printf("%s", AC_RED);
+    drawLine(120);
+    printf("  [ EVENTTRIX ]\t\t\t\t   <<<<<-----Delete Event----->>>>>   \t\t\t\t[ EVENTTRIX ]\n");
+    drawLine(120);
+    printf("%s", AC_MAGENTA);
+    printf("\n\n");
+
+
+
+    if(choice==1)
+    {
+        char ename[100], uname[100];
     char tempE[100], tempU[100], number[100], vname[100], pname[100], day[100], date[100], startTime[10], endTime[10];
     int found = 0;
 
@@ -707,6 +727,22 @@ void Delete_Event()
     getch();
     system("CLS");
     admin_dashboard();
+
+    }
+
+    else
+    {
+        system("CLS");
+        admin_dashboard();
+
+    }
+
+
+
+
+
+
+
 }
 
 
@@ -940,7 +976,35 @@ Find_Event()
 
 {
 
-    char searchName[100],number[100];
+  system("CLS");
+    printf("%s", AC_RED);
+    drawLine(120);
+    printf("  [ EVENTTRIX ]\t\t\t\t   <<<<<-----Find Event----->>>>>   \t\t\t\t[ EVENTTRIX ]\n");
+    drawLine(120);
+    printf("%s", AC_MAGENTA);
+    printf("\n\n");
+    int choice;
+    printf("\t\t\t\t\t      [1] Find Event\n\n");
+    printf("\t\t\t\t\t      [0] Back\n\n");
+    printf("\t\t\t\t\t      Enter Your Choice: ");
+    scanf("%d", &choice);
+    system("CLS");
+
+
+    printf("%s", AC_RED);
+    drawLine(120);
+    printf("  [ EVENTTRIX ]\t\t\t\t   <<<<<-----Find Event----->>>>>   \t\t\t\t[ EVENTTRIX ]\n");
+    drawLine(120);
+    printf("%s", AC_MAGENTA);
+    printf("\n\n");
+
+
+
+  if(choice==1)
+  {
+
+
+      char searchName[100],number[100];
     getchar();
     printf("\n\t\t\t\t      Enter user name to Find Event: ");
     gets(searchName);
@@ -1105,21 +1169,53 @@ Find_Event()
 
     return 0;
 
+  }
+
+
+
+
+
+  else
+    {
+        system("CLS");
+        admin_dashboard();
+
+    }
+
 }
 
 
 
 Event_Approval()
 {
-    char pname[100],dname[100],uname[100],vname[100],ename[100],number[100],approve[100];
+
 
     system("CLS");
-    printf("%s",AC_RED);
+    printf("%s", AC_RED);
     drawLine(120);
     printf("  [ EVENTTRIX ]\t\t\t\t  <<<<<-----Event Approval----->>>>>  \t\t\t\t[ EVENTTRIX ]\n");
     drawLine(120);
-    printf("%s",AC_BLUE);
+    printf("%s", AC_MAGENTA);
     printf("\n\n");
+    int choice;
+    printf("\t\t\t\t\t      [1].EventApproval\n\n");
+    printf("\t\t\t\t\t      [0].Back\n\n");
+    printf("\t\t\t\t\t      Enter Your Choice: ");
+    scanf("%d", &choice);
+    system("CLS");
+
+
+    printf("%s", AC_RED);
+    drawLine(120);
+    printf("  [ EVENTTRIX ]\t\t\t\t  <<<<<-----Event Approval----->>>>>  \t\t\t\t[ EVENTTRIX ]\n");
+    drawLine(120);
+    printf("%s", AC_MAGENTA);
+    printf("\n\n");
+
+
+    if(choice==1)
+    {
+        char pname[100],dname[100],uname[100],vname[100],ename[100],number[100],approve[100];
     FILE *M = fopen("booking.txt", "r");
 
     if (M == NULL)
@@ -1178,6 +1274,16 @@ Event_Approval()
     fprintf(p,"%s\t%s\t%s\t%s\t%s\t%s\t%s\n", ename, uname, number, vname, dname, approve, pname);
 
     fclose(p);
+
+    }
+
+    else
+    {
+        system("CLS");
+        admin_dashboard();
+
+    }
+
 
 
 
