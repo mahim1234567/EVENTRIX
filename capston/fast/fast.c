@@ -825,6 +825,7 @@ int admin_dashboard()
     printf("\n\t\t\t\t\t      [9].Set Rules and Condition\n");
     printf("\n\t\t\t\t\t      [10].View Feedback History\n");
     printf("\n\t\t\t\t\t      [11].Update Event Items\n");
+    printf("%s",AC_GREEN);
     printf("\n\t\t\t\t\t      [0].Home Page\n");
     int ch;
     printf("\n\t\t\t\t\t      Enter your Choice: ");
@@ -837,11 +838,13 @@ int admin_dashboard()
     else if(ch==2)
     {
         system("CLS");
+        printf("%s",AC_RED);
         drawLine(120);
-        printf("\t\t\t\t<<<<<-----Find Event----->>>>>\n");
+        printf("  [ EVENTTRIX ]\t\t\t\t   <<<<<-----Find Event---->>>>>   \t\t\t\t[ EVENTTRIX ]\n");
         drawLine(120);
-        printf("\n");
+        printf("%s",AC_BLUE);
         Find_Event();
+        printf("%s",AC_GREEN);
         printf("\n\nAny key to continue..........");
         getch();
         system("CLS");
@@ -849,7 +852,7 @@ int admin_dashboard()
     }
     else if(ch==3)
     {
- 
+
         Event_Approval();
         printf("%s",AC_GREEN);
         printf("\n\n\t\t\t\t\t   Any key to continue..........");
@@ -939,31 +942,31 @@ Find_Event()
 
     char searchName[100],number[100];
     getchar();
-    printf("Enter user name to Find Event: ");
+    printf("\n\t\t\t\t      Enter user name to Find Event: ");
     gets(searchName);
-    printf("Enter user Number to Find Event: ");
+    printf("\n\t\t\t\t      Enter user Number to Find Event: ");
     gets(number);
 
     FILE *M = fopen("booking.txt", "r");
 
     if (M == NULL)
     {
-        printf("Error opening files.\n");
+        printf("\n\t\t\t\t      Error opening files.\n");
         return 1;
     }
 
     int found = 0;
 
-    char paname[100], ynumber[100],xname[100],pvname[100],zname[100];
+    char evname[100], uvname[100], vnumber[100], vvname[100], pename[100], day[100], date[100], startTime[100], endTime[100];
     printf("\n\n");
-    printf("Event Type\tName\tNumber\t\tVenue\tPlace\n");
-    drawLine(70);
+    printf("Event Type\tName\t\tNumber\t\tVenue\tPlace\tDate\t\tTime\n");
+    drawLine(120);
 
-    while (fscanf(M,"%s\t%s\t%s\t%s\t%s\n", zname, xname, ynumber, pvname, paname) != EOF)
+    while (fscanf(M, "%s %s %s %s %s %s %s %s-%s\n", evname, uvname, vnumber, vvname, pename, day, date, startTime, endTime) != EOF)
     {
-        if (strcmp(searchName, xname) == 0 &&  strcmp(number, ynumber) == 0)
+        if (strcmp(searchName, uvname) == 0 &&  strcmp(number, vnumber) == 0)
         {
-            printf("%s\t%s\t%s\t%s\t%s\n", zname, xname, ynumber, pvname, paname);
+            printf("%s\t%s\t\t%s\t%s\t%s\t%s\t%s-%s\n", evname, uvname, vnumber, vvname, pename, date, startTime, endTime);
             found=1;
         }
     }
@@ -985,18 +988,18 @@ Find_Event()
         return;
     }
 
-    char n[100], a[100], b[100], c[100], d[100],p[100];
-    long int amu,due;
+    char name[100], a[100], b[100], c[100], d[100],fnumber[100];
+    int sum,due,return_tk;
 
-    printf("Name\tDecoration\tLighting\tSound\tPhoto/Video\tPayment\tDue\tNumber\n");
+    printf("Name\tNumber\t\tDecoration\tLighting\tSound\tPhoto/Video\tPayment\tDue\tReturn_tk\n");
     drawLine(120);
 
-    while (fscanf(sr, "%s\t%s\t%s\t%s\t%s\t%ld\t%ld\t%s\n", n, a, b, c, d, &amu, &due, p) != EOF)
+    while (fscanf(sr, "%s %s %s %s %s %s %d %d %d\n",name,fnumber, a, b, c, d, &sum, &due, &return_tk) != EOF)
     {
-        if (strcmp(searchName, n) == 0 &&  strcmp(number, p) == 0)
+        if (strcmp(searchName, name) == 0 &&  strcmp(number, fnumber) == 0)
 
         {
-            printf("%s\t%s\t\t%s\t\t%s\t%s\t\t%ld\t%ld\t%s\n", n, a, b, c, d, amu, due, p);
+            printf("%s\t%s\t%s\t\t%s\t\t%s\t\t%s\t%d\t%d\t%d\n",name,fnumber, a, b, c, d, sum, due, return_tk);
             found1=1;
         }
 
@@ -1006,7 +1009,7 @@ Find_Event()
 
     if(found1==0)
     {
-        printf("\n\nSearch Event Not Found.");
+        printf("\n\n\t\t\t\t      Search Event Not Found.");
     }
 
 
@@ -1019,25 +1022,25 @@ Find_Event()
 
     if (file == NULL)
     {
-        printf("Error opening file!\n");
+        printf("\n\t\t\t\t      Error opening file!\n");
         return;
     }
 
 
-    printf("Name\t\tEquipment\t\tCount\tPay Amount\tDue\t\tNumber\n");
+    printf("Name\t\tNumber\t\tCount\tPay\treturn_tk\tDue\tEquipment\n");
     drawLine(120);
     printf("\n");
 
 
-    char name[100],equipment[100],na[100];
-    int quantity;
-    long int  amu1, due1;
+    char namef[100],equipment[100],numberef[100];
+    int quantity, ab, return_tkf, duef;
 
-    while (fscanf(file,"%s\t\t%s\t\t%d\t%ld\t%ld\t\t%s\n", name, equipment, &quantity, &amu1, &due1, na) != EOF)
+
+    while (fscanf(file, "%s %s %s %d %d %d %d\n", namef, numberef,equipment, &quantity, &ab, &return_tkf, &duef) != EOF)
     {
-        if (strcmp(searchName, name) == 0 &&  strcmp(number, na) == 0)
+        if (strcmp(searchName, namef) == 0 &&  strcmp(number, numberef) == 0)
         {
-            printf("%s\t\t%s\t\t%d\t%ld\t\t%ld\t\t%s\n", name, equipment, quantity, amu1, due1, na);
+            printf("%s\t\t%s\t%d\t%d\t%d\t\t%d\t%s\n", namef, numberef,  quantity, ab, return_tkf, duef,equipment);
             found2=1;
         }
 
@@ -1048,36 +1051,36 @@ Find_Event()
 
     if(found2==0)
     {
-        printf("\n\nSearch Event Not Found.");
+        printf("\n\n\t\t\t\t      Search Event Not Found.");
     }
 
 
     printf("\n\n\n");
 
     int found3 = 0;
-    char name1[100],dname[100],n2[100];
+    char namel[100],number2[100],dayf[100];
 
-    long int g,due2,amount;
+    long int g,n,du,amu;
 
     FILE *p2 = fopen("paybooking.txt", "r");
 
     if (p2 == NULL)
     {
-        printf("File not found!\n");
+        printf("\n\t\t\t\t      File not found!\n");
         return;
     }
 
-    while (fscanf(p2,"%s\t%ld\t%ld\t%ld\t%s\t%s\n", name1, &g, &amount, &due2, dname, n2) != EOF)
+    while (fscanf(p2,"%s %s %ld %ld %ld %ld %s\n", namel, number2, &g, &amu, &n, &du, dayf) != EOF)
     {
-        if (strcmp(searchName, name1) == 0 &&  strcmp(number, n2) == 0)
+        if (strcmp(searchName, namel) == 0 &&  strcmp(number, number2) == 0)
 
         {
-            printf("\n");
-            printf("\t\t\t\t\t");
+            printf("\n\t\t\t\t\t  ");
             drawLine(30);
-            printf("\t\t\t\t\tPayment Details\n\n");
-            printf("\t\t\t\t\tName\t:%s\n\t\t\t\t\tGuest\t:%ld\n\t\t\t\t\tPayment :%ld\n\t\t\t\t\tDue\t:%ld\n\t\t\t\t\tDate\t:%s\n\t\t\t\t\tNumber\t:%s\n", name1, g, amount, due, dname, n2);
-            printf("\t\t\t\t\t");
+            printf("\n\t\t\t\t\t  Payment Details %s\n\n",namel);
+            printf("\t\t\t\t\t  Name\t :%s\n\t\t\t\t\t  Number :%s\n\t\t\t\t\t  Guest\t :%ld\n\t\t\t\t\t  Payment:%ld\n\t\t\t\t\t  Due\t :%ld\n\t\t\t\t\t  Return :%ld\n\t\t\t\t\t  Date\t :%s", namel, number2, g, amu, n, du, dayf);
+            printf("\n");
+            printf("\n\t\t\t\t\t  ");
             drawLine(30);
             printf("\n\n");
             found3=1;
@@ -1091,11 +1094,11 @@ Find_Event()
 
     if(found3==0)
     {
-        printf("\n\nSearch Event Not Found.");
+        printf("\n\n\t\t\t\t      Search Event Not Found.");
     }
 
-
-    printf("\n\nAny key to continue..........");
+    printf("%s",AC_GREEN);
+    printf("\n\n\t\t\t\t      Any key to continue..........");
     getch();
     system("CLS");
     admin_dashboard();
@@ -1131,7 +1134,7 @@ Event_Approval()
 
     printf("Event Type\tName\t\tNumber\t\tVenue\tPlace\tDate\t\tTime\n");
     drawLine(120);
-     while (fscanf(M, "%s %s %s %s %s %s %s %s-%s\n", evname, uvname, vnumber, vvname, pename, day, date, startTime, endTime) != EOF)
+    while (fscanf(M, "%s %s %s %s %s %s %s %s-%s\n", evname, uvname, vnumber, vvname, pename, day, date, startTime, endTime) != EOF)
     {
         printf("%s\t%s\t\t%s\t%s\t%s\t%s\t%s-%s\n", evname, uvname, vnumber, vvname, pename, date, startTime, endTime);
     }
@@ -2994,11 +2997,11 @@ View_Equipment_Rental_Request()
 {
     system("CLS");
     printf("%s", AC_RED);
-        drawLine(120);
-        printf("  [ EVENTTRIX ]\t\t\t\t<<<<<-----Payment Process----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
-        drawLine(120);
+    drawLine(120);
+    printf("  [ EVENTTRIX ]\t\t\t\t<<<<<-----Payment Process----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
+    drawLine(120);
 
-        printf("\n\n");
+    printf("\n\n");
     FILE *file;
     file = fopen("equipment_rental.txt", "r");
 
@@ -3008,7 +3011,7 @@ View_Equipment_Rental_Request()
         return;
     }
 
-printf("%s", AC_BLUE);
+    printf("%s", AC_BLUE);
     printf("Name\t\tNumber\t\tCount\tPay\treturn_tk\tDue\tEquipment\n");
     drawLine(120);
     printf("\n");
@@ -3017,9 +3020,9 @@ printf("%s", AC_BLUE);
     char name[100],equipment[100],number[100];
     int quantity, a, return_tk, due;
 
-    while (fscanf(file, "%s %s %s %d %d %d %d\n", name, number ,equipment, &quantity, &a, &return_tk, &due) != EOF)
+    while (fscanf(file, "%s %s %s %d %d %d %d\n", name, number,equipment, &quantity, &a, &return_tk, &due) != EOF)
     {
-        printf("%s\t\t%s\t%d\t%d\t%d\t\t%d\t%s\n", name, number,  quantity, a, return_tk, due ,equipment);
+        printf("%s\t\t%s\t%d\t%d\t%d\t\t%d\t%s\n", name, number,  quantity, a, return_tk, due,equipment);
     }
 
     fclose(file);
