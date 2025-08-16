@@ -15,9 +15,7 @@
 #define AC_NORMAL "\x1b[m"
 
 
-
 void coustomerfront()
-
 {
     printf("%s",AC_CYAN);
     printf("\t\t\t\t");
@@ -40,7 +38,6 @@ void coustomerfront()
 
     printf("\n");
 
-
     printf("   __________  __  _________________  __  _____________       ____  ___    _   __________       \n");
     printf("  / ____/ __ \\/ / / / ___/_  __/ __ \\/  |/  / ____/ __ \\     / __ \\/   |  / | / / ____/ /       \n");
     printf(" / /   / / / / / / /\\__ \\ / / / / / / /|_/ / __/ / /_/ /    / /_/ / /| | /  |/ / __/ / /        \n");
@@ -48,6 +45,7 @@ void coustomerfront()
     printf("\\____/\\____/\\____//____//_/  \\____/_/  /_/_____/_/ |_|    /_/   /_/  |_/_/ |_/_____/_____/      \n");
     printf("\n");
 }
+
 void adminfront()
 {
     printf("%s",AC_MAGENTA);
@@ -79,6 +77,7 @@ void adminfront()
     printf("\n");
 
 }
+
 void front()
 {
     printf("\n");
@@ -108,7 +107,6 @@ void front()
     printf("\t\t");
     printf("_////////      _//      _////////_//      _//     _//    _//      _ //////_//      _//\n");
 
-
     printf("\n\n\n");
     printf("%s",AC_CYAN);
 
@@ -122,6 +120,7 @@ void front()
     printf("           |      /     _/                                                         \n");
 
 }
+
 void frontpage()
 {
     front();
@@ -130,20 +129,11 @@ void frontpage()
     getch();
     system("CLS");
 }
+
 void drawLine(int len)
 {
     for (int i = 0; i < len; i++) printf("=");
     printf("\n");
-}
-
-int main()
-{
-
-    frontpage();
-    frontnext();
-
-
-
 }
 
 void frontnext()
@@ -216,8 +206,6 @@ void frontnext()
                     system("CLS");
                     frontnext();
                 }
-
-
             }
             else if(cho2==2)
             {
@@ -246,7 +234,6 @@ void frontnext()
             }
         }
 
-        ///////////////////////////////////////
         else if (cho == 2)
         {
             system("CLS");
@@ -265,7 +252,6 @@ void frontnext()
             printf("\t\t\t\t\t\t  Enter your Choice: ");
             scanf("%d",&cho3);
 
-
             if(cho3==1)
             {
                 int cr;
@@ -283,7 +269,6 @@ void frontnext()
                 printf("\t\t\t\t\t  Enter your Choice: ");
                 scanf("%d",&cr);
 
-
                 if(cr==1)
                 {
                     system("CLS");
@@ -299,7 +284,6 @@ void frontnext()
                     system("CLS");
                     frontnext();
                 }
-
 
             }
             else if(cho3==2)
@@ -403,8 +387,6 @@ int registe()
             continue;
         }
 
-
-
         int all_digits = 1;
         for (int i = 0; i < 11; i++)
         {
@@ -427,8 +409,6 @@ int registe()
     printf("\n\t\t\t\t\tEnter password: ");
     getPassword(l.pass);
 
-
-
     FILE *log;
 
     log = fopen("login.txt", "a");
@@ -437,7 +417,6 @@ int registe()
         printf("File not found!\n");
         return;
     }
-
 
     fprintf(log, "%s\t\t%s\t\t%s\t\t%s\t\t%s\n", l.fname, l.lname, l.username, l.pass, l.num);
 
@@ -496,8 +475,6 @@ int registeA()
             continue;
         }
 
-
-
         int all_digits = 1;
         for (int i = 0; i < 11; i++)
         {
@@ -519,7 +496,6 @@ int registeA()
 
     printf("\n\t\t\t\t\tEnter password: ");
     getPassword(l.pass);
-
 
 
     FILE *log;
@@ -549,8 +525,6 @@ int registeA()
 }
 int login()
 {
-
-
     int cr;
     system("CLS");
     printf("%s",AC_RED);
@@ -634,12 +608,12 @@ int login()
 
 void coustomer()
 {
-  coustomerfront();
-  printf("%s",AC_GREEN);
+    coustomerfront();
+    printf("%s",AC_GREEN);
     printf("\n\nAny key to continue..........");
     getch();
     system("CLS");
-  coustomer_dashboard() ;
+    coustomer_dashboard() ;
 }
 int loginA()
 {
@@ -663,7 +637,6 @@ int loginA()
     drawLine(120);
     printf("  [ EVENTTRIX ]\t\t\t\t\t<<<<<-----Admin Login----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
     drawLine(120);
-
 
     if(cr==1)
     {
@@ -740,7 +713,6 @@ void Delete_Event()
     scanf("%d", &choice);
     system("CLS");
 
-
     printf("%s", AC_RED);
     drawLine(120);
     printf("  [ EVENTTRIX ]\t\t\t\t  <<<<<-----Booking Event----->>>>>  \t\t\t\t[ EVENTTRIX ]\n");
@@ -770,9 +742,6 @@ void Delete_Event()
     }
 
     fclose(M);
-
-
-
 
 
     printf("\n\n\n");
@@ -807,8 +776,7 @@ void Delete_Event()
         printf("\n\n\t\t\t\t\t      Enter User Name to delete: ");
         scanf("%s", uname);
 
-        while (fscanf(fp, "%s %s %s %s %s %s %s %s-%s",
-                      tempE, tempU, number, vname, pname, day, date, startTime, endTime) != EOF)
+        while (fscanf(fp, "%s %s %s %s %s %s %s %s-%s",tempE, tempU, number, vname, pname, day, date, startTime, endTime) != EOF)
         {
             if (strcmp(tempE, ename) == 0 && strcmp(tempU, uname) == 0)
             {
@@ -816,8 +784,7 @@ void Delete_Event()
             }
             else
             {
-                fprintf(temp, "%s %s %s %s %s %s %s %s-%s\n",
-                        tempE, tempU, number, vname, pname, day, date, startTime, endTime);
+                fprintf(temp, "%s %s %s %s %s %s %s %s-%s\n",tempE, tempU, number, vname, pname, day, date, startTime, endTime);
             }
         }
 
@@ -828,10 +795,9 @@ void Delete_Event()
         rename("temp.txt", "booking.txt");
 
         if (found)
-            printf("\n\n\t\t\t\t\t      Event deleted successfully!\n");
+            {printf("\n\n\t\t\t\t\t      Event deleted successfully!\n");}
         else
-            printf("\n\n\t\t\t\t\t      Event not found!\n");
-
+            {printf("\n\n\t\t\t\t\t      Event not found!\n");}
 
         printf("\n\n\t\t\t\t\t      Press any key to continue...");
         getch();
@@ -847,14 +813,7 @@ void Delete_Event()
 
     }
 
-
-
-
-
-
-
 }
-
 
 
 int coustomer_dashboard()
@@ -943,7 +902,6 @@ int coustomer_dashboard()
     }
     else if(c==10)
     {
-
         User_update_Event();
     }
     else if(c==11)
@@ -953,7 +911,7 @@ int coustomer_dashboard()
     }
     else if(c==12)
     {
-       Show_Upcoming_Events();
+        Show_Upcoming_Events();
     }
     else
     {
@@ -976,14 +934,10 @@ void admin()
 int admin_dashboard()
 {
 
-
-
     printf("%s",AC_RED);
     drawLine(120);
     printf("  [ EVENTTRIX ]\t\t\t\t  <<<<<-----Admin Dashboard----->>>>>  \t\t\t\t[ EVENTTRIX ]\n");
     drawLine(120);
-
-
 
     printf("%s",AC_BLUE);
     printf("\n");
@@ -1076,8 +1030,6 @@ int admin_dashboard()
         printf("%s",AC_GREEN);
         printf("\n\t\t\t\t\t      [1].Update Venue.\n\t\t\t\t\t      [0].Exit.\n\n");
 
-
-
         while(1)
         {
             int cho;
@@ -1138,11 +1090,8 @@ void Find_Event()
     printf("\n\n");
 
 
-
     if(choice==1)
     {
-
-
         char searchName[100],number[100];
         getchar();
         printf("\n\t\t\t\t      Enter user name to Find Event: ");
@@ -1294,7 +1243,6 @@ void Find_Event()
         fclose(p2);
 
 
-
         if(found3==0)
         {
             printf("\n\n\t\t\t\t      Search Event Not Found.");
@@ -1310,10 +1258,6 @@ void Find_Event()
 
     }
 
-
-
-
-
     else
     {
         system("CLS");
@@ -1322,8 +1266,6 @@ void Find_Event()
     }
 
 }
-
-
 
 
 
@@ -1344,19 +1286,15 @@ void Scarce_Approval()
     scanf("%d", &choice);
     system("CLS");
 
-
     printf("%s", AC_RED);
     drawLine(120);
     printf("  [ EVENTTRIX ]\t\t\t\t <<<<<-----Scarce Approval----->>>>> \t\t\t\t[ EVENTTRIX ]\n");
     drawLine(120);
     printf("%s", AC_MAGENTA);
-    printf("\n\n");
-
-
+    printf("\n");
 
     if(choice==1)
     {
-
 
         char searchName[100],number[100];
         getchar();
@@ -1374,7 +1312,12 @@ void Scarce_Approval()
         }
 
         int found = 0;
-
+        printf("\n\n\n");
+        printf("%s",AC_RED);
+        drawLine(120);
+        printf("  [ EVENTTRIX ]\t\t\t\t    <<<<<-----Event Booking----->>>>>    \t\t\t[ EVENTTRIX ]\n");
+        drawLine(120);
+        printf("%s",AC_MAGENTA);
         char evname[100], uvname[100], vnumber[100], vvname[100], pename[100], app[100], date[100], startTime[100], endTime[100];
         printf("\n\n");
         printf("Event Type\tName\t\tNumber\t\tVenue\tDate\t\tstatus\tPlace\n");
@@ -1393,17 +1336,26 @@ void Scarce_Approval()
 
         if(found==0)
         {
-            printf("\n\nSearch Event Not Found.");
+            printf("\n\n\t\t\t\t      Search Event Not Found.");
         }
 
-        printf("\n\n\n");
+        printf("\n\n");
+
+        printf("%s", AC_RED);
+        drawLine(120);
+        printf("  [ EVENTTRIX ]\t\t\t\t<<<<<-----Service Request----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
+        drawLine(120);
+        printf("%s", AC_MAGENTA);
+        printf("\n\n");
+
         int found1 = 0;
         FILE *sr = fopen("approveServiceRequest.txt", "r");
         if (sr == NULL)
         {
-            printf("File not found!\n");
+            printf("\n\n\t\t\t\t      File not found!\n");
             return;
         }
+
 
         char usname[100],number2[100],approvesr[100],light[100],decora[100],sound[100],photo[100];
 
@@ -1429,7 +1381,15 @@ void Scarce_Approval()
             printf("\n\n\t\t\t\t      Search Event Not Found.");
         }
 
-        printf("\n\n\n");
+        printf("\n\n");
+
+        printf("%s", AC_RED);
+        drawLine(120);
+        printf("  [ EVENTTRIX ]\t\t\t\t<<<<<-----Equipment Rental----->>>>>\t\t\t\t[ EVENTTRIX ]\n");
+        drawLine(120);
+        printf("%s", AC_MAGENTA);
+        printf("\n\n");
+
 
         int found2 = 0;
 
@@ -1442,15 +1402,12 @@ void Scarce_Approval()
             return;
         }
 
-
         printf("Name\t\tNumber\t\tCount\tstatus\t\tEquipment\n");
         drawLine(120);
         printf("\n");
 
-
         char namef[100],equipment[100],numberef[100],ap[100];
         int quantity;
-
 
         while (fscanf(file, "%s %s %d %s %s\n", namef, numberef, &quantity, ap, equipment) != EOF)
         {
@@ -1464,12 +1421,10 @@ void Scarce_Approval()
 
         fclose(file);
 
-
         if(found2==0)
         {
             printf("\n\n\t\t\t\t      Search Event Not Found.");
         }
-
 
         printf("\n\n");
 
@@ -1483,10 +1438,6 @@ void Scarce_Approval()
 
     }
 
-
-
-
-
     else
     {
         system("CLS");
@@ -1495,28 +1446,10 @@ void Scarce_Approval()
     }
 
 
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 void Event_Approval()
 {
-
-
     system("CLS");
     printf("%s", AC_RED);
     drawLine(120);
@@ -1612,8 +1545,6 @@ void Event_Approval()
     }
 
 
-
-
 }
 
 
@@ -1636,9 +1567,6 @@ void View_Event_Approval()
         return;
     }
 
-
-
-
     while (fscanf(p,"%s\t%s\t%s\t%s\t%s\t%s\t%s\n", ename, uname, number, vname, dname, approve, pname) != EOF)
     {
         printf("\t\t\t\t\t");
@@ -1652,7 +1580,6 @@ void View_Event_Approval()
     }
 
     fclose(p);
-
 
     printf("\n\nAny key to continue..........");
     getch();
@@ -1719,7 +1646,6 @@ int isValidDate(int d, int m, int y)
 
     int daysInMonth[] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
     if (isLeapYear(y)) daysInMonth[2] = 29;
-
     if (d > daysInMonth[m]) return 0;
     return 1;
 }
@@ -1732,7 +1658,6 @@ int isFutureDate(int d, int m, int y)
     int cd = today.tm_mday;
     int cm = today.tm_mon + 1;
     int cy = today.tm_year + 1900;
-
     if (y > cy) return 1;
     if (y == cy && m > cm) return 1;
     if (y == cy && m == cm && d >= cd) return 1;
@@ -1747,16 +1672,12 @@ void Booking()
     int g,b,cho;
     printf("%s",AC_RED);
     drawLine(120);
-
     printf("  [ EVENTTRIX ]\t\t\t\t    <<<<<-----Event Booking----->>>>>    \t\t\t[ EVENTTRIX ]\n");
     drawLine(120);
     printf("\n\n");
     getchar();
 
     printf("%s",AC_BLUE);
-
-
-
 
     while (1)
     {
@@ -1796,13 +1717,8 @@ void Booking()
         }
     }
 
-
-
     printf("\n\t\t\t\t\t  Enter User Name:  ");
     scanf("%s",uname );
-
-
-
 
     int valid = 0;
 
@@ -1863,7 +1779,7 @@ void Booking()
     }
 
     printf("%s",AC_MAGENTA);
-    // -------------------- Date Input --------------------
+
     int day, month, year;
     while (1)
     {
@@ -1887,20 +1803,17 @@ void Booking()
         }
         break;
     }
-    // -----------------------------------------------------
 
-    struct tm bookingDate = {0}; // Initialize to 0
+    struct tm bookingDate = {0};
     bookingDate.tm_mday = day;
-    bookingDate.tm_mon = month - 1; // Month 0-11
-    bookingDate.tm_year = year - 1900; // Years since 1900
+    bookingDate.tm_mon = month - 1;
+    bookingDate.tm_year = year - 1900;
 
-    // Normalize and calculate weekday
     mktime(&bookingDate);
 
     char *days[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 
     printf("\n\t\t\t\t\t  Day of the week: %s\n", days[bookingDate.tm_wday]);
-
 
     char startTime[10], endTime[10];
 
@@ -1910,10 +1823,6 @@ void Booking()
 
     printf("\n\t\t\t\t\t  Enter Event Ending Time (HH:MM): ");
     scanf("%9s", endTime);
-
-
-
-
 
     printf("\n");
     while (1)
@@ -2268,7 +2177,7 @@ void paymentp(char day[],int days,int month,int year)
             scanf("%ld", &g);
             getchar();
 
-            if (g <= 100) // 100 or less allowed
+            if (g <= 100)
             {
                 a = g * 325;
                 b = g * 485;
@@ -2307,8 +2216,6 @@ void paymentp(char day[],int days,int month,int year)
         }
     }
 
-
-////////////////////////////////////
     else
     {
         while (1)
@@ -2326,7 +2233,7 @@ void paymentp(char day[],int days,int month,int year)
                 a = g * 500;
                 b = g * 750;
 
-                while (1) // choice validation loop
+                while (1)
                 {
                     printf("\n\t\t\t\t\t\t  [1].Common Type[%ld TK]\n\t\t\t\t\t\t  [2].Premium Type[%ld TK]", a, b);
                     printf("\n\n\t\t\t\t\t  Enter Your Choice: ");
@@ -2335,19 +2242,19 @@ void paymentp(char day[],int days,int month,int year)
                     if (cho == 1)
                     {
                         amount = a;
-                        break; // exit choice loop
+                        break;
                     }
                     else if (cho == 2)
                     {
                         amount = b;
-                        break; // exit choice loop
+                        break;
                     }
                     else
                     {
                         printf("\n\t\t\t\t\t  Invalid choice! Please enter 1 or 2.\n");
                     }
                 }
-                break; // exit guest loop
+                break;
             }
             else if (g > 40 && g <= 60)
             {
@@ -2358,7 +2265,7 @@ void paymentp(char day[],int days,int month,int year)
                 d = g * 675;
                 printf("\n\t\t\t\t\t  You've got [10 Percent] discount on the original Budget price\n\n");
 
-                while (1) // choice validation loop
+                while (1)
                 {
                     printf("\n\t\t\t\t\t  \t[1].Common Type[%ld TK]\n\t\t\t\t\t  \t[2].Premium Type[%ld TK]", c, d);
                     printf("\n\n\t\t\t\t\t  Enter Your Choice: ");
@@ -2381,7 +2288,6 @@ void paymentp(char day[],int days,int month,int year)
                 }
                 break;
             }
-            // g > 60 && g <= 80
             else if (g > 60 && g <= 80)
             {
                 printf("\n\t\t\t\t\t  ***Budget Type***\n");
@@ -2391,7 +2297,7 @@ void paymentp(char day[],int days,int month,int year)
                 f = g * 600;
                 printf("\n\t\t\t\t\t  You've got [20 Percent] discount on the original Budget price\n\n");
 
-                while (1) // choice validation loop
+                while (1)
                 {
                     printf("\n\t\t\t\t\t  \t[1].Common Type[%ld TK]\n\t\t\t\t\t  \t[2].Premium Type[%ld TK]", e, f);
                     printf("\n\t\t\t\t\t  Enter Your Choice: ");
@@ -2414,7 +2320,7 @@ void paymentp(char day[],int days,int month,int year)
                 }
                 break;
             }
-            // g > 80 && g <= 100
+
             else if (g > 80 && g <= 100)
             {
                 printf("\n\t\t\t\t\t  ***Budget Type***\n");
@@ -2424,7 +2330,7 @@ void paymentp(char day[],int days,int month,int year)
                 h = 525 * g;
                 printf("\n\t\t\t\t\t  You've got [30 Percent] discount on the original Budget price\n\n");
 
-                while (1) // choice validation loop
+                while (1)
                 {
                     printf("\n\t\t\t\t\t  \t[1].Common Type[%ld] TK\n\t\t\t\t\t  \t[2].Premium Type[%ld TK]", i, h);
                     printf("\n\t\t\t\t\t  Enter Your Choice: ");
@@ -2453,14 +2359,6 @@ void paymentp(char day[],int days,int month,int year)
             }
         }
     }
-
-
-
-
-
-
-
-
 
     int ch;
     char number[100],pin[10],name[100];
@@ -2516,8 +2414,6 @@ void paymentp(char day[],int days,int month,int year)
                     continue;
                 }
 
-
-
                 int all_digits = 1;
                 for (int i = 0; i < 11; i++)
                 {
@@ -2540,9 +2436,6 @@ void paymentp(char day[],int days,int month,int year)
             }
 
             printf("%s",AC_MAGENTA);
-
-
-
 
 
             printf("\n\t\t\t\t\t  Enter Amount: ");
@@ -2767,12 +2660,6 @@ void View_Event_Information()
     system("CLS");
 }
 
-void userview()
-{
-    View_Event_Information();
-    coustomer_dashboard();
-
-}
 void adminview()
 {
     View_Event_Information();
@@ -2934,8 +2821,6 @@ void Service_Request()
         sum=s1+s2+s3+s4;
 
 
-
-
         system("CLS");
 
 
@@ -3030,9 +2915,6 @@ void Service_Request()
                 printf("%s",AC_MAGENTA);
 
 
-
-
-
                 printf("\n\t\t\t\t\t    Enter Amount: ");
                 scanf("%ld", &amu);
 
@@ -3054,8 +2936,6 @@ void Service_Request()
                         printf("%s",AC_BLUE);
                         continue;
                     }
-
-
 
                     int all_digits1 = 1;
                     for (int i = 0; i < 11; i++)
@@ -3109,7 +2989,6 @@ void Service_Request()
         }
 
 
-
         FILE *sr;
         sr = fopen("service_request.txt", "a");
         if (sr == NULL)
@@ -3136,12 +3015,6 @@ void Service_Request()
 
 }
 
-
-
-
-
-
-
 void View_Service_Request()
 {
 
@@ -3159,8 +3032,6 @@ void View_Service_Request()
     printf("\t\t\t\t\t      Enter Your Choice: ");
     scanf("%d", &choice);
     system("CLS");
-
-
 
     if(choice==1)
     {
@@ -3244,11 +3115,6 @@ void View_Service_Request()
 
     }
 
-
-
-
-
-
     else
     {
         system("CLS");
@@ -3274,8 +3140,6 @@ void Equipment_Rental()
     printf("\t\t\t\t\t      Enter Your Choice: ");
     scanf("%d", &choice);
     system("CLS");
-
-
 
     printf("%s", AC_RED);
     drawLine(120);
@@ -3344,10 +3208,6 @@ void Equipment_Rental()
 
         printf("\t\t\t\t\t    Complete Your Payment %d Tk",a);
 
-
-
-
-
         int ch,return_tk,due;
         char number[100],pin[10],name[100];
         long int amu;
@@ -3403,8 +3263,6 @@ void Equipment_Rental()
                         continue;
                     }
 
-
-
                     int all_digits = 1;
                     for (int i = 0; i < 11; i++)
                     {
@@ -3427,10 +3285,6 @@ void Equipment_Rental()
                 }
 
                 printf("%s",AC_MAGENTA);
-
-
-
-
 
                 printf("\n\t\t\t\t\t    Enter Amount: ");
                 scanf("%ld", &amu);
@@ -3526,7 +3380,6 @@ void Equipment_Rental()
 
     }
 
-
     else
     {
         system("CLS");
@@ -3551,16 +3404,12 @@ void View_Equipment_Rental_Request()
     scanf("%d", &choice);
     system("CLS");
 
-
     printf("%s", AC_RED);
     drawLine(120);
     printf("  [ EVENTTRIX ]\t\t\t<<<<<-----View Equipment Rental Request----->>>>>\t\t\t[ EVENTTRIX ]\n");
     drawLine(120);
     printf("%s", AC_MAGENTA);
     printf("\n\n");
-
-
-
 
     if(choice==1)
     {
@@ -3588,10 +3437,6 @@ void View_Equipment_Rental_Request()
         }
 
         fclose(file);
-
-
-
-
 
         printf("\n\n\n");
 
@@ -3637,11 +3482,7 @@ void View_Equipment_Rental_Request()
         system("CLS");
         admin_dashboard();
 
-
-
     }
-
-
 
     else
     {
@@ -3650,11 +3491,10 @@ void View_Equipment_Rental_Request()
 
     }
 
-
-
-
-
 }
+
+
+
 void Submit_Feedback()
 {
     system("CLS");
@@ -3691,6 +3531,8 @@ void Submit_Feedback()
     coustomer_dashboard();
 
 }
+
+
 void Contact_Us()
 {
     system("CLS");
@@ -3708,6 +3550,8 @@ void Contact_Us()
     system("CLS");
     coustomer_dashboard();
 }
+
+
 void View_Feedback_History()
 {
     system("CLS");
@@ -3767,6 +3611,8 @@ void Manage_Discount_and_Offer()
         Manage_Discount_and_Offer();
     }
 }
+
+
 void add()
 {
     system("CLS");
@@ -3896,6 +3742,8 @@ void Rules_and_Condition()
         Rules_and_Condition();
     }
 }
+
+
 void addr()
 {
     system("CLS");
@@ -3931,6 +3779,8 @@ void addr()
     admin_dashboard();
 
 }
+
+
 void viewad()
 {
     system("CLS");
@@ -3993,6 +3843,8 @@ void viewr()
     system("CLS");
     coustomer_dashboard();
 }
+
+
 void add_item()
 {
 
@@ -4019,6 +3871,8 @@ void add_item()
     admin_dashboard();
 
 }
+
+
 void getPassword(char *pass)
 {
     int i = 0;
@@ -4112,21 +3966,18 @@ void Edit_Event_Booking()
     system("CLS");
     coustomer_dashboard();
 }
+
+
 void Cancel_Event()
 {
 
     system("CLS");
-
-
     printf("%s", AC_RED);
     drawLine(120);
     printf("  [ EVENTTRIX ]\t\t\t\t   <<<<<-----Cancel Event----->>>>>   \t\t\t\t[ EVENTTRIX ]\n");
     drawLine(120);
     printf("%s", AC_MAGENTA);
     printf("\n\n");
-
-
-
 
     char ename[100], uname[100], date[100];
     char tempE[100], tempU[100], number[100], vname[100], pname[100], day[100], sdate[100], startTime[10], endTime[10];
@@ -4152,8 +4003,6 @@ void Cancel_Event()
         if (strcmp(tempE, ename) == 0 && strcmp(tempU, uname) == 0)
         {
             found = 1;
-
-            // extract day from date string dd/mm/yyyy
             int d, m, y;
             sscanf(sdate, "%d/%d/%d", &d, &m, &y);
 
@@ -4171,10 +4020,9 @@ void Cancel_Event()
             else
                 printf("\n\t\t\t\t\t     30%% cancellation fee applied, refund = 70%%.\n");
 
-            continue; // skip writing (delete booking)
+            continue;
         }
-        fprintf(temp, "%s %s %s %s %s %s %s %s-%s\n",
-                tempE, tempU, number, vname, pname, day, sdate, startTime, endTime);
+        fprintf(temp, "%s %s %s %s %s %s %s %s-%s\n",tempE, tempU, number, vname, pname, day, sdate, startTime, endTime);
     }
 
     fclose(fp);
@@ -4197,7 +4045,8 @@ void Cancel_Event()
 
 
 
-void Show_Upcoming_Events() {
+void Show_Upcoming_Events()
+{
     system("CLS");
     printf("%s", AC_CYAN);
     drawLine(120);
@@ -4210,7 +4059,8 @@ void Show_Upcoming_Events() {
     scanf("%s", currentUser);
 
     FILE *fp = fopen("booking.txt", "r");
-    if (!fp) {
+    if (!fp)
+    {
         printf("%s", AC_RED);
         printf("\n\t\t\t\t\t  Error: Booking file not found!\n");
         printf("%s", AC_NORMAL);
@@ -4230,22 +4080,26 @@ void Show_Upcoming_Events() {
     printf("%s", AC_NORMAL);
 
     while (fscanf(fp, "%s %s %s %s %s %s %s %[^-]-%s",
-                 ename, uname, number, vname, pname, day, date, startTime, endTime) != EOF) {
-        if (strcmp(uname, currentUser) == 0) {
+                  ename, uname, number, vname, pname, day, date, startTime, endTime) != EOF)
+    {
+        if (strcmp(uname, currentUser) == 0)
+        {
             int d, m, y;
-            if (sscanf(date, "%d/%d/%d", &d, &m, &y) != 3) {
-                continue; // Skip invalid dates
+            if (sscanf(date, "%d/%d/%d", &d, &m, &y) != 3)
+            {
+                continue;
             }
 
             struct tm eventDate = {0};
             eventDate.tm_mday = d;
             eventDate.tm_mon = m - 1;
             eventDate.tm_year = y - 1900;
-            eventDate.tm_hour = 12; // Avoid timezone issues
+            eventDate.tm_hour = 12;
 
             double diff = difftime(mktime(&eventDate), mktime(&today)) / (60 * 60 * 24);
 
-            if (diff >= 0 && diff <= 7) {
+            if (diff >= 0 && diff <= 7)
+            {
                 found = 1;
                 printf("%s", AC_GREEN);
                 printf("\t\t\t\t\t  -----------------------------\n");
@@ -4261,7 +4115,8 @@ void Show_Upcoming_Events() {
 
     fclose(fp);
 
-    if (!found) {
+    if (!found)
+    {
         printf("%s", AC_RED);
         printf("\n\t\t\t\t\t  No events found in the next 7 days.\n");
         printf("%s", AC_NORMAL);
@@ -4272,6 +4127,8 @@ void Show_Upcoming_Events() {
     system("CLS");
     coustomer_dashboard();
 }
+
+
 void User_update_Event()
 {
     system("CLS");
@@ -4297,7 +4154,6 @@ void User_update_Event()
         coustomer_dashboard();
     }
 }
-
 
 
 
@@ -4328,4 +4184,11 @@ void User_Cancle_Event()
 }
 
 
+int main()
+{
+
+    frontpage();
+    frontnext();
+    return 0;
+}
 
