@@ -861,9 +861,9 @@ int admin_dashboard()
     printf("\n\t\t\t\t\t      [1].View All Event\n");
     printf("\n\t\t\t\t\t      [2].Find Event.\n");
     printf("\n\t\t\t\t\t      [3].Event Approval\n");
-    printf("\n\t\t\t\t\t      [4].View Service Request\n");
+    printf("\n\t\t\t\t\t      [4].View Service Request & Approval\n");
     printf("%s",AC_MAGENTA);
-    printf("\n\t\t\t\t\t      [5].View Equipment Rental Request\n");
+    printf("\n\t\t\t\t\t      [5].View Equipment Rental Request & Approval\n");
     printf("\n\t\t\t\t\t      [6].View payment\n");
     printf("\n\t\t\t\t\t      [7].Delete Event\n");
     printf("\n\t\t\t\t\t      [8].Manage Discount and Offer\n");
@@ -1218,7 +1218,7 @@ Find_Event()
 
     printf("%s", AC_RED);
     drawLine(120);
-    printf("  [ EVENTTRIX ]\t\t\t\t   <<<<<-----Find Event----->>>>>   \t\t\t\t[ EVENTTRIX ]\n");
+    printf("  [ EVENTTRIX ]\t\t\t\t   <<<<<-----Scarce Approval----->>>>>   \t\t\t\t[ EVENTTRIX ]\n");
     drawLine(120);
     printf("%s", AC_MAGENTA);
     printf("\n\n");
@@ -1255,7 +1255,7 @@ Find_Event()
     {
         if (strcmp(searchName, uvname) == 0 &&  strcmp(number, vnumber) == 0)
         {
-            printf("%s\t%s\t%s\t\t%s\t%s\t%s\t%s\n", evname, uvname, vnumber, vvname, pename, app, date);
+            printf("%s\t%s\t\t%s\t%s\t%s\t%s\t%s\n", evname, uvname, vnumber, vvname, pename, app, date);
             found=1;
         }
     }
@@ -1267,28 +1267,27 @@ Find_Event()
         printf("\n\nSearch Event Not Found.");
     }
 
-    /*
     printf("\n\n\n");
     int found1 = 0;
-    FILE *sr = fopen("service_request.txt", "r");
+    FILE *sr = fopen("approveServiceRequest.txt", "r");
     if (sr == NULL)
     {
         printf("File not found!\n");
         return;
     }
 
-    char name[100], a[100], b[100], c[100], d[100],fnumber[100];
-    int sum,due,return_tk;
+    char usname[100],number2[100],approvesr[100],light[100],decora[100],sound[100],photo[100];
 
-    printf("Name\tNumber\t\tDecoration\tLighting\tSound\tPhoto/Video\tPayment\tDue\tReturn_tk\n");
+
+    printf("Name\tNumber\t\tDecoration\tLighting\tSound\tPhoto/Video\tStatus\n");
     drawLine(120);
 
-    while (fscanf(sr, "%s %s %s %s %s %s %d %d %d\n",name,fnumber, a, b, c, d, &sum, &due, &return_tk) != EOF)
+    while (fscanf(sr,"%s %s %s %s %s %s %s\n", usname, number2, decora, light, sound, photo, approvesr) != EOF)
     {
-        if (strcmp(searchName, name) == 0 &&  strcmp(number, fnumber) == 0)
+        if (strcmp(searchName, usname) == 0 &&  strcmp(number, number2) == 0)
 
         {
-            printf("%s\t%s\t%s\t\t%s\t\t%s\t\t%s\t%d\t%d\t%d\n",name,fnumber, a, b, c, d, sum, due, return_tk);
+            printf("%s\t%s\t%s\t\t%s\t\t%s\t\t%s\t%s\n", usname, number2, decora, light, sound, photo, approvesr);
             found1=1;
         }
 
@@ -1301,7 +1300,6 @@ Find_Event()
         printf("\n\n\t\t\t\t      Search Event Not Found.");
     }
 
-    */
     printf("\n\n\n");
 
     int found2 = 0;
@@ -1329,7 +1327,7 @@ Find_Event()
     {
         if (strcmp(searchName, namef) == 0 &&  strcmp(number, numberef) == 0)
         {
-            printf( "%s\t\t%s\t%d\t%s\t%s\n", namef, numberef, quantity, ap , equipment);
+            printf( "%s\t\t%s\t%d\t%s\t\t%s\n", namef, numberef, quantity, ap , equipment);
             found2=1;
         }
 
@@ -2987,13 +2985,34 @@ Service_Request()
 
 View_Service_Request()
 {
+
+
     system("CLS");
     printf("%s", AC_RED);
     drawLine(120);
-    printf("  [ EVENTTRIX ]\t\t\t    <<<<<----- View Service Request----->>>>>    \t\t\t[ EVENTTRIX ]\n");
+    printf("  [ EVENTTRIX ]\t\t    <<<<<-----View Service Request & Approval----->>>>>      \t\t[ EVENTTRIX ]\n");
     drawLine(120);
     printf("%s", AC_MAGENTA);
     printf("\n\n");
+    int choice;
+    printf("\t\t\t\t\t      [1].View Service Request & Approval\n\n");
+    printf("\t\t\t\t\t      [0].Back\n\n");
+    printf("\t\t\t\t\t      Enter Your Choice: ");
+    scanf("%d", &choice);
+    system("CLS");
+
+
+
+    if(choice==1)
+    {
+
+        printf("%s", AC_RED);
+    drawLine(120);
+    printf("  [ EVENTTRIX ]\t\t\t    <<<<<-----View Service Request----->>>>>    \t\t\t[ EVENTTRIX ]\n");
+    drawLine(120);
+    printf("%s", AC_MAGENTA);
+    printf("\n\n");
+
     FILE *sr = fopen("service_request.txt", "r");
     if (sr == NULL)
     {
@@ -3014,11 +3033,69 @@ View_Service_Request()
     }
 
     fclose(sr);
+
+
+    printf("\n\n\n");
+
+    printf("%s", AC_RED);
+    drawLine(120);
+    printf("  [ EVENTTRIX ]\t\t\t    <<<<<-----Service Request Approval----->>>>>    \t\t\t[ EVENTTRIX ]\n");
+    drawLine(120);
+    printf("%s", AC_MAGENTA);
+    printf("\n\n");
+    char uname[100],number1[100],approve[100],light[100],decora[100],sound[100],photo[100];
+
+    getchar();
+
+    printf("\n\t\t\t\t\t   Enter User Name: ");
+    gets(uname);
+    printf("\n\t\t\t\t\t   Enter User Number: ");
+    gets(number1);
+    printf("\n\t\t\t\t\t   Enter Decoration Name: ");
+    gets(decora);
+    printf("\n\t\t\t\t\t   Enter Lighting Status : ");
+    gets(light);
+    printf("\n\t\t\t\t\t   Enter Sound System Status: ");
+    gets(sound);
+    printf("\n\t\t\t\t\t   Enter Photo/Video Status: ");
+    gets(photo);
+    printf("\n\t\t\t\t\t   Enter Service Request Status: ");
+    gets(approve);
+
+    printf("\n\n");
+
+    FILE *p;
+
+    p = fopen("approveServiceRequest.txt", "a");
+    if (p == NULL)
+    {
+        printf("\n\t\t\t\t\t   File not found!\n");
+        return;
+    }
+
+    fprintf(p,"%s %s %s %s %s %s %s\n", uname, number1, decora, light, sound, photo, approve);
+
+    fclose(p);
+
     printf("%s", AC_GREEN);
-    printf("\n\nPress any key to continue...");
+    printf("\n\n\t\t\t\t\t   Press any key to continue...");
     getch();
     system("CLS");
     admin_dashboard();
+
+    }
+
+
+
+
+
+
+    else
+    {
+        system("CLS");
+        admin_dashboard();
+
+    }
 }
 
 Equipment_Rental()
