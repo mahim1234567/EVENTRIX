@@ -653,6 +653,8 @@ int loginA()
 void Delete_Event()
 {
     system("CLS");
+
+
     printf("%s", AC_RED);
     drawLine(120);
     printf("  [ EVENTTRIX ]\t\t\t\t   <<<<<-----Delete Event----->>>>>   \t\t\t\t[ EVENTTRIX ]\n");
@@ -666,6 +668,42 @@ void Delete_Event()
     scanf("%d", &choice);
     system("CLS");
 
+
+    printf("%s", AC_RED);
+    drawLine(120);
+    printf("  [ EVENTTRIX ]\t\t\t\t  <<<<<-----Booking Event----->>>>>  \t\t\t\t[ EVENTTRIX ]\n");
+    drawLine(120);
+    printf("%s", AC_MAGENTA);
+    printf("\n\n");
+
+
+    char pname[100],dname[100],uname[100],vname[100],ename[100],number[100],approve[100];
+    FILE *M = fopen("booking.txt", "r");
+
+    if (M == NULL)
+    {
+        printf("%s",AC_RED);
+        printf("File not found!\n");
+        printf("%s",AC_BLUE);
+        return;
+    }
+
+    char evname[100], uvname[100], vnumber[100], vvname[100], pename[100], day[100], date[100], startTime[100], endTime[100];
+
+    printf("Event Type\tName\t\tNumber\t\tVenue\tPlace\tDate\t\tTime\n");
+    drawLine(120);
+    while (fscanf(M, "%s %s %s %s %s %s %s %s-%s\n", evname, uvname, vnumber, vvname, pename, day, date, startTime, endTime) != EOF)
+    {
+        printf("%s\t%s\t\t%s\t%s\t%s\t%s\t%s-%s\n", evname, uvname, vnumber, vvname, pename, date, startTime, endTime);
+    }
+
+    fclose(M);
+
+
+
+
+
+    printf("\n\n\n");
 
     printf("%s", AC_RED);
     drawLine(120);
