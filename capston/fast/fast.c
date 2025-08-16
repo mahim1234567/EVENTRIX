@@ -876,13 +876,13 @@ int coustomer_dashboard()
     printf("%s",AC_CYAN);
     printf("\t\t      [8].Submit Feedback\n\n");
     printf("  \t\t      [9].Contact Us");
-    printf("\t\t\t      [10].Password Change\n\n");
+    printf("\t\t\t      [10].Edit Event Booking\n\n");
     printf("%s",AC_BLUE);
-    printf("  \t\t      [11].Edit Event Booking");
-    printf("\t\t      [12].Cancel Event\n\n");
-    printf("  \t\t      [13].Show Upcoming Events");
+    printf("  \t\t      [11].Cancel Event");
+    printf("\t\t\t      [12].Show Upcoming Events\n\n");
     printf("%s",AC_GREEN);
-    printf("\t\t      [0].Home Page\n\n");
+    printf("  \t\t      [0].Home Page");
+
     printf("\n");
     int c;
     printf("%s",AC_CYAN);
@@ -943,30 +943,17 @@ int coustomer_dashboard()
     }
     else if(c==10)
     {
-        system("CLS");
-        drawLine(120);
-        printf("\t\t\t\t<<<<<-----Event Approval Message----->>>>>\n");
-        drawLine(120);
-        printf("\n\n\n");
 
-        change_password();
-        printf("\n\nAny key to continue..........");
-        getch();
-        system("CLS");
-        coustomer_dashboard();
-
+        User_update_Event();
     }
     else if(c==11)
     {
-        User_update_Event();
+        Cancel_Event();
+
     }
     else if(c==12)
     {
-        Cancel_Event();
-    }
-    else if(c==13)
-    {
-        Show_Upcoming_Events(); // pass logged-in user
+       Show_Upcoming_Events();
     }
     else
     {
@@ -4058,52 +4045,6 @@ void getPassword(char *pass)
             printf("-");
         }
     }
-}
-
-
-void change_password()
-{
-    struct login l;
-    char uname[100], old_pass[100], new_pass[100];
-    int found = 0;
-
-    FILE *fp = fopen("login.txt", "r");
-    FILE *temp1 = fopen("temp1.txt", "w");
-
-    if (fp == NULL)
-    {
-        printf("User file not found!\n");
-        return;
-    }
-
-    printf("Enter Username: ");
-    scanf("%s", uname);
-    printf("Enter Current Password: ");
-    getPassword(old_pass);
-
-    while (fscanf(fp, "%s %s %s %s %s",
-                  l.fname, l.lname, l.username, l.pass, l.num) != EOF)
-    {
-        if (strcmp(l.username, uname) == 0 && strcmp(l.pass, old_pass) == 0)
-        {
-            found = 1;
-            printf("Enter New Password: ");
-            getPassword(new_pass);
-            strcpy(l.pass, new_pass);
-        }
-        fprintf(temp1, "%s\t\t%s\t\t%s\t\t%s\t\t%s\n", l.fname, l.lname, l.username, l.pass, l.num);
-    }
-
-    fclose(fp);
-    fclose(temp1);
-
-    remove("login.txt");
-    rename("temp1.txt", "login.txt");
-
-    if (found)
-        printf("\nPassword changed successfully!\n");
-    else
-        printf("\nInvalid username or password!\n");
 }
 
 void Edit_Event_Booking()
