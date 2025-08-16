@@ -15,7 +15,7 @@
 #define AC_NORMAL "\x1b[m"
 
 
-front()
+void front()
 {
     printf("\n");
     printf("%s",AC_BLUE);
@@ -58,7 +58,7 @@ front()
     printf("           |      /     _/                                                         \n");
 
 }
-frontpage()
+void frontpage()
 {
     front();
     printf("%s",AC_GREEN);
@@ -66,7 +66,7 @@ frontpage()
     getch();
     system("CLS");
 }
-drawLine(int len)
+void drawLine(int len)
 {
     for (int i = 0; i < len; i++) printf("=");
     printf("\n");
@@ -82,7 +82,7 @@ int main()
 
 }
 
-frontnext()
+void frontnext()
 {
     printf("%s",AC_RED);
     int cho,cho2,cho3;
@@ -1020,7 +1020,7 @@ int admin_dashboard()
 
 }
 
-Find_Event()
+void Find_Event()
 
 {
 
@@ -1236,7 +1236,7 @@ Find_Event()
 
 
 
- Scarce_Approval()
+void Scarce_Approval()
  {
 
             system("CLS");
@@ -1422,7 +1422,7 @@ Find_Event()
 
 
 
-Event_Approval()
+void Event_Approval()
 {
 
 
@@ -1526,7 +1526,7 @@ Event_Approval()
 }
 
 
-View_Event_Approval()
+void View_Event_Approval()
 {
 
     char pname[100],dname[100],uname[100],vname[100],ename[100],number[100],approve[100];
@@ -1570,7 +1570,7 @@ View_Event_Approval()
 
 }
 
-Event_Selection()
+void Event_Selection()
 {
     printf("%s",AC_RED);
     drawLine(120);
@@ -2010,7 +2010,7 @@ void Booking()
                     {
                         printf("%s",AC_MAGENTA);
                         printf("\n\t\t\t\t\t  <<<Venue Name>>>\n");
-                        printf("\t\t\t\t\t\t  ");
+                        printf("\t\t\t\t\t  ");
                         drawLine(20);
                         printf("%s",AC_GREEN);
                         printf("\n\t\t\t\t\t  [1].Dream Square Resort(DSR)\n\t\t\t\t\t  [2].Padma Resort(PR)");
@@ -2155,7 +2155,7 @@ void Booking()
 
 
 
-paymentp(char day[],int days,int month,int year)
+void paymentp(char day[],int days,int month,int year)
 {
     char weekf[100]= {"Friday"};
     char weeks[100]= {"Saturday"};
@@ -2546,11 +2546,9 @@ paymentp(char day[],int days,int month,int year)
 
     system("CLS");
     printf("%s", AC_CYAN);
-    printf("\n\t\t\t\t\t  ");
-    drawLine(37);
-    printf("\n\t\t\t\t\t  PAYMENT RECEIPT\n");
-    printf("\n\t\t\t\t\t  ");
-    drawLine(37);
+    printf("\t\t\t\t\t  -------------------------------------");
+    printf("\n\t\t\t\t\t         PAYMENT RECEIPT\n");
+    printf("\t\t\t\t\t  -------------------------------------");
 
     printf("\n\t\t\t\t\t  Customer Name   : %s", name);
     printf("\n\t\t\t\t\t  Phone Number    : %s", number);
@@ -2564,26 +2562,24 @@ paymentp(char day[],int days,int month,int year)
 
     printf("\n\t\t\t\t\t  Status          : ");
     if(due==0) {
-        printf("\t\t\t\t\t  Payment Completed");
+        printf("Payment Completed");
     } else {
-        printf("\t\t\t\t\t  Pending (Due Left)");
+        printf("Pending (Due Left)");
     }
 
     printf("\n");
-    printf("\t\t\t\t\t  ");
-    drawLine(37);
+    printf("\n\t\t\t\t\t  -------------------------------------");
     printf("\n\t\t\t\t\t  Thank you for booking with EVENTTRIX!\n");
-    printf("\t\t\t\t\t  ");
-    drawLine(37);
+    printf("\t\t\t\t\t  -------------------------------------");
 
-    printf("\n\t\t\t\t\t  Any key to continue..........");
+    printf("\n\n\n\t\t\t\t\t  Any key to continue..........");
     getch();
     system("CLS");
     coustomer_dashboard();
 
 }
 
-view_payment()
+void view_payment()
 {
     system("CLS");
     printf("%s",AC_RED);
@@ -2677,20 +2673,20 @@ void View_Event_Information()
     system("CLS");
 }
 
-userview()
+void userview()
 {
     View_Event_Information();
     coustomer_dashboard();
 
 }
-adminview()
+void adminview()
 {
     View_Event_Information();
     admin_dashboard();
 }
 
 
-Service_Request()
+void Service_Request()
 {
     system("CLS");
     printf("%s", AC_RED);
@@ -3052,7 +3048,7 @@ Service_Request()
 
 
 
-View_Service_Request()
+void View_Service_Request()
 {
 
 
@@ -3167,7 +3163,7 @@ View_Service_Request()
     }
 }
 
-Equipment_Rental()
+void Equipment_Rental()
 {
 
 
@@ -3445,7 +3441,7 @@ Equipment_Rental()
     }
 }
 
-View_Equipment_Rental_Request()
+void View_Equipment_Rental_Request()
 {
     system("CLS");
     printf("%s", AC_RED);
@@ -3565,7 +3561,7 @@ View_Equipment_Rental_Request()
 
 
 }
-Submit_Feedback()
+void Submit_Feedback()
 {
     system("CLS");
     printf("%s",AC_RED);
@@ -3601,7 +3597,7 @@ Submit_Feedback()
     coustomer_dashboard();
 
 }
-Contact_Us()
+void Contact_Us()
 {
     system("CLS");
     printf("%s",AC_RED);
@@ -3618,7 +3614,7 @@ Contact_Us()
     system("CLS");
     coustomer_dashboard();
 }
-View_Feedback_History()
+void View_Feedback_History()
 {
     system("CLS");
     printf("%s",AC_RED);
@@ -3650,7 +3646,7 @@ View_Feedback_History()
 
 }
 
-Manage_Discount_and_Offer()
+void Manage_Discount_and_Offer()
 {
     system("CLS");
     printf("%s",AC_RED);
@@ -3677,7 +3673,7 @@ Manage_Discount_and_Offer()
         Manage_Discount_and_Offer();
     }
 }
-add()
+void add()
 {
     system("CLS");
     printf("%s",AC_RED);
@@ -3714,7 +3710,7 @@ add()
 }
 
 
-viewa()
+void viewa()
 {
     system("CLS");
     printf("%s",AC_RED);
@@ -3746,7 +3742,7 @@ viewa()
 
 
 }
-viewadm()
+void viewadm()
 {
     system("CLS");
     printf("%s",AC_RED);
@@ -3779,7 +3775,7 @@ viewadm()
 }
 
 
-Rules_and_Condition()
+void Rules_and_Condition()
 {
     system("CLS");
     printf("%s",AC_RED);
@@ -3806,7 +3802,7 @@ Rules_and_Condition()
         Rules_and_Condition();
     }
 }
-addr()
+void addr()
 {
     system("CLS");
     printf("%s",AC_RED);
@@ -3841,7 +3837,7 @@ addr()
     admin_dashboard();
 
 }
-viewad()
+void viewad()
 {
     system("CLS");
     printf("%s",AC_RED);
@@ -3872,7 +3868,7 @@ viewad()
     admin_dashboard();
 }
 
-viewr()
+void viewr()
 {
     system("CLS");
     printf("%s",AC_RED);
@@ -3903,7 +3899,7 @@ viewr()
     system("CLS");
     coustomer_dashboard();
 }
-add_item()
+void add_item()
 {
 
 
@@ -3929,7 +3925,7 @@ add_item()
     admin_dashboard();
 
 }
-getPassword(char *pass)
+void getPassword(char *pass)
 {
     int i = 0;
     char ch;
@@ -3958,7 +3954,7 @@ getPassword(char *pass)
 }
 
 
-change_password()
+void change_password()
 {
     struct login l;
     char uname[100], old_pass[100], new_pass[100];
