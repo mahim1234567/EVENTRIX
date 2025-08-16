@@ -2506,6 +2506,37 @@ paymentp(char day[],int days,int month,int year)
     fclose(p);
 
 
+    system("CLS");
+    printf("%s", AC_CYAN);
+    printf("\n\t\t\t\t\t  ");
+    drawLine(37);
+    printf("\n\t\t\t\t\t  PAYMENT RECEIPT\n");
+    printf("\n\t\t\t\t\t  ");
+    drawLine(37);
+
+    printf("\n\t\t\t\t\t  Customer Name   : %s", name);
+    printf("\n\t\t\t\t\t  Phone Number    : %s", number);
+    printf("\n\t\t\t\t\t  Event Date      : %02d/%02d/%04d", days, month, year);
+    printf("\n\t\t\t\t\t  Guests          : %ld", g);
+
+    printf("\n\t\t\t\t\t  Total Amount    : %ld Tk", amount);
+    printf("\n\t\t\t\t\t  Paid Amount     : %ld Tk", amu);
+    printf("\n\t\t\t\t\t  Return Amount   : %ld Tk", return_tk);
+    printf("\n\t\t\t\t\t  Due Amount      : %ld Tk", due);
+
+    printf("\n\t\t\t\t\t  Status          : ");
+    if(due==0) {
+        printf("\t\t\t\t\t  Payment Completed");
+    } else {
+        printf("\t\t\t\t\t  Pending (Due Left)");
+    }
+
+    printf("\n");
+    printf("\t\t\t\t\t  ");
+    drawLine(37);
+    printf("\n\t\t\t\t\t  Thank you for booking with EVENTTRIX!\n");
+    printf("\t\t\t\t\t  ");
+    drawLine(37);
 
     printf("\n\t\t\t\t\t  Any key to continue..........");
     getch();
