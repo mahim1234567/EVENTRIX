@@ -1204,7 +1204,7 @@ Find_Event()
             system("CLS");
     printf("%s", AC_RED);
     drawLine(120);
-    printf("  [ EVENTTRIX ]\t\t\t\t  <<<<<-----Scarce Approval----->>>>>  \t\t\t\t[ EVENTTRIX ]\n");
+    printf("  [ EVENTTRIX ]\t\t\t\t <<<<<-----Scarce Approval----->>>>> \t\t\t\t[ EVENTTRIX ]\n");
     drawLine(120);
     printf("%s", AC_MAGENTA);
     printf("\n\n");
@@ -1218,7 +1218,7 @@ Find_Event()
 
     printf("%s", AC_RED);
     drawLine(120);
-    printf("  [ EVENTTRIX ]\t\t\t\t   <<<<<-----Scarce Approval----->>>>>   \t\t\t\t[ EVENTTRIX ]\n");
+    printf("  [ EVENTTRIX ]\t\t\t\t <<<<<-----Scarce Approval----->>>>> \t\t\t\t[ EVENTTRIX ]\n");
     drawLine(120);
     printf("%s", AC_MAGENTA);
     printf("\n\n");
