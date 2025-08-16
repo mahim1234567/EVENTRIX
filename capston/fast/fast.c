@@ -15,46 +15,110 @@
 #define AC_NORMAL "\x1b[m"
 
 
+
+void coustomerfront()
+
+{
+    printf("%s",AC_CYAN);
+    printf("\t\t\t\t");
+    printf(" __          ________ _      _____ ____  __  __ ______     _______ ___    \n");
+    printf("\t\t\t\t");
+    printf(" \\ \\        / /  ____| |    / ____/ __ \\|  \\/  |  ____|   |__   __/ _ \\   \n");
+    printf("\t\t\t\t");
+    printf("  \\ \\  /\\  / /| |__  | |   | |   | |  | | \\  / | |__         | | | | | |  \n");
+    printf("\t\t\t\t");
+    printf("   \\ \\/  \\/ / |  __| | |   | |   | |  | | |\\/| |  __|        | | | | | |  \n");
+    printf("\t\t\t\t");
+    printf("    \\  /\\  /  | |____| |___| |___| |__| | |  | | |____       | | | |_| |  \n");
+    printf("\t\t\t\t");
+    printf("     \\/  \\/   |______|______\\_____\\____/|_|  |_|______|      |_|  \\___/   \n");
+    printf("\t\t\t\t");
+    printf("                                                                           \n");
+    printf("\t\t\t\t");
+    printf("                                                                           \n");
+    printf("\t\t\t\t");
+
+    printf("\n");
+
+
+    printf("   __________  __  _________________  __  _____________       ____  ___    _   __________       \n");
+    printf("  / ____/ __ \\/ / / / ___/_  __/ __ \\/  |/  / ____/ __ \\     / __ \\/   |  / | / / ____/ /       \n");
+    printf(" / /   / / / / / / /\\__ \\ / / / / / / /|_/ / __/ / /_/ /    / /_/ / /| | /  |/ / __/ / /        \n");
+    printf("/ /___/ /_/ / /_/ /___/ // / / /_/ / /  / / /___/ _, _/    / ____/ ___ |/ /|  / /___/ /___      \n");
+    printf("\\____/\\____/\\____//____//_/  \\____/_/  /_/_____/_/ |_|    /_/   /_/  |_/_/ |_/_____/_____/      \n");
+    printf("\n");
+}
+void adminfront()
+{
+    printf("%s",AC_MAGENTA);
+    printf("\t\t\t\t");
+    printf(" __          ________ _      _____ ____  __  __ ______     _______ ___    \n");
+    printf("\t\t\t\t");
+    printf(" \\ \\        / /  ____| |    / ____/ __ \\|  \\/  |  ____|   |__   __/ _ \\   \n");
+    printf("\t\t\t\t");
+    printf("  \\ \\  /\\  / /| |__  | |   | |   | |  | | \\  / | |__         | | | | | |  \n");
+    printf("\t\t\t\t");
+    printf("   \\ \\/  \\/ / |  __| | |   | |   | |  | | |\\/| |  __|        | | | | | |  \n");
+    printf("\t\t\t\t");
+    printf("    \\  /\\  /  | |____| |___| |___| |__| | |  | | |____       | | | |_| |  \n");
+    printf("\t\t\t\t");
+    printf("     \\/  \\/   |______|______\\_____\\____/|_|  |_|______|      |_|  \\___/   \n");
+    printf("\t\t\t\t");
+    printf("                                                                           \n");
+    printf("\t\t\t\t");
+    printf("                                                                           \n");
+    printf("\t\t\t\t");
+
+    printf("\n");
+
+    printf("     _    ____  __  __ ___ _   _    ____   _    _   _ _____ _      \n");
+    printf("    / \\  |  _ \\|  \\/  |_ _| \\ | |  |  _ \\ / \\  | \\ | | ____| |     \n");
+    printf("   / _ \\ | | | | |\\/| || ||  \\| |  | |_) / _ \\ |  \\| |  _| | |     \n");
+    printf("  / ___ \\| |_| | |  | || || |\\  |  |  __/ ___ \\| |\\  | |___| |___  \n");
+    printf(" /_/   \\_\\____/|_|  |_|___|_| \\_|  |_| /_/   \\_\\_| \\_|_____|_____| \n");
+    printf("\n");
+
+}
 void front()
 {
     printf("\n");
     printf("%s",AC_BLUE);
-    printf("\t\t\t\t\t");
+    printf("\t\t\t");
     printf("<o>      \\o/   v\\ \\o/       o       <o>      \\o      |      o/   \\o   \n");
-    printf("\t\t\t\t\t");
+    printf("\t\t\t");
     printf(" |        |     <\\ |       <|        |        v\\     o     /v     v\\  \n");
-    printf("\t\t\t\t\t");
+    printf("\t\t\t");
     printf("/ \\      / \\      < \\      / \\      / \\        <\\  __|>_  />       <\\ \n");
 
     printf("\n\n\n");
 
     printf("%s",AC_RED);
-    printf("\t\t\t\t");
+    printf("\t\t");
     printf("_////////_//         _//_////////_///     _//_///////////_/////// _ //////_//      _//\n"AC_RED);
-    printf("\t\t\t\t");
+    printf("\t\t");
     printf("_//       _//       _// _//      _/ _//   _//     _//    _//    _//  _//   _//   _//  \n");
-    printf("\t\t\t\t");
+    printf("\t\t");
     printf("_//        _//     _//  _//      _// _//  _//     _//    _//    _//  _//    _// _//   \n");
-    printf("\t\t\t\t");
+    printf("\t\t");
     printf("_//////     _//   _//   _//////  _//  _// _//     _//    _/ _//      _//      _//     \n");
-    printf("\t\t\t\t");
+    printf("\t\t");
     printf("_//          _// _//    _//      _//   _/ _//     _//    _//  _//    _//    _// _//   \n");
-    printf("\t\t\t\t");
+    printf("\t\t");
     printf("_//           _////     _//      _//    _/ //     _//    _//    _//  _//   _//   _//  \n");
-    printf("\t\t\t\t");
+    printf("\t\t");
     printf("_////////      _//      _////////_//      _//     _//    _//      _ //////_//      _//\n");
 
 
     printf("\n\n\n");
     printf("%s",AC_CYAN);
 
-    printf("\t\t\t\t");
+    printf("\t\t");
     printf("     __          _            __                        __            ___         \n");
-    printf("\t\t\t\t");
+    printf("\t\t");
     printf("    (_ . _  _ |.(_  . _  _   |_    _ _ |_  |  |.|_|_   (_  _  _  _|_   | _. _|  _ \n");
-    printf("\t\t\t\t");
+    printf("\t\t");
     printf("    __)|||||_)||| \\/|| )(_)  |__\\/(-| )|_  |/\\|||_| )  __)|||(_|| |_   || |(_|(_) \n");
-    printf("\t\t\t\t");
+    printf("\t\t");
     printf("           |      /     _/                                                         \n");
 
 }
@@ -75,7 +139,7 @@ void drawLine(int len)
 int main()
 {
 
-    //frontpage();
+    frontpage();
     frontnext();
 
 
@@ -248,7 +312,7 @@ void frontnext()
                 printf("\n\n");
                 loginA();
             }
-            else if(cho2==0)
+            else if(cho3==0)
             {
                 system("CLS");
                 frontnext();
@@ -264,7 +328,7 @@ void frontnext()
 
             }
         }
-        else if(cho3==3)
+        else if(cho==3)
         {
             system("CLS");
             printf("\n\n");
@@ -276,20 +340,17 @@ void frontnext()
             system("CLS");
             front();
             break;
-
         }
 
         else
         {
             system("CLS");
             main();
-
-
         }
     }
     getch();
 }
-char loggedInUser[100];
+
 struct login
 {
 
@@ -528,7 +589,6 @@ int login()
             scanf("%s", username);
             printf("\n\t\t\t\t\t\t  Enter Password: ");
             getPassword(pass);
-
             int found = 0;
             if (log == NULL)
             {
@@ -546,7 +606,7 @@ int login()
                     printf("\n\t\t\t\t\t\t  Any key to continue..........");
                     getch();
                     system("CLS");
-                    coustomer_dashboard();
+                    coustomer();
                     found = 1;
                     break;
                 }
@@ -560,6 +620,7 @@ int login()
             fclose(log);
 
         }
+
     }
 
     else
@@ -569,6 +630,16 @@ int login()
     }
 
 
+}
+
+void coustomer()
+{
+  coustomerfront();
+  printf("%s",AC_GREEN);
+    printf("\n\nAny key to continue..........");
+    getch();
+    system("CLS");
+  coustomer_dashboard() ;
 }
 int loginA()
 {
@@ -628,7 +699,7 @@ int loginA()
                     printf("\n\t\t\t\t\t\t  Any key to continue..........");
                     getch();
                     system("CLS");
-                    admin_dashboard();
+                    admin();
                     found = 1;
                     break;
                 }
@@ -904,30 +975,46 @@ int coustomer_dashboard()
     }
 
 }
+void admin()
+{
+    adminfront();
+    printf("%s",AC_GREEN);
+    printf("\n\nAny key to continue..........");
+    getch();
+    system("CLS");
+    admin_dashboard();
+
+}
 
 int admin_dashboard()
 {
+
+
+
     printf("%s",AC_RED);
     drawLine(120);
     printf("  [ EVENTTRIX ]\t\t\t\t  <<<<<-----Admin Dashboard----->>>>>  \t\t\t\t[ EVENTTRIX ]\n");
     drawLine(120);
+
+
+
     printf("%s",AC_BLUE);
     printf("\n");
-    printf("\n\t\t\t\t\t      [1].View All Event\n");
-    printf("\n\t\t\t\t\t      [2].Find Event.\n");
-    printf("\n\t\t\t\t\t      [3].Event Approval\n");
-    printf("\n\t\t\t\t\t      [4].View Service Request & Approval\n");
+    printf("\t\t      [1].View All Event");
+    printf("\t\t      [2].Find Event.\n\n");
+    printf("\t\t      [3].Event Approval");
+    printf("\t\t      [4].View Service Request & Approval\n\n");
     printf("%s",AC_MAGENTA);
-    printf("\n\t\t\t\t\t      [5].View Equipment Rental Request & Approval\n");
-    printf("\n\t\t\t\t\t      [6].View payment\n");
-    printf("\n\t\t\t\t\t      [7].Delete Event\n");
-    printf("\n\t\t\t\t\t      [8].Manage Discount and Offer\n");
+    printf("\t\t      [5].View payment");
+    printf("\t\t\t      [6].View Equipment Rental Request & Approval\n\n");
+    printf("\t\t      [7].Delete Event");
+    printf("\t\t\t      [8].Manage Discount and Offer\n\n");
     printf("%s",AC_CYAN);
-    printf("\n\t\t\t\t\t      [9].Set Rules and Condition\n");
-    printf("\n\t\t\t\t\t      [10].View Feedback History\n");
-    printf("\n\t\t\t\t\t      [11].Update Event Items\n");
+    printf("\t\t      [9].Set Rules and Condition");
+    printf("\t      [10].View Feedback History\n\n");
+    printf("\t\t      [11].Update Event Items");
     printf("%s",AC_GREEN);
-    printf("\n\t\t\t\t\t      [0].Home Page\n");
+    printf("\t\t      [0].Home Page\n\n");
     int ch;
     printf("\n\t\t\t\t\t      Enter your Choice: ");
     scanf("%d",&ch);
@@ -967,11 +1054,11 @@ int admin_dashboard()
     }
     else if(ch==5)
     {
-        View_Equipment_Rental_Request();
+        view_payment();
     }
     else if(ch==6)
     {
-        view_payment();
+        View_Equipment_Rental_Request();
     }
     else if(ch==7)
     {
@@ -4169,17 +4256,25 @@ void Cancel_Event()
 
 
 
-void Show_Upcoming_Events(char currentUser[])
-{
+void Show_Upcoming_Events() {
     system("CLS");
+    printf("%s", AC_CYAN);
     drawLine(120);
-    printf("  [ EVENTTRIX ]\t\t\t\t   <<<<<-----Upcoming Events----->>>>>   \t\t\t\t[ EVENTTRIX ]\n");
+    printf("  [ EVENTTRIX ]\t\t\t   <<<<<----- Upcoming Events (Next 7 Days) ----->>>>>   \t\t[ EVENTTRIX ]\n");
     drawLine(120);
+    printf("%s", AC_NORMAL);
+
+    char currentUser[100];
+    printf("\n\t\t\t\t\t  Enter your username: ");
+    scanf("%s", currentUser);
 
     FILE *fp = fopen("booking.txt", "r");
-    if (!fp)
-    {
-        printf("File not found!\n");
+    if (!fp) {
+        printf("%s", AC_RED);
+        printf("\n\t\t\t\t\t  Error: Booking file not found!\n");
+        printf("%s", AC_NORMAL);
+        getch();
+        coustomer_dashboard();
         return;
     }
 
@@ -4189,34 +4284,53 @@ void Show_Upcoming_Events(char currentUser[])
     time_t t = time(NULL);
     struct tm today = *localtime(&t);
 
-    while (fscanf(fp, "%s %s %s %s %s %s %s %s-%s",
-                  ename, uname, number, vname, pname, day, date, startTime, endTime) != EOF)
-    {
-        if (strcmp(uname, currentUser) == 0)
-        {
+    printf("\n%s", AC_YELLOW);
+    printf("\t\t\t\t  ========== Your Upcoming Events ==========\n\n");
+    printf("%s", AC_NORMAL);
+
+    while (fscanf(fp, "%s %s %s %s %s %s %s %[^-]-%s",
+                 ename, uname, number, vname, pname, day, date, startTime, endTime) != EOF) {
+        if (strcmp(uname, currentUser) == 0) {
             int d, m, y;
-            sscanf(date, "%d/%d/%d", &d, &m, &y);
+            if (sscanf(date, "%d/%d/%d", &d, &m, &y) != 3) {
+                continue; // Skip invalid dates
+            }
+
             struct tm eventDate = {0};
             eventDate.tm_mday = d;
             eventDate.tm_mon = m - 1;
             eventDate.tm_year = y - 1900;
+            eventDate.tm_hour = 12; // Avoid timezone issues
 
-            double diff = difftime(mktime(&eventDate), mktime(&today)) / (60*60*24);
-            if (diff >= 0 && diff <= 7)
-            {
-                printf("\nUpcoming Event: %s on %s at %s-%s\n", ename, date, startTime, endTime);
+            double diff = difftime(mktime(&eventDate), mktime(&today)) / (60 * 60 * 24);
+
+            if (diff >= 0 && diff <= 7) {
+                found = 1;
+                printf("%s", AC_GREEN);
+                printf("\t\t\t\t\t  -----------------------------\n");
+                printf("\t\t\t\t\t  Event: %s\n", ename);
+                printf("\t\t\t\t\t  Date : %s\n", date);
+                printf("\t\t\t\t\t  Time : %s to %s\n", startTime, endTime);
+                printf("\t\t\t\t\t  Venue: %s, %s\n", vname, pname);
+                printf("\t\t\t\t\t  -----------------------------\n");
+                printf("%s", AC_NORMAL);
             }
         }
     }
 
-    if (!found)
-        printf("\nNo upcoming events within 7 days.\n");
-
     fclose(fp);
+
+    if (!found) {
+        printf("%s", AC_RED);
+        printf("\n\t\t\t\t\t  No events found in the next 7 days.\n");
+        printf("%s", AC_NORMAL);
+    }
+
+    printf("\n\t\t\t\t\t  Press any key to continue...");
     getch();
+    system("CLS");
     coustomer_dashboard();
 }
-
 void User_update_Event()
 {
     system("CLS");
