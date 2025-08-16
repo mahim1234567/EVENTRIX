@@ -15,6 +15,77 @@
 #define AC_NORMAL "\x1b[m"
 
 
+// ==== Function Prototypes ====
+
+// Front / Intro
+void coustomerfront();
+void adminfront();
+void front();
+void frontpage();
+void drawLine(int len);
+void frontnext();
+
+// Registration / Login
+int registe();
+int registeA();
+int login();
+int loginA();
+void getPassword(char *pass);
+void coustomer();
+void admin();
+
+// Dashboards
+int coustomer_dashboard();
+int admin_dashboard();
+
+// Event / Booking
+void Event_Selection();
+void Booking();
+void Delete_Event();
+void Cancel_Event();
+void User_update_Event();
+
+// Event Approval
+void Event_Approval();
+void View_Event_Approval();
+void Find_Event();
+void Scarce_Approval();
+
+// Services & Requests
+void Service_Request();
+void View_Service_Request();
+void Equipment_Rental();
+void View_Equipment_Rental_Request();
+void Submit_Feedback();
+void View_Feedback_History();
+void Contact_Us();
+
+// Admin Management
+void adminview();
+void Event_Approval();
+void viewa();
+void viewr();
+void view_payment();
+void Manage_Discount_and_Offer();
+void Rules_and_Condition();
+void add_item();
+
+// Utility
+int isLeapYear(int year);
+int isValidDate(int d, int m, int y);
+int isFutureDate(int d, int m, int y);
+void paymentp(char day[],int days,int month,int year);
+void Show_Upcoming_Events();
+
+
+int main()
+{
+
+    frontpage();
+    frontnext();
+    return 0;
+}
+
 void coustomerfront()
 {
     printf("%s",AC_CYAN);
@@ -4184,11 +4255,6 @@ void User_Cancle_Event()
 }
 
 
-int main()
-{
 
-    frontpage();
-    frontnext();
-    return 0;
-}
+
 
